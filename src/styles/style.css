@@ -1,3 +1,54 @@
 body {
     background-color: green;
 }
+
+.btn {
+    padding: 5px 10px;
+    min-height: 70px;
+    min-width: 180px;
+    border-radius: 5px;
+    font-size: 25px;
+    font-weight: bold;
+    color: #fff;
+    text-align: center;
+    cursor: pointer;
+    background-color: red;
+    border: 2px solid #fff;
+    transition: 0.2s all;
+}
+
+.btn:hover {
+    transform: scale(1.1);
+}
+
+.list {
+    padding: 20px 45px;
+    background-color: antiquewhite;
+}
+
+.list__menu {
+    list-style: none;
+    display: flex;
+    margin: 0 auto;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.list__item {
+    margin-right: 15px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #222;
+    cursor: pointer;
+    transition: 0.1s all;
+}
+
+.list__item:hover {
+    transform: scale(1.1);
+    color: orange;
+}
+
+.list__link {
+    color: inherit;
+}

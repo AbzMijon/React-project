@@ -1,0 +1,97 @@
+/*Reset*/
+a,abbr,acronym,address,applet,article,aside,audio,b,blockquote,big,body,center,canvas,caption,cite,code,command,datalist,dd,del,details,dfn,dl,div,dt,em,embed,fieldset,figcaption,figure,font,footer,form,h1,h2,h3,h4,h5,h6,header,hgroup,html,i,iframe,img,ins,kbd,keygen,label,legend,li,meter,nav,object,ol,output,p,pre,progress,q,s,samp,section,small,span,source,strike,strong,sub,sup,table,tbody,tfoot,thead,th,tr,tdvideo,tt,u,ul,var{background:transparent;border:0 none;font-size:100%;margin:0;padding:0;border:0;outline:0;vertical-align:top;}ol, ul {list-style:none;}blockquote, q {quotes:none;}table, table td {padding:0;border:none;border-collapse:collapse;}img {vertical-align:top;}embed {vertical-align:top;}input[type=text], textarea{ outline:none;border-radius:0;}
+
+article,aside,audio,canvas,command,datalist,details,embed,figcaption,figure,footer,header,hgroup,keygen,meter,nav,output,progress,section,source,video, main{display:block}mark,rp,rt,ruby,summary,time{display:inline}
+
+/*Root for change the base color*/
+:root {
+    --main-color: #f0ecec;
+}
+
+* {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+img {
+    max-width: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+}
+
+body {
+    font-family: 'Rubik', sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 21px;
+    color: #373277;
+}
+
+h1, .title1 {
+    color: #FFFFFF;
+    font-weight: 700;
+    font-size: 64px;
+    line-height: 55px;
+}
+
+h2, .title2 {
+    color: #FFFFFF;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 42px;
+}
+
+h3, .title3 {
+    color: #000000;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 35px;
+}
+
+h4, .title4 {
+    color: #000000;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 28px;
+}
+
+h5, .title5 {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 21px;
+}
+
+h6, .title6 {
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 15px;
+}
+
+.btn {
+    border: none;
+    outline: none;
+    background-color: #FF4343;
+    min-width: 370px;
+    min-height: 80px;
+    padding: 5px;
+    -webkit-transition: all 0.2s cubic-bezier(0, 0.99, 0.51, 0.53);
+    transition: all 0.2s cubic-bezier(0, 0.99, 0.51, 0.53);
+    cursor: pointer;
+    font-weight: 900;
+    font-size: 24px;
+    line-height: 28px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+}
+
+.btn:hover {
+    background-color: #E71414;
+}
+
+
+.app {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: url(https://funart.pro/uploads/posts/2021-12/1640370633_1-funart-pro-p-foni-s-risunkami-neba-1.jpg);
+}

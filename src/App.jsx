@@ -1,15 +1,26 @@
 //React
-import React from "react";
+import React from 'react';
+
+//Components
+import Header from './components/Header';
+import Main from './components/Main';
 
 class App extends React.Component {
-    constructor(props) {
-        super(props);
+	constructor(props) {
+		super(props);
 
-        this.state = {}
-    }
+		this.state = {
+            headerLoginName: 'Войти'
+        };
+	}
 
-    render() {
-        return 
-    }
+	render() {
+		return (
+        <div className="app">
+            <Header loginName = {this.state.headerLoginName}/>
+            <Main />
+        </div>
+        )
+	}
 }
-export default App
+export default App;

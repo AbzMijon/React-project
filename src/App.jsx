@@ -10,14 +10,14 @@ class App extends React.Component {
 		super(props);
 
 		this.state = {
-            headerLoginName: 'Войти'
+            headerLoginName: 'Войти',
         };
 	}
 
 	render() {
 		return (
         <div className="app">
-            <Header loginName = {this.state.headerLoginName}/>
+            <Header loginName = {this.state.headerLoginName} />
             <Main />
         </div>
         )

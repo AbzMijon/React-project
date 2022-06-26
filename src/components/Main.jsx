@@ -5,6 +5,7 @@ class Main extends React.PureComponent {
         super(props);
     }
 
+    
     render() {
         return (
             <main className="main">
@@ -54,6 +55,10 @@ class Main extends React.PureComponent {
                             <p className="tools__available">Посмотреть доступные</p>
                         </li>
                     </ul>
+                    <section className='books'>
+                        <ul className="books__list">
+                        </ul>
+                    </section>
                 </div>
             </main>
         )

@@ -4,9 +4,7 @@ a,abbr,acronym,address,applet,article,aside,audio,b,blockquote,big,body,center,c
 article,aside,audio,canvas,command,datalist,details,embed,figcaption,figure,footer,header,hgroup,keygen,meter,nav,output,progress,section,source,video, main{display:block}mark,rp,rt,ruby,summary,time{display:inline}
 
 /*Root for change the base color*/
-:root {
-    --main-color: #f0ecec;
-}
+    $main-color: #f0ecec;
 
 * {
     -webkit-box-sizing: border-box;
@@ -37,19 +35,17 @@ h1, .title1 {
 h2, .title2 {
     color: #FFFFFF;
     font-weight: 700;
-    font-size: 36px;
+    font-size: 30px;
     line-height: 42px;
 }
 
 h3, .title3 {
-    color: #000000;
     font-weight: 700;
     font-size: 30px;
     line-height: 35px;
 }
 
 h4, .title4 {
-    color: #000000;
     font-weight: 700;
     font-size: 24px;
     line-height: 28px;
@@ -82,10 +78,10 @@ h6, .title6 {
     line-height: 28px;
     text-transform: uppercase;
     color: #FFFFFF;
-}
 
-.btn:hover {
-    background-color: #E71414;
+    &:hover {
+        background-color: #E71414;
+    }
 }
 
 
@@ -93,5 +89,116 @@ h6, .title6 {
     position: absolute;
     width: 100%;
     height: 100%;
-    background-image: url(https://funart.pro/uploads/posts/2021-12/1640370633_1-funart-pro-p-foni-s-risunkami-neba-1.jpg);
+    background: linear-gradient(rgba(14, 14, 14, 0.2), rgba(14, 14, 14, 0.2)), rgb(139, 200, 225) no-repeat center;
+    background-size: cover;
+}
+
+.container {
+    max-width: 1250px;
+    padding: 0 15px;
+    margin: 0 auto;
+}
+
+//HEADER
+.header {
+    padding: 40px 0;
+}
+
+.fa-solid {
+    color: #fff;
+}
+
+.header__wrap {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    align-items: center;
+
+    .header__input-wrap {
+        position: relative;
+    }
+    .header__search {
+        width: 100%;
+        background-color: #8bc8e1;
+        box-shadow: 5px 5px 20px rgb(0 126 177 / 30%);
+        padding: 10px 7px;
+        color: #fff;
+        border: 1px solid transparent;  
+        border-radius: 4px;   
+        font-size: 15px;   
+        &::placeholder {
+            color: #fff;
+        }
+        &:focus {
+            border: 1px solid rgba(250, 250, 250, 0.6);
+        }
+    }
+    .header__submit {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 7px;
+        border: none;
+        outline: none;
+        background-color: transparent;
+        .fa-magnifying-glass {
+            font-size: 15px;
+        }
+    }
+    .header__liked {
+        text-align: right;
+    }
+    .fa-heart {
+        font-size: 25px;
+        cursor: pointer;
+        transition: 0.2s ease-in;
+
+        &:hover {
+            transform: scale(1.2);
+            color: #e2c3c3;
+        } 
+    }
+}
+
+//MAIN
+
+//TOOLS
+.tools {
+    padding: 20px 0;
+}
+
+.tools__list {
+    display: flex;
+
+    .tools__item {
+        display: flex;
+        justify-content: space-between;
+        min-width: 160px;
+        padding: 6px 10px;
+        background-color: #fff;
+        cursor: pointer;
+        &:last-child {
+            background-color: transparent;
+        }
+    }
+
+    .tools__item + .tools__item {
+        margin-left: 25px;
+    }
+    //!!!!! color right fa-elements
+}
+
+
+
+
+
+
+//other
+.books__list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(215px,1fr));
+    grid-gap: 20px;
+}
+
+.books__img, .books__figure {
+    height: 100%;
 }

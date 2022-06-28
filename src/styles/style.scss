@@ -86,9 +86,6 @@ h6, .title6 {
 
 
 .app {
-    position: absolute;
-    width: 100%;
-    height: 100%;
     background: linear-gradient(rgba(14, 14, 14, 0.2), rgba(14, 14, 14, 0.2)), rgb(139, 200, 225) no-repeat center;
     background-size: cover;
 }
@@ -116,6 +113,15 @@ h6, .title6 {
     .header__input-wrap {
         position: relative;
     }
+    .header__login {
+        cursor: pointer;
+        justify-self: left;
+        transition: 0.2s ease-in-out;
+        &:hover {
+            transform: scale(1.1);
+        }
+    }
+
     .header__search {
         width: 100%;
         background-color: #8bc8e1;
@@ -140,6 +146,7 @@ h6, .title6 {
         border: none;
         outline: none;
         background-color: transparent;
+        cursor: pointer;
         .fa-magnifying-glass {
             font-size: 15px;
         }
@@ -171,13 +178,28 @@ h6, .title6 {
 
     .tools__item {
         display: flex;
-        justify-content: space-between;
+        align-items: center;
         min-width: 160px;
         padding: 6px 10px;
         background-color: #fff;
         cursor: pointer;
+        position: relative;
         &:last-child {
             background-color: transparent;
+            display: flex;
+            align-items: center;
+        }
+        .fa-angle-right {
+            color: #373277;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            right: 5px;
+        }
+
+        .tools__hidden-block {
+            display: none;
+            border-radius: 0 0 10px 10px;
         }
     }
 
@@ -187,18 +209,46 @@ h6, .title6 {
     //!!!!! color right fa-elements
 }
 
+//BOOKLS
+.books {
+    padding: 25px 0;
+}
 
-
-
-
-
-//other
 .books__list {
     display: grid;
     grid-template-columns: repeat(auto-fill,minmax(215px,1fr));
-    grid-gap: 20px;
+    column-gap: 20px;
+    row-gap: 40px;
+}
+
+.books__item {
+    position: relative;
+    box-shadow: 5px 5px 10px rgb(0 126 177 / 30%);
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+    .fa-lock {
+        position: absolute;
+        bottom: 5px;
+        left: 50%;
+        transform: translateX(-50%);
+        color: #fffb00;
+        font-size: 20px;
+    }
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.2);
+    }
+    &:hover {
+        transform: scale(0.9);
+    }
 }
 
 .books__img, .books__figure {
     height: 100%;
+    width: 100%;
 }

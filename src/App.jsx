@@ -2,8 +2,8 @@
 import React from 'react';
 
 //Components
-import Header from './Components/Header';
-import Main from './Components/Main';
+import Header from './Components/Header/Header';
+import Main from './Components/Main/Main';
 
 class App extends React.Component {
 	constructor(props) {
@@ -16,7 +16,7 @@ class App extends React.Component {
 
 	render() {
 		return (
-        <div className="app">
+        <div className='app'>
             <Header loginName = {this.state.headerLoginName} />
             <Main />
         </div>

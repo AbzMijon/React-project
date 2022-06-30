@@ -6,6 +6,9 @@ import { FaAngleRight } from 'react-icons/fa';
 import { FaLock } from 'react-icons/fa';
 import { BsHeart } from 'react-icons/bs';
 
+//import Components
+//import helpers
+
 class Main extends React.PureComponent {
     constructor(props) {
         super(props);
@@ -16,12 +19,6 @@ class Main extends React.PureComponent {
             isAllVisible: false,
             isCheckboxClicked: false,
     }
-
-        //Binds elements
-        this.authorsVisible.bind(this);
-        this.genresVisible.bind(this);
-        this.allVisible.bind(this);
-        this.allChecked.bind(this);
 }
 
     authorsVisible() {
@@ -56,11 +53,10 @@ class Main extends React.PureComponent {
         return (
             <main className='main'>
                 <div className='container'>
-                    <div className="box"></div>
                     <section className='tools'>
                         <ul className='tools__list'>
                             <li className='tools__item'>
-                                <p className='tools__category'  onClick={this.authorsVisible}> Все авторы<FaAngleRight className='fa-angle-right' /></p>
+                                <p className='tools__category'  onClick={this.authorsVisible.bind(this)}> Все авторы<FaAngleRight className='fa-angle-right' /></p>
 
                                 {
                                     this.state.isAuthorsVisible ?
@@ -82,7 +78,7 @@ class Main extends React.PureComponent {
                                 
                             </li>
                             <li className='tools__item'>
-                                <p className='tools__category' onClick={this.genresVisible}>Все жанры</p>
+                                <p className='tools__category' onClick={this.genresVisible.bind(this)}>Все жанры</p>
                                 <FaAngleRight className='fa-angle-right' />
 
                                 {
@@ -101,7 +97,7 @@ class Main extends React.PureComponent {
 
                             </li>
                             <li className='tools__item'>
-                                <p className='tools__category' onClick={this.allVisible}>Показать все</p>
+                                <p className='tools__category' onClick={this.allVisible.bind(this)}>Показать все</p>
                                 <FaAngleRight className='fa-angle-right' />
 
                                 {
@@ -121,7 +117,7 @@ class Main extends React.PureComponent {
                             </li>
                             <li className='tools__item'>
                                 <input type='checkbox' className='tools__checkbox' id='tools__check' />
-                                <label htmlFor="tools__check" onClick={this.allChecked}><p className='tools__available'>Посмотреть доступные</p></label> 
+                                <label htmlFor="tools__check" onClick={this.allChecked.bind(this)}><p className='tools__available'>Посмотреть доступные</p></label> 
                             </li>
                         </ul>
                     </section>

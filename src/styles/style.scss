@@ -189,6 +189,7 @@ h6, .title6 {
             background-color: transparent;
             display: flex;
             align-items: center;
+            cursor: none;
         }
         .fa-angle-right {
             color: #373277;
@@ -198,6 +199,7 @@ h6, .title6 {
             right: 5px;
         }
         .tools__category {
+            width: 100%;
             z-index: 2;
         }
 

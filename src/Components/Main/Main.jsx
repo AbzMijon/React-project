@@ -11,12 +11,45 @@ class Main extends React.PureComponent {
         super(props);
 
         this.state = {
-            isBoxVisible: true,
+            isAuthorsVisible: false,
+            isGenresVisible: false,
+            isAllVisible: false,
+            isCheckboxClicked: false,
     }
+
+        //Binds elements
+        this.authorsVisible.bind(this);
+        this.genresVisible.bind(this);
+        this.allVisible.bind(this);
+        this.allChecked.bind(this);
 }
 
-    box() {
-        this.setState({isBoxVisible: !this.state.isBoxVisible})
+    authorsVisible() {
+        this.setState({
+            isAuthorsVisible: !this.state.isAuthorsVisible,
+            isGenresVisible: false,
+            isAllVisible: false,
+        })
+    }
+    genresVisible() {
+        this.setState({
+            isGenresVisible: !this.state.isGenresVisible,
+            isAuthorsVisible: false,
+            isAllVisible: false,
+        });
+    }
+    allVisible() {
+        this.setState({
+            isAllVisible: !this.state.isAllVisible,
+            isAuthorsVisible: false,
+            isGenresVisible: false,
+        });
+    }
+
+    allChecked() {
+        this.setState({
+            isCheckboxClicked: !this.state.isCheckboxClicked,
+        })
     }
     
     render() {
@@ -26,11 +59,11 @@ class Main extends React.PureComponent {
                     <div className="box"></div>
                     <section className='tools'>
                         <ul className='tools__list'>
-                            <li className='tools__item' onClick={this.box}>
-                                <p className='tools__category'>Все авторы<FaAngleRight className='fa-angle-right' /></p>
+                            <li className='tools__item'>
+                                <p className='tools__category'  onClick={this.authorsVisible}> Все авторы<FaAngleRight className='fa-angle-right' /></p>
 
                                 {
-                                    this.state.isBoxVisible ?
+                                    this.state.isAuthorsVisible ?
                                     <div className='tools__hidden-block'>
                                         <ul className='tools__hidden-list authors'>
                                             <li className='tools__hidden-item'>Все авторы</li>
@@ -44,16 +77,16 @@ class Main extends React.PureComponent {
                                         </ul>
                                     </div>
                                     :
-                                    console.log('it`s false')
+                                    <div></div>
                                 }
                                 
                             </li>
                             <li className='tools__item'>
-                                <p className='tools__category'>Все жанры</p>
+                                <p className='tools__category' onClick={this.genresVisible}>Все жанры</p>
                                 <FaAngleRight className='fa-angle-right' />
 
                                 {
-                                    this.state.isBoxVisible ?
+                                    this.state.isGenresVisible ?
                                     <div className='tools__hidden-block genres'>
                                         <ul className='tools__hidden-list'>
                                             <li className='tools__hidden-item'>Все жанры</li>
@@ -63,16 +96,16 @@ class Main extends React.PureComponent {
                                         </ul>
                                 </div>
                                     :
-                                    console.log('it`s false')
+                                    <div></div>
                                 }
 
                             </li>
                             <li className='tools__item'>
-                                <p className='tools__category'>Показать все</p>
+                                <p className='tools__category' onClick={this.allVisible}>Показать все</p>
                                 <FaAngleRight className='fa-angle-right' />
 
                                 {
-                                    this.state.isBoxVisible ?
+                                    this.state.isAllVisible ?
                                     <div className='tools__hidden-block'>
                                         <ul className='tools__hidden-list all'>
                                             <li className='tools__hidden-item'>Показать все</li>
@@ -81,14 +114,14 @@ class Main extends React.PureComponent {
                                         </ul>
                                     </div>                         
                                     :
-                                    console.log('it`s false')
+                                    <div></div>
                                 }
                                 
 
                             </li>
                             <li className='tools__item'>
-                                <input type='checkbox' className='tools__checkbox' />
-                                <p className='tools__available'>Посмотреть доступные</p>
+                                <input type='checkbox' className='tools__checkbox' id='tools__check' />
+                                <label htmlFor="tools__check" onClick={this.allChecked}><p className='tools__available'>Посмотреть доступные</p></label> 
                             </li>
                         </ul>
                     </section>

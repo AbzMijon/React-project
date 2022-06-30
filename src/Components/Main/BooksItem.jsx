@@ -13,7 +13,6 @@ function BooksItem(props) {
         <FaLock className='fa-lock' />
         </figure>
         <figcaption className='books__name'>{props.post.title}</figcaption>
-        {console.log(props.post.id)}
     </li>
     )
 }

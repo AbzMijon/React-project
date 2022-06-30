@@ -5,22 +5,12 @@ import React from 'react';
 import Header from './Components/Header/Header';
 import Main from './Components/Main/Main';
 
-class App extends React.Component {
-	constructor(props) {
-		super(props);
-
-		this.state = {
-            headerLoginName: 'Войти',
-        };
-	}
-
-	render() {
+const App = function() {
 		return (
         <div className='app'>
-            <Header loginName = {this.state.headerLoginName} />
+            <Header />
             <Main />
         </div>
         )
-	}
 }
 export default App;

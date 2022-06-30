@@ -1,65 +1,48 @@
 //import React
-import React from 'react';
+import React, { useState } from 'react';
 
 //import React-Icons
 import { FaAngleRight } from 'react-icons/fa';
-import { FaLock } from 'react-icons/fa';
 import { BsHeart } from 'react-icons/bs';
+import { FaLock } from 'react-icons/fa';
 
 //import Components
+import BooksItem from './BooksItem';
 //import helpers
 
-class Main extends React.PureComponent {
-    constructor(props) {
-        super(props);
+const Main = function(props) {
+    const [isAuthorsVisible, setAuthorsVisible] = useState(false);
+    const [isGenresVisible, setGenresVisible] = useState(false);
+    const [isAllVisible, setAllVisible] = useState(false);
+    const [isCheckboxClicked, setAllChecked] = useState(false);
 
-        this.state = {
-            isAuthorsVisible: false,
-            isGenresVisible: false,
-            isAllVisible: false,
-            isCheckboxClicked: false,
+    const authorsVisible = function() {
+        setAuthorsVisible(!isAuthorsVisible);
+        setGenresVisible(false), setAllVisible(false);
     }
-}
-
-    authorsVisible() {
-        this.setState({
-            isAuthorsVisible: !this.state.isAuthorsVisible,
-            isGenresVisible: false,
-            isAllVisible: false,
-        })
+    const genresVisible = function() {
+        setGenresVisible(!isGenresVisible);
+        setAllVisible(false), setAuthorsVisible(false);
     }
-    genresVisible() {
-        this.setState({
-            isGenresVisible: !this.state.isGenresVisible,
-            isAuthorsVisible: false,
-            isAllVisible: false,
-        });
-    }
-    allVisible() {
-        this.setState({
-            isAllVisible: !this.state.isAllVisible,
-            isAuthorsVisible: false,
-            isGenresVisible: false,
-        });
+    const allVisible = function() {
+        setAllVisible(!isAllVisible);
+        setGenresVisible(false), setAuthorsVisible(false);
     }
 
-    allChecked() {
-        this.setState({
-            isCheckboxClicked: !this.state.isCheckboxClicked,
-        })
+    const allChecked = function() {
+        setAllChecked(!isCheckboxClicked);
     }
     
-    render() {
         return (
             <main className='main'>
                 <div className='container'>
                     <section className='tools'>
                         <ul className='tools__list'>
                             <li className='tools__item'>
-                                <p className='tools__category'  onClick={this.authorsVisible.bind(this)}> Все авторы<FaAngleRight className='fa-angle-right' /></p>
+                                <p className='tools__category'  onClick={authorsVisible}> Все авторы<FaAngleRight className='fa-angle-right' /></p>
 
                                 {
-                                    this.state.isAuthorsVisible ?
+                                    isAuthorsVisible ?
                                     <div className='tools__hidden-block'>
                                         <ul className='tools__hidden-list authors'>
                                             <li className='tools__hidden-item'>Все авторы</li>
@@ -78,11 +61,11 @@ class Main extends React.PureComponent {
                                 
                             </li>
                             <li className='tools__item'>
-                                <p className='tools__category' onClick={this.genresVisible.bind(this)}>Все жанры</p>
+                                <p className='tools__category' onClick={genresVisible}>Все жанры</p>
                                 <FaAngleRight className='fa-angle-right' />
 
                                 {
-                                    this.state.isGenresVisible ?
+                                    isGenresVisible ?
                                     <div className='tools__hidden-block genres'>
                                         <ul className='tools__hidden-list'>
                                             <li className='tools__hidden-item'>Все жанры</li>
@@ -97,11 +80,11 @@ class Main extends React.PureComponent {
 
                             </li>
                             <li className='tools__item'>
-                                <p className='tools__category' onClick={this.allVisible.bind(this)}>Показать все</p>
+                                <p className='tools__category' onClick={allVisible}>Показать все</p>
                                 <FaAngleRight className='fa-angle-right' />
 
                                 {
-                                    this.state.isAllVisible ?
+                                    isAllVisible ?
                                     <div className='tools__hidden-block'>
                                         <ul className='tools__hidden-list all'>
                                             <li className='tools__hidden-item'>Показать все</li>
@@ -117,91 +100,27 @@ class Main extends React.PureComponent {
                             </li>
                             <li className='tools__item'>
                                 <input type='checkbox' className='tools__checkbox' id='tools__check' />
-                                <label htmlFor="tools__check" onClick={this.allChecked.bind(this)}><p className='tools__available'>Посмотреть доступные</p></label> 
+                                <label htmlFor="tools__check" onClick={allChecked}><p className='tools__available'>Посмотреть доступные</p></label> 
                             </li>
                         </ul>
                     </section>
                     
                     <section className='books'>
                         <ul className='books__list'>
-                            <li className='books__item'>
-                                <figure className='books__figure'>
-                                <img src='https://s3.eu-west-1.amazonaws.com/fairytalesbucket/img/1618645584328.jpeg' alt='' className='books__img' />
-                                <div className='books__add'><BsHeart className='fa-add-heart' /></div>
-                                <FaLock className='fa-lock' />
-                                </figure>
-                                <figcaption className='books__name'>Снежная королева</figcaption>
-                            </li>
-                            <li className='books__item'>
-                                <figure className='books__figure'>
-                                <img src='https://s3.eu-west-1.amazonaws.com/fairytalesbucket/img/1620741041368.jpeg' alt='' className='books__img' />
-                                <div className='books__add'><BsHeart className='fa-add-heart' /></div>
-                                <FaLock className='fa-lock' />
-                                </figure>
-                                <figcaption className='books__name'>Фенька</figcaption>
-                            </li>
-                            <li className='books__item'>
-                                <figure className='books__figure'>
-                                <img src='https://s3.eu-west-1.amazonaws.com/fairytalesbucket/img/1620808141774.jpeg' alt='' className='books__img' />
-                                <div className='books__add'><BsHeart className='fa-add-heart' /></div>
-                                <FaLock className='fa-lock' />
-                                </figure>
-                                <figcaption className='books__name'>Рыцари</figcaption>
-                            </li>
-                            <li className='books__item'>
-                                <figure className='books__figure'>
-                                <img src='https://s3.eu-west-1.amazonaws.com/fairytalesbucket/img/1619356519779.jpeg' alt='' className='books__img' />
-                                <div className='books__add'><BsHeart className='fa-add-heart' /></div>
-                                <FaLock className='fa-lock' />
-                                </figure>
-                                <figcaption className='books__name'>Три маленьких поросенка</figcaption>
-                            </li>
-                            <li className='books__item'>
-                                <figure className='books__figure'>
-                                <img src='https://s3.eu-west-1.amazonaws.com/fairytalesbucket/img/1620807600838.jpeg' alt='' className='books__img' />
-                                <div className='books__add'><BsHeart className='fa-add-heart' /></div>
-                                <FaLock className='fa-lock' />
-                                </figure>
-                                <figcaption className='books__name'>Мамонтенок</figcaption>
-                            </li>
-                            <li className='books__item'>
-                                <figure className='books__figure'>
-                                <img src='https://s3.eu-west-1.amazonaws.com/fairytalesbucket/img/1618671042924.jpeg' alt='' className='books__img' />
-                                <div className='books__add'><BsHeart className='fa-add-heart' /></div>
-                                <FaLock className='fa-lock' />
-                                </figure>
-                                <figcaption className='books__name'>Дракон Севера</figcaption>
-                            </li>
-                            <li className='books__item'>
-                                <figure className='books__figure'>
-                                <img src='https://s3.eu-west-1.amazonaws.com/fairytalesbucket/img/1618247886403.jpeg' alt='' className='books__img' />
-                                <div className='books__add'><BsHeart className='fa-add-heart' /></div>
-                                <FaLock className='fa-lock' />
-                                </figure>
-                                <figcaption className='books__name'>Красная Шапка</figcaption>
-                            </li>
-                            <li className='books__item'>
-                                <figure className='books__figure'>
-                                <img src='https://s3.eu-west-1.amazonaws.com/fairytalesbucket/img/1618673467128.jpeg' alt='' className='books__img' />
-                                <div className='books__add'><BsHeart className='fa-add-heart' /></div>
-                                <FaLock className='fa-lock' />
-                                </figure>
-                                <figcaption className='books__name'>Красавица и чудовище</figcaption>
-                            </li>
-                            <li className='books__item'>
-                                <figure className='books__figure'>
-                                <img src='https://s3.eu-west-1.amazonaws.com/fairytalesbucket/img/1618649820912.jpeg' alt='' className='books__img' />
-                                <div className='books__add'><BsHeart className='fa-add-heart' /></div>
-                                <FaLock className='fa-lock' />
-                                </figure>
-                                <figcaption className='books__name'>Король-лягушка</figcaption>
-                            </li>
+                                <BooksItem post={{id:Math.round(Math.random() * 1000), title:'Снежная королева', src: 'https://s3.eu-west-1.amazonaws.com/fairytalesbucket/img/1618645584328.jpeg'}}/>
+                                <BooksItem post={{id:Math.round(Math.random() * 1000), title:'Фенька', src: 'https://s3.eu-west-1.amazonaws.com/fairytalesbucket/img/1620741041368.jpeg'}}/>
+                                <BooksItem post={{id:Math.round(Math.random() * 1000), title:'Рыцари', src: 'https://s3.eu-west-1.amazonaws.com/fairytalesbucket/img/1620808141774.jpeg'}}/>
+                                <BooksItem post={{id:Math.round(Math.random() * 1000), title:'Три маленьких поросенка', src: 'https://s3.eu-west-1.amazonaws.com/fairytalesbucket/img/1619356519779.jpeg'}}/>
+                                <BooksItem post={{id:Math.round(Math.random() * 1000), title:'Мамонтенок', src: 'https://s3.eu-west-1.amazonaws.com/fairytalesbucket/img/1620807600838.jpeg'}}/>
+                                <BooksItem post={{id:Math.round(Math.random() * 1000), title:'Дракон Севера', src: 'https://s3.eu-west-1.amazonaws.com/fairytalesbucket/img/1618671042924.jpeg'}}/>
+                                <BooksItem post={{id:Math.round(Math.random() * 1000), title:'Красная Шапка', src: 'https://s3.eu-west-1.amazonaws.com/fairytalesbucket/img/1618247886403.jpeg'}}/>
+                                <BooksItem post={{id:Math.round(Math.random() * 1000), title:'Красавица и чудовище', src: 'https://s3.eu-west-1.amazonaws.com/fairytalesbucket/img/1618673467128.jpeg'}}/>
+                                <BooksItem post={{id:Math.round(Math.random() * 1000), title:'Король-лягушка', src: 'https://s3.eu-west-1.amazonaws.com/fairytalesbucket/img/1618649820912.jpeg'}}/>
                         </ul>
                     </section>
                 </div>
             </main>
         )
     }
-}
 
 export default Main;

@@ -165,6 +165,15 @@ h6, .title6 {
             color: #e2c3c3;
         } 
     }
+    .header__search-prompt {
+        position: absolute;
+        top: -30px;
+        right: 5px;
+        font-size: 10px;
+        padding: 5px 10px;
+        background-color: #fff;
+        color: #5f5f5f;
+    }
 }
 
 //MAIN
@@ -189,7 +198,7 @@ h6, .title6 {
             background-color: transparent;
             display: flex;
             align-items: center;
-            cursor: none;
+            cursor: auto;
         }
         .fa-angle-right {
             color: #373277;
@@ -202,7 +211,9 @@ h6, .title6 {
             width: 100%;
             z-index: 2;
         }
-
+        .tools__available {
+            cursor: pointer;
+        }
         .tools__hidden-block {
             position: absolute;
             top: 50px;

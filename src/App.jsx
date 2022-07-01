@@ -4,13 +4,16 @@ import React from 'react';
 //Components
 import Header from './Components/Header/Header';
 import Main from './Components/Main/Main';
+import GlobalThemeProvider from './HOC/GlobalThemeProvider'
 
-const App = function() {
+function App() {
 		return (
-        <div className='app'>
-            <Header />
-            <Main />
-        </div>
+            <React.Fragment>
+                {/* <GlobalThemeProvider> */}
+                    <Header />
+                    <Main />
+                {/* </GlobalThemeProvider> */}
+            </React.Fragment>
         )
 }
 export default App;

@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 import { BsHeart } from 'react-icons/bs';
 import { FaSearch } from 'react-icons/fa';
 
-const Header = function(props) {
+function Header(props) {
 	const [value, setValue] = useState('')
 	const [isOver, setOver] = useState(false);
 
@@ -31,10 +31,8 @@ const Header = function(props) {
 							
 							<button className='header__submit' type='submit'><FaSearch className='fa-search' onMouseOver={changeMouseOver} onMouseOut={changeMouseDef} /></button>
 							{
-								isOver && value ?
+								isOver && value &&
 								<p className='header__search-prompt'>{value} ?</p>
-								:
-								<div></div>
 							}
 							
 						</div>

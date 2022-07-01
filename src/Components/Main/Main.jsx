@@ -9,7 +9,7 @@ import BooksItem from './BooksItem';
 import Tools from './Tools';
 //import helpers
 
-const Main = function(props) {
+function Main (props) {
     const [isAuthorsVisible, setAuthorsVisible] = useState(false);
     const [isGenresVisible, setGenresVisible] = useState(false);
     const [isAllVisible, setAllVisible] = useState(false);

@@ -11,7 +11,7 @@ function Tools(props) {
                     <p className='tools__category'  onClick={props.events.authors}> Все авторы<FaAngleRight className='fa-angle-right' /></p>
 
                     {
-                        props.states.authors ?
+                        props.states.authors &&
                         <div className='tools__hidden-block'>
                             <ul className='tools__hidden-list authors'>
                                 <li className='tools__hidden-item'>Все авторы</li>
@@ -24,8 +24,6 @@ function Tools(props) {
                                 <li className='tools__hidden-item'>Джек Лондон</li>
                             </ul>
                         </div>
-                        :
-                        <div></div>
                     }
                     
                 </li>
@@ -34,7 +32,7 @@ function Tools(props) {
                     <FaAngleRight className='fa-angle-right' />
 
                     {
-                        props.states.Genres ?
+                        props.states.Genres &&
                         <div className='tools__hidden-block genres'>
                             <ul className='tools__hidden-list'>
                                 <li className='tools__hidden-item'>Все жанры</li>
@@ -43,17 +41,15 @@ function Tools(props) {
                                 <li className='tools__hidden-item'>Колыбельная песня</li>
                             </ul>
                     </div>
-                        :
-                        <div></div>
                     }
 
                 </li>
                 <li className='tools__item'>
                     <p className='tools__category' onClick={props.events.all}>Показать все</p>
                     <FaAngleRight className='fa-angle-right' />
-
+                    
                     {
-                        props.states.All ?
+                        props.states.All &&
                         <div className='tools__hidden-block'>
                             <ul className='tools__hidden-list all'>
                                 <li className='tools__hidden-item'>Показать все</li>
@@ -61,15 +57,12 @@ function Tools(props) {
                                 <li className='tools__hidden-item'>Показать только со звуком</li>
                             </ul>
                         </div>                         
-                        :
-                        <div></div>
                     }
                     
-
                 </li>
                 <li className='tools__item'>
                     <input type='checkbox' className='tools__checkbox' id='tools__check' />
-                    <label htmlFor="tools__check" onClick={props.events.checkbox}><p className='tools__available'>Посмотреть доступные</p></label> 
+                    <label htmlFor='tools__check' onClick={props.events.checkbox}><p className='tools__available'>Посмотреть доступные</p></label> 
                 </li>
             </ul>
     </section>

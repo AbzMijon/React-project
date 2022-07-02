@@ -1,6 +1,6 @@
 import React from "react";
 
-function GlobalThemeProvider() {
+function GlobalThemeProvider(props) {
 }
 
 export default GlobalThemeProvider;

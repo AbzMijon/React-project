@@ -9,7 +9,7 @@ import BooksItem from './BooksItem';
 import Tools from './Tools';
 //import helpers
 
-function Main (props) {
+function Main () {
     const [isAuthorsVisible, setAuthorsVisible] = useState(false);
     const [isGenresVisible, setGenresVisible] = useState(false);
     const [isAllVisible, setAllVisible] = useState(false);
@@ -51,6 +51,8 @@ function Main (props) {
                                 <BooksItem post={{id:Math.round(Math.random() * 1000), title:'Король-лягушка', src: 'https://s3.eu-west-1.amazonaws.com/fairytalesbucket/img/1618649820912.jpeg'}}/>
                         </ul>
                     </section>
+                    <div className="cloud cloud-1"></div>
+                    <div className="cloud cloud-2"></div>
                 </div>
             </main>
         )

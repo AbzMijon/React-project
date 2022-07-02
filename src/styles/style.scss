@@ -115,11 +115,13 @@ h6,
 
 	.header__input-wrap {
 		position: relative;
+		z-index: 1;
 	}
 	.header__login {
 		cursor: pointer;
 		justify-self: left;
 		transition: 0.2s ease-in-out;
+		z-index: 1;
 		&:hover {
 			transform: scale(1.1);
 		}
@@ -157,6 +159,7 @@ h6,
 	}
 	.header__liked {
 		text-align: right;
+		z-index: 1;
 	}
 	.fa-heart {
 		font-size: 25px;
@@ -188,6 +191,7 @@ h6,
 
 .tools__list {
 	display: flex;
+	position: relative;
 
 	.tools__item {
 		display: flex;
@@ -197,7 +201,7 @@ h6,
 		background-color: #fff;
 		cursor: pointer;
 		position: relative;
-		&:last-child {
+		&:nth-child(4) {
 			background-color: transparent;
 			display: flex;
 			align-items: center;
@@ -238,6 +242,45 @@ h6,
 
 	.tools__item + .tools__item {
 		margin-left: 25px;
+	}
+
+	.tools__theme {
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		right: 15px;
+	}
+	.wrap-theme {
+		width: 50px;
+		height: 25px;
+		border-radius: 15px;
+		position: relative;
+		cursor: pointer;
+		background-size: cover;
+		transition: 0.3s all;
+	}
+	.circle {
+		position: absolute;
+		top: 0;
+		height: 100%;
+		width: 25px;
+		transition: 0.3s all;
+		border-radius: 50%;
+		border: 1px solid #373277;
+	}
+	.tools__wrap-theme {		
+		background: url(https://krot.info/uploads/posts/2021-01/1610234813_6-p-multyashnii-zadnii-fon-13.jpg) no-repeat top;
+	}
+	.tools__circle-theme {	
+		background-color: #fff;
+		left: 2px;
+	}
+	.tools__wrap-theme--dark {
+		background: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRm7WEJXBeKPwjyeEcrvPxiEnCwUP8o1UwxlA&usqp=CAU) no-repeat top;
+	}
+	.tools__circle-theme--dark {
+		background-color: #3b3b3b;
+		right: 2px;
 	}
 }
 
@@ -304,3 +347,51 @@ h6,
 	height: 100%;
 	width: 100%;
 }
+
+//Clouds
+.cloud {
+	position: relative;
+	width: 6em; 
+	height: 6em; 
+	margin: 2em;
+	background: #ffffff;
+	border-width: 0.25em;
+	border-style: solid;
+	border-color: #6E839E;
+	border-radius: 50% 50% 0 0;
+	}
+	.cloud:before, 
+	.cloud:after {
+	content: "";
+	position: absolute; 
+	bottom: -0.25em;
+	background: inherit;
+	border-width: 0.25em;
+	border-style: solid;
+	border-color: #6E839E;
+	}
+	.cloud:before {
+	left: 80%; 
+	width: 60%; 
+	height: 60%;
+	border-left: none;
+	border-radius: 50% 50% 50% 0;
+	}
+	.cloud:after {
+	right: 80%;
+	width: 80%; 
+	height: 80%;
+	border-right: none;
+	border-radius: 50% 50% 0;
+	}
+
+	.cloud-1 {
+		position: absolute;
+		top: 5px;
+		left: 24%;
+	}
+	.cloud-2 {
+		position: absolute;
+		top: -50px;
+		right: 23%;
+	}

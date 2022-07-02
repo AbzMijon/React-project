@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 //import React-Icons
 import { FaAngleRight } from 'react-icons/fa';
 
 function Tools(props) {
+
+    const [theme, setTheme] = useState(false);
+    const setDarkTheme = function() {
+        setTheme(!theme);
+    }
+
     return (
         <section className='tools'>
             <ul className='tools__list'>
@@ -11,7 +17,7 @@ function Tools(props) {
                     <p className='tools__category'  onClick={props.events.authors}> Все авторы<FaAngleRight className='fa-angle-right' /></p>
 
                     {
-                        props.states.authors &&
+                        props.states.Authors &&
                         <div className='tools__hidden-block'>
                             <ul className='tools__hidden-list authors'>
                                 <li className='tools__hidden-item'>Все авторы</li>
@@ -63,6 +69,18 @@ function Tools(props) {
                 <li className='tools__item'>
                     <input type='checkbox' className='tools__checkbox' id='tools__check' />
                     <label htmlFor='tools__check' onClick={props.events.checkbox}><p className='tools__available'>Посмотреть доступные</p></label> 
+                </li>
+                <li className='tools__theme' onClick={setDarkTheme}>
+                    {
+                        theme ?
+                        <div className="tools__wrap-theme--dark wrap-theme">
+                            <div className="tools__circle-theme--dark circle"></div>
+                        </div>
+                        :
+                        <div className="tools__wrap-theme wrap-theme">
+                            <div className="tools__circle-theme circle"></div>
+                        </div>
+                    }
                 </li>
             </ul>
     </section>

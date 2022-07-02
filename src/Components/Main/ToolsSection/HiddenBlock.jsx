@@ -6,9 +6,7 @@ function HiddenBlock(props) {
             <ul className='tools__hidden-list'>
                 {
                     props.data.map(elem => {
-                        return (
-                            <li className='tools__hidden-item'>{elem}</li>
-                        )
+                        return <li className='tools__hidden-item'>{elem}</li>
                     })
                 }
 

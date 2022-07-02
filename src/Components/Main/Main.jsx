@@ -5,8 +5,8 @@ import React, { useState } from 'react';
 import { FaAngleRight } from 'react-icons/fa';
 
 //import Components
-import BooksItem from './BooksItem';
-import Tools from './Tools';
+import BooksItem from './BooksSection/BooksItem';
+import Tools from './ToolsSection/Tools';
 //import helpers
 
 function Main () {

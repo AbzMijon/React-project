@@ -5,16 +5,8 @@ import React, { useState } from 'react';
 import { BsHeart } from 'react-icons/bs';
 import { FaSearch } from 'react-icons/fa';
 
-function Header(props) {
+function Header() {
 	const [value, setValue] = useState('')
-	const [isOver, setOver] = useState(false);
-
-	const changeMouseOver = function() {
-		setOver(true);
-	}
-	const changeMouseDef = function() {
-		setOver(false);
-	}
 
 		return (
 			<header className='header'>
@@ -27,13 +19,13 @@ function Header(props) {
 							placeholder='Поиск..'
 							className='header__search'
 							value={value} 
-							onChange={(e) => setValue(e.target.value)}/>
+							onChange={(e) => setValue(e.target.value)} />
 							
-							<button className='header__submit' type='submit'><FaSearch className='fa-search' onMouseOver={changeMouseOver} onMouseOut={changeMouseDef} /></button>
-							{
-								isOver && value &&
-								<p className='header__search-prompt'>{value} ?</p>
-							}
+							<button className='header__submit' type='submit'>{<FaSearch className='fa-search'/>}</button>
+
+								{value &&
+									<p className='header__search-prompt'>{value + '?'}</p>
+								}
 							
 						</div>
 						<div className='header__liked'><BsHeart className='fa-heart' /></div>

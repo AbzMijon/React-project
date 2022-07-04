@@ -9,7 +9,6 @@ function HiddenBlock(props) {
                         return <li className='tools__hidden-item'>{elem}</li>
                     })
                 }
-
             </ul>
         </div>
     )

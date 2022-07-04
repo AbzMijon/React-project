@@ -1,17 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 //import React-Icons
 import { FaAngleRight } from 'react-icons/fa';
 
 //imports React-Components
 import HiddenBlock from './HiddenBlock';
-
 function Tools(props) {
 
-    const [theme, setTheme] = useState(false);
+    const [theme, setTheme] = useState('light');
+
     const setDarkTheme = function() {
-        setTheme(!theme);
-    }
+        setTheme(theme === 'light' ? 'dark' : 'light');
+    }    
+
+    useEffect(() => {
+        const root = document.querySelector(':root');
+        const rootsArray = ['backgroundTheme', 'componentsTheme', 'searchBackgroundTheme', 'colorTheme'];
+        rootsArray.forEach(component => {
+            root.style.setProperty(`--${component}--default`, `var(--${component}--${theme})`)
+        })
+    }, [theme])
 
     return (
         <section className='tools'>
@@ -45,7 +53,7 @@ function Tools(props) {
                     <label htmlFor='tools__check' onClick={props.events.checkbox}><p className='tools__available'>Посмотреть доступные</p></label> 
                 </li>
                 <li className='tools__theme' onClick={setDarkTheme}>
-                    {theme ?
+                    {theme === 'dark' ?
                         <div className="tools__wrap-theme--dark wrap-theme">
                             <div className="tools__circle-theme--dark circle"></div>
                         </div>

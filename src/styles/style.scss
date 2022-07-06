@@ -4,7 +4,7 @@ a,abbr,acronym,address,applet,article,aside,audio,b,blockquote,big,body,center,c
 article,aside,audio,canvas,command,datalist,details,embed,figcaption,figure,footer,header,hgroup,keygen,meter,nav,output,progress,section,source,video, main{display:block}mark,rp,rt,ruby,summary,time{display:inline}
 
 //Variables SASS
-$backgroundTheme--dark: linear-gradient(#020a1d, #1a1a4f);
+$backgroundTheme--dark: linear-gradient(rgba(14, 14, 14, 0.2), rgba(14, 14, 14, 0.2)), rgb(3 21 28) no-repeat center;
 $backgroundTheme--light: linear-gradient(rgba(14, 14, 14, 0.2), rgba(14, 14, 14, 0.2)), rgb(139, 200, 225) no-repeat center;
 $componentsTheme--dark: #3b3b3b;
 $componentsTheme--light: #fff;

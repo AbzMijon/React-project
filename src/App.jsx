@@ -2,8 +2,8 @@
 import React from 'react';
 
 //Components
-import Header from './Components/Header/Header';
-import Main from './Components/Main/Main';
+import Header from './containers/Header';
+import Main from './containers/Main';
 
 function App() {
 	return (

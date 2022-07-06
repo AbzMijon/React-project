@@ -5,6 +5,7 @@ import { FaAngleRight } from 'react-icons/fa';
 
 //imports React-Components
 import HiddenBlock from './HiddenBlock';
+
 function Tools(props) {
 
     const [theme, setTheme] = useState('light');

@@ -2,8 +2,8 @@
 import React, { useState } from 'react';
 
 //import Components
-import BooksItem from './BooksSection/BooksItem';
-import Tools from './ToolsSection/Tools';
+import BooksItem from '../Components/BooksItem';
+import Tools from '../Components/Tools';
 //import helpers
 
 function Main () {

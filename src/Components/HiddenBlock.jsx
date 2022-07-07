@@ -2,15 +2,13 @@ import React from 'react';
 
 function HiddenBlock(props) {
     return(
-        <div className='tools__hidden-block'>
-            <ul className='tools__hidden-list'>
+            <select className='tools__hidden-list' name='toolItem'>
                 {
-                    props.data.map(elem => {
-                        return <li className='tools__hidden-item'>{elem}</li>
+                    props.data.map((elem, i) => {
+                        return <option key={i} className='tools__hidden-item'>{elem}</option>
                     })
                 }
-            </ul>
-        </div>
+            </select>
     )
 }
 

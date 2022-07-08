@@ -1,41 +1,17 @@
 //import React
-import React, { useState } from 'react';
+import React from 'react';
 
 //import Components
-import Tools from '../Components/Tools';
-import BooksSection from '../Components/BooksSection';
+import Header from '../Components/Header';
+import { Outlet } from 'react-router-dom'
 
-function Main () {
-    const [isAuthorsVisible, setAuthorsVisible] = useState(false);
-    const [isGenresVisible, setGenresVisible] = useState(false);
-    const [isAllVisible, setAllVisible] = useState(false);
-    const [isCheckboxClicked, setAllChecked] = useState(false);
-
-    const authorsVisible = function() {
-        setAuthorsVisible(!isAuthorsVisible);
-        setGenresVisible(false), setAllVisible(false);
-    }
-    const genresVisible = function() {
-        setGenresVisible(!isGenresVisible);
-        setAllVisible(false), setAuthorsVisible(false);
-    }
-    const allVisible = function() {
-        setAllVisible(!isAllVisible);
-        setGenresVisible(false), setAuthorsVisible(false);
-    }
-
-    const allChecked = function() {
-        setAllChecked(!isCheckboxClicked);
-    }
-    
+function MainLayout () {
         return (
-            <main className='main'>
-                <div className='container'>  
-                    <Tools states={{Authors:isAuthorsVisible, Genres:isGenresVisible, All:isAllVisible, Checkbox:isCheckboxClicked}} events={{authors:authorsVisible, genres:genresVisible, all:allVisible, checkbox: allChecked}}  />
-                    <BooksSection />
-                </div>
-            </main>
+            <React.Fragment>
+                <Header />
+                <Outlet />
+            </React.Fragment>
         )
     }
 
-export default Main;
+export default MainLayout;

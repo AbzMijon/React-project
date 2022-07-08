@@ -2,14 +2,15 @@
 import React from 'react';
 
 //Components
-import Header from './Layouts/Header';
-import Main from './Layouts/MainLayout';
+import { BrowserRouter } from 'react-router-dom';	
+import RootRoute from '../Routes/RootRoute';
 
 function App() {
 	return (
 		<React.Fragment>
-			<Header />
-			<Main />
+			<BrowserRouter>
+				<RootRoute />
+			</BrowserRouter>
 		</React.Fragment>
 	);
 }

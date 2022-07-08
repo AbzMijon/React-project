@@ -4,9 +4,7 @@ import React, { useState, useEffect } from 'react';
 import HiddenBlock from './HiddenBlock';
 
 function Tools(props) {
-
     const [theme, setTheme] = useState('light');
-
     const setDarkTheme = function() {
         setTheme(theme === 'light' ? 'dark' : 'light');
     }    
@@ -23,23 +21,13 @@ function Tools(props) {
         <section className='tools'>
             <ul className='tools__list'>
 
-                <li className='tools__item'>
-                        <HiddenBlock data={['Все авторы', 'Ханс Христиан Андерсен', 'Леонид Пантеллев', 'Виктор Драгунский', 'Джозеф Джейкобс', 'Дина Непомнящая', 'Эндрю Лэнг', 'Джек Лондон']}/>               
-                </li>
-
-                <li className='tools__item'>
-                        <HiddenBlock data={['Все жанры', 'Приключение', 'Обучение', 'Колыбельная песня']}/>
-                </li>
-
-                <li className='tools__item'>
-                        <HiddenBlock data={['Показать все', 'Показать только с текстом', 'Показать только со звуком']}/>                         
-                </li>
-
+                <li className='tools__item'> <HiddenBlock data={['Все авторы', 'Ханс Христиан Андерсен', 'Леонид Пантеллев', 'Виктор Драгунский', 'Джозеф Джейкобс', 'Дина Непомнящая', 'Эндрю Лэнг', 'Джек Лондон']}/></li>
+                <li className='tools__item'> <HiddenBlock data={['Все жанры', 'Приключение', 'Обучение', 'Колыбельная песня']}/></li>
+                <li className='tools__item'> <HiddenBlock data={['Показать все', 'Показать только с текстом', 'Показать только со звуком']}/></li>
                 <li className='tools__item'>
                     <input type='checkbox' className='tools__checkbox' id='tools__check' />
                     <label htmlFor='tools__check' onClick={props.events.checkbox}><p className='tools__available'>Посмотреть доступные</p></label> 
                 </li>
-
                 <li className='tools__theme' onClick={setDarkTheme}>
                     {theme === 'dark' ?
                         <div className="tools__wrap-theme--dark wrap-theme">
@@ -54,14 +42,12 @@ function Tools(props) {
                 
             </ul>
             {theme === 'light' ?
-                <div className="light-sky">
+                <div className="clouds">
                     <div className="cloud cloud-1"></div>
                     <div className="cloud cloud-2"></div>
                 </div>
                 :
-                <div className="dark-sky">
                     <div className="moon"></div>
-                </div>
             }
     </section>
     )

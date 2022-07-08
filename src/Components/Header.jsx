@@ -5,6 +5,8 @@ import React, { useState } from 'react';
 import { BsHeart } from 'react-icons/bs';
 import { FaSearch } from 'react-icons/fa';
 
+import { Link } from 'react-router-dom';
+
 function Header() {
 	const [value, setValue] = useState('')
 
@@ -12,7 +14,7 @@ function Header() {
 			<header className='header'>
 				<div className='container'>
 					<div className='header__wrap'>
-						<h2 className='header__login'>Войти</h2>
+						<Link to='/main'><h2 className='header__login'>Войти</h2></Link>
 						<div className='header__input-wrap'>
 							<input
 							type='text'

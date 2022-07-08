@@ -3,7 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import InitialScene from '../Scenes/InitialScene';
 
 //import React-Components
-import MainLayout from '../src/Layouts/MainLayout';
+import MainLayout from '../Layouts/MainLayout';
 
 function RootRoute() {
     return (

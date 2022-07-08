@@ -3,7 +3,7 @@ import React from 'react';
 
 //Components
 import { BrowserRouter } from 'react-router-dom';	
-import RootRoute from '../Routes/RootRoute';
+import RootRoute from './Routes/RootRoute';
 
 function App() {
 	return (

@@ -14,7 +14,15 @@ function Header() {
 			<header className='header'>
 				<div className='container'>
 					<div className='header__wrap'>
-						<Link to='/authorization'><h2 className='header__login'>Войти</h2></Link>
+							{window.location.href !== 'http://localhost:3000/authorization' ?
+								<Link to='/authorization'>
+									<h2 className='header__login'>Войти</h2>
+								</Link>
+								:
+								<Link to='/'>
+									<h2 className='header__login'>Назад</h2>
+								</Link>
+							}
 						<div className='header__input-wrap'>
 							<input
 							type='text'

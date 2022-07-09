@@ -1,7 +1,4 @@
-/*Reset*/
-a,abbr,acronym,address,applet,article,aside,audio,b,blockquote,big,body,center,canvas,caption,cite,code,command,datalist,dd,del,details,dfn,dl,div,dt,em,embed,fieldset,figcaption,figure,font,footer,form,h1,h2,h3,h4,h5,h6,header,hgroup,html,i,iframe,img,ins,kbd,keygen,label,legend,li,meter,nav,object,ol,output,p,pre,progress,q,s,samp,section,small,span,source,strike,strong,sub,sup,table,tbody,tfoot,thead,th,tr,tdvideo,tt,u,ul,var{background:transparent;border:0 none;font-size:100%;margin:0;padding:0;border:0;outline:0;vertical-align:top;}ol, ul {list-style:none;}blockquote, q {quotes:none;}table, table td {padding:0;border:none;border-collapse:collapse;}img {vertical-align:top;}embed {vertical-align:top;}input[type=text], textarea{ outline:none;border-radius:0;}
-
-article,aside,audio,canvas,command,datalist,details,embed,figcaption,figure,footer,header,hgroup,keygen,meter,nav,output,progress,section,source,video, main{display:block}mark,rp,rt,ruby,summary,time{display:inline}
+@import url(./reset.scss);
 
 //Variables SASS
 $backgroundTheme--dark: linear-gradient(rgba(14, 14, 14, 0.2), rgba(14, 14, 14, 0.2)), rgb(3 21 28) no-repeat center;
@@ -13,7 +10,7 @@ $searchBackgroundTheme--light: #8bc8e1;
 $colorTheme--dark: #ffffff;
 $colorTheme--light:	#373277;
 
-//roots Css
+//Variables Css
 :root {
 	//Backgrounds
 	--backgroundTheme--dark: #{$backgroundTheme--dark};
@@ -32,6 +29,16 @@ $colorTheme--light:	#373277;
 			--colorTheme--default: var(#{--colorTheme--light});
 }
 
+//Main font
+@font-face {
+	font-family: 'Rubik';
+	src: url('../assets/fonts/Rubik-Medium.eot');
+	src: local('☺'), url('../assets/fonts/Rubik-Medium.woff') format('woff'), url('../assets/fonts/Rubik-Medium.ttf') format('truetype'), url('../assets/fonts/Rubik-Medium.svg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+//Defolt settings
 * {
 	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
@@ -370,7 +377,7 @@ h6,
 	width: 100%;
 }
 
-//Clouds
+//Other elements
 .cloud {
 	position: relative;
 	width: 6em; 

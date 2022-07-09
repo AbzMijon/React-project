@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 
 function BooksItem(props) {
 
-    const notAvailableWindow = function() {
+    const notAvailableWindow = () => {
         if(!props.post.isAvailable) {
             console.log('It is close book ;(');
         }

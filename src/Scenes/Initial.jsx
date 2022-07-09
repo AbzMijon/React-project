@@ -9,20 +9,20 @@ function InitialScene() {
     const [isAllVisible, setAllVisible] = useState(false);
     const [isCheckboxClicked, setAllChecked] = useState(false);
 
-    const authorsVisible = function() {
+    const authorsVisible = () => {
         setAuthorsVisible(!isAuthorsVisible);
         setGenresVisible(false), setAllVisible(false);
     }
-    const genresVisible = function() {
+    const genresVisible = () => {
         setGenresVisible(!isGenresVisible);
         setAllVisible(false), setAuthorsVisible(false);
     }
-    const allVisible = function() {
+    const allVisible = () => {
         setAllVisible(!isAllVisible);
         setGenresVisible(false), setAuthorsVisible(false);
     }
 
-    const allChecked = function() {
+    const allChecked = () => {
         setAllChecked(!isCheckboxClicked);
     }
     return (

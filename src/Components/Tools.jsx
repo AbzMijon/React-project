@@ -5,7 +5,8 @@ import HiddenBlock from './HiddenBlock';
 
 function Tools(props) {
     const [theme, setTheme] = useState('light');
-    const setDarkTheme = function() {
+
+    const setDarkTheme = () => {
         setTheme(theme === 'light' ? 'dark' : 'light');
     }    
 

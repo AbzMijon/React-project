@@ -1,13 +1,14 @@
-//import React
 import React, { useState } from 'react';
 
-//import React-Icons
+//React-Icons
 import { BsHeart } from 'react-icons/bs';
 import { FaSearch } from 'react-icons/fa';
 
+//Routing
 import { Link } from 'react-router-dom';
 
 function Header() {
+	
 	const [value, setValue] = useState('')
 
 		return (

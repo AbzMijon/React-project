@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 
+//Components
 import BooksSection from '../Components/BooksSection';
 import Tools from '../Components/Tools';
 
@@ -28,7 +29,7 @@ function InitialScene() {
     return (
         <main className='main'>
             <div className='container'>  
-                <Tools states={{Authors:isAuthorsVisible, Genres:isGenresVisible, All:isAllVisible, Checkbox:isCheckboxClicked}} events={{authors:authorsVisible, genres:genresVisible, all:allVisible, checkbox: allChecked}}  />
+                <Tools headerCheckbox={allChecked} />
                 <BooksSection />
             </div>
         </main>

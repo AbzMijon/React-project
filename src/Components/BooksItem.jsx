@@ -1,31 +1,60 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-//import React-Icons
+//React-Icons
 import { FaLock } from 'react-icons/fa';
 import { BsHeart } from 'react-icons/bs';
 
+//Routing
 import { Link } from 'react-router-dom';
 
-function BooksItem(props) {
+//Components
+import NotAvailableModal from './NotAvailableModal';
 
+function BooksItem({ post }) { 
+    
+    const [valueOfAvailableModal, setAvailableModal] = useState(false);
     const notAvailableWindow = () => {
-        if(!props.post.isAvailable) {
-            console.log('It is close book ;(');
+        if(!post.isAvailable) {
+            setAvailableModal(true);
         }
     }
+
     return (
-            <Link to ={props.post.isAvailable ? '/bookContent' : '/'}>
-            <li className='books__item' onClick={notAvailableWindow}>
-                <figure className='books__figure'>
-                    <img src= {props.post.src}  alt='' className='books__img' />
-                    <div className='books__add'><BsHeart className='fa-add-heart' /></div>
-                    {!props.post.isAvailable &&
-                        <FaLock className='fa-lock' />
+        <React.Fragment>
+            {post.isAvailable ?
+                <Link to ='/bookContent'>
+                    <li className='books__item' onClick={notAvailableWindow}>
+                        <figure className='books__figure'>
+                            <img src= {post.src}  alt='' className='books__img' />
+                            <div className='books__add'><BsHeart className='fa-add-heart' /></div>
+                            {!post.isAvailable &&
+                                <FaLock className='fa-lock' />
+                            }
+                        </figure>
+                        <figcaption className='books__name'>{post.title}</figcaption>
+                    </li>
+                    {valueOfAvailableModal &&
+                        <NotAvailableModal valueOfAvailableModal={valueOfAvailableModal} setAvailableModal={setAvailableModal}/>
                     }
-                </figure>
-                <figcaption className='books__name'>{props.post.title}</figcaption>
-            </li>
-        </Link>
+                </Link>
+            :
+                <div className="books__wrap">
+                    <li className='books__item' onClick={notAvailableWindow}>
+                        <figure className='books__figure'>
+                            <img src= {post.src}  alt='' className='books__img' />
+                            <div className='books__add'><BsHeart className='fa-add-heart' /></div>
+                            {!post.isAvailable &&
+                                <FaLock className='fa-lock' />
+                            }
+                        </figure>
+                        <figcaption className='books__name'>{post.title}</figcaption>
+                    </li>
+                    {valueOfAvailableModal &&
+                        <NotAvailableModal valueOfAvailableModal={valueOfAvailableModal} setAvailableModal={setAvailableModal}/>
+                    }
+                </div>
+            }
+        </React.Fragment>
     )
 }
 

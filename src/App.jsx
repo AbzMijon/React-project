@@ -1,8 +1,9 @@
-//React
 import React from 'react';
 
+//Routing
+import { BrowserRouter } from 'react-router-dom';
+
 //Components
-import { BrowserRouter } from 'react-router-dom';	
 import RootRoute from './Routes/RootRoute';
 
 function App() {

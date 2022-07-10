@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from 'react';
 
-//imports React-Components
+//Components
 import HiddenBlock from './HiddenBlock';
 
-function Tools(props) {
-    const [theme, setTheme] = useState('light');
+function Tools({ headerCheckbox }) {
 
+    const [theme, setTheme] = useState('light');
     const setDarkTheme = () => {
         setTheme(theme === 'light' ? 'dark' : 'light');
     }    
-
     useEffect(() => {
         const root = document.querySelector(':root');
         const rootsArray = ['backgroundTheme', 'componentsTheme', 'searchBackgroundTheme', 'colorTheme'];
@@ -22,12 +21,12 @@ function Tools(props) {
         <section className='tools'>
             <ul className='tools__list'>
 
-                <li className='tools__item'> <HiddenBlock data={['Все авторы', 'Ханс Христиан Андерсен', 'Леонид Пантеллев', 'Виктор Драгунский', 'Джозеф Джейкобс', 'Дина Непомнящая', 'Эндрю Лэнг', 'Джек Лондон']}/></li>
-                <li className='tools__item'> <HiddenBlock data={['Все жанры', 'Приключение', 'Обучение', 'Колыбельная песня']}/></li>
-                <li className='tools__item'> <HiddenBlock data={['Показать все', 'Показать только с текстом', 'Показать только со звуком']}/></li>
+                <li className='tools__item'> <HiddenBlock dataArray={['Все авторы', 'Ханс Христиан Андерсен', 'Леонид Пантеллев', 'Виктор Драгунский', 'Джозеф Джейкобс', 'Дина Непомнящая', 'Эндрю Лэнг', 'Джек Лондон']}/></li>
+                <li className='tools__item'> <HiddenBlock dataArray={['Все жанры', 'Приключение', 'Обучение', 'Колыбельная песня']}/></li>
+                <li className='tools__item'> <HiddenBlock dataArray={['Показать все', 'Показать только с текстом', 'Показать только со звуком']}/></li>
                 <li className='tools__item'>
                     <input type='checkbox' className='tools__checkbox' id='tools__check' />
-                    <label htmlFor='tools__check' onClick={props.events.checkbox}><p className='tools__available'>Посмотреть доступные</p></label> 
+                    <label htmlFor='tools__check' onClick={headerCheckbox}><p className='tools__available'>Посмотреть доступные</p></label> 
                 </li>
                 <li className='tools__theme' onClick={setDarkTheme}>
                     {theme === 'dark' ?

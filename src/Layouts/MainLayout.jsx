@@ -1,8 +1,9 @@
-//import React
 import React from 'react';
 
-//import Components
+//Components
 import Header from '../Components/Header';
+
+//Routing
 import { Outlet } from 'react-router-dom'
 
 function MainLayout () {

@@ -1,9 +1,9 @@
 import React from 'react';
 
-//import React-Components
+//Components
 import BooksItem from './BooksItem';
 
-//import Images
+//Images
 /* import beautyAndTerribleImg from '../../assets/images/beautyAndTerrible.jpeg';
 import dragon from '../../assets/images/dragon.jpeg';
 import fairyTales from '../../assets/images/fairyTales.jpeg';
@@ -15,6 +15,7 @@ import prinses from '../../assets/images/princes.jpeg';
 import snowQueen from '../../assets/images/snowQueen.jpeg' */;
 
 function BooksSection() {
+    
     return (
         <section className='books'>
         <ul className='books__list'>

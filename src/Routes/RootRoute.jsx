@@ -1,11 +1,13 @@
 import React from 'react';
-import { Routes, Route } from 'react-router-dom';
 
-//import React-Components
+//Components
 import InitialScene from '../Scenes/Initial';
 import MainLayout from '../Layouts/MainLayout';
 import Authorization from '../Scenes/Authorization';
 import BookContent from '../Scenes/BookContent';
+
+//Routing
+import { Routes, Route } from 'react-router-dom';
 
 function RootRoute() {
     return (

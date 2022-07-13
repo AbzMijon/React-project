@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 
 //Components
-import BooksSection from '../Components/BooksSection';
-import Tools from '../Components/Tools';
+import BooksSection from '../Components/Books/BooksSection';
+import Tools from '../Components/Tools/Tools';
 
 function InitialScene() {
     const [isAuthorsVisible, setAuthorsVisible] = useState(false);

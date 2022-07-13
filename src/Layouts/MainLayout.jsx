@@ -1,7 +1,7 @@
 import React from 'react';
 
 //Components
-import Header from '../Components/Header';
+import Header from '../Components/Header/Header';
 
 //Routing
 import { Outlet } from 'react-router-dom'

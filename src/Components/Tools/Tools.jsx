@@ -3,6 +3,9 @@ import React, { useState, useEffect } from 'react';
 //Components
 import HiddenBlock from './HiddenBlock';
 
+//styles
+import '../Tools/Tools.scss';
+
 function Tools({ headerCheckbox }) {
 
     const [theme, setTheme] = useState('light');

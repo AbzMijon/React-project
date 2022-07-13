@@ -7,6 +7,9 @@ import { FaSearch } from 'react-icons/fa';
 //Routing
 import { Link } from 'react-router-dom';
 
+//styles
+import './Header.scss';
+
 function Header() {
 	
 	const [value, setValue] = useState('')

@@ -1,5 +1,8 @@
 import React from "react";
 
+//styles
+import './NotAvailableModa.scss';
+
 function NotAvailableModal({ valueOfAvailableModal, setAvailableModal }) {
     
     return (

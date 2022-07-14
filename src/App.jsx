@@ -5,12 +5,15 @@ import { BrowserRouter } from 'react-router-dom';
 
 //Components
 import RootRoute from './Routes/RootRoute';
+import GlobalErrorBoundary from './HOC/GlobalErrorBoundary';
 
 function App() {
 	return (
 		<React.Fragment>
 			<BrowserRouter>
-				<RootRoute />
+				<GlobalErrorBoundary>
+					<RootRoute />
+				</GlobalErrorBoundary>
 			</BrowserRouter>
 		</React.Fragment>
 	);

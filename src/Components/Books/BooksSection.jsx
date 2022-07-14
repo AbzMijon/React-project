@@ -25,7 +25,7 @@ function BooksSection() {
             {dataBaseBooks.map((e) => {
                 return (
                     <div className="books__wrapper" key={e.id}>
-                                <li className='books__item' onClick={e.isAvailable ? () => {navigate('/bookContent')} : () => {setAvailableModal(true)}}>
+                                <li className='books__item' onClick={e.isAvailable ? () => {navigate(`/bookContent/id?=${e.id}`)} : () => {setAvailableModal(true)}}>
                                     <figure className='books__figure'>
                                         <img src= {e.src}  alt='' className='books__img' />
                                         <div className='books__add'><BsHeart className='fa-add-heart' /></div>

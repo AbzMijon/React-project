@@ -31,7 +31,7 @@ function Tools({ headerCheckbox }) {
                     <input type='checkbox' className='tools__checkbox' id='tools__check' />
                     <label htmlFor='tools__check' onClick={headerCheckbox}><p className='tools__available'>Посмотреть доступные</p></label> 
                 </li>
-                <li className='tools__theme' onClick={setDarkTheme}>
+                <div className='tools__theme' onClick={setDarkTheme}>
                     {theme === 'dark' ?
                         <div className="tools__wrap-theme--dark wrap-theme">
                             <div className="tools__circle-theme--dark circle"></div>
@@ -41,7 +41,7 @@ function Tools({ headerCheckbox }) {
                             <div className="tools__circle-theme circle"></div>
                         </div>
                     }
-                </li>
+                </div>
                 
             </ul>
             {theme === 'light' ?

@@ -24,13 +24,14 @@ function Tools({ headerCheckbox }) {
         <section className='tools'>
             <ul className='tools__list'>
 
-                <li className='tools__item'> <HiddenBlock dataArray={['Все авторы', 'Ханс Христиан Андерсен', 'Леонид Пантеллев', 'Виктор Драгунский', 'Джозеф Джейкобс', 'Дина Непомнящая', 'Эндрю Лэнг', 'Джек Лондон']}/></li>
-                <li className='tools__item'> <HiddenBlock dataArray={['Все жанры', 'Приключение', 'Обучение', 'Колыбельная песня']}/></li>
-                <li className='tools__item'> <HiddenBlock dataArray={['Показать все', 'Показать только с текстом', 'Показать только со звуком']}/></li>
-                <li className='tools__item'>
+                <HiddenBlock dataArray={['Все авторы', 'Ханс Христиан Андерсен', 'Леонид Пантеллев', 'Виктор Драгунский', 'Джозеф Джейкобс', 'Дина Непомнящая', 'Эндрю Лэнг', 'Джек Лондон']}/>
+                <HiddenBlock dataArray={['Все жанры', 'Приключение', 'Обучение', 'Колыбельная песня']}/>
+                <HiddenBlock dataArray={['Показать все', 'Показать только с текстом', 'Показать только со звуком']}/>
+                
+                <div className='tools__item'>
                     <input type='checkbox' className='tools__checkbox' id='tools__check' />
                     <label htmlFor='tools__check' onClick={headerCheckbox}><p className='tools__available'>Посмотреть доступные</p></label> 
-                </li>
+                </div>
                 <div className='tools__theme' onClick={setDarkTheme}>
                     {theme === 'dark' ?
                         <div className="tools__wrap-theme--dark wrap-theme">

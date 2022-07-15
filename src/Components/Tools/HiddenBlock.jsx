@@ -3,6 +3,7 @@ import React from 'react';
 function HiddenBlock({ dataArray }) {
 
     return (
+        <li className="tools__item">
             <select className='tools__hidden-list' name='toolItem'>
                 {
                     dataArray.map((elem, i) => {
@@ -10,6 +11,7 @@ function HiddenBlock({ dataArray }) {
                     })
                 }
             </select>
+        </li>
     )
 }
 

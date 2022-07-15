@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 
 //Components
 import NotAvailableModal from '../NotAvailableModal/NotAvailableModal';
-import { dataBaseBooks } from '../../db';
+
+//fake server
+import { dataBaseBooks } from '/fakeServer/db';
 
 //React-Icons
 import { FaLock } from 'react-icons/fa';

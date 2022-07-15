@@ -3,8 +3,13 @@ import React from 'react';
 //Components
 import InitialScene from '../Scenes/Initial';
 import MainLayout from '../Layouts/MainLayout';
-import Authorization from '../Scenes/Authorization';
+import BooksPage from '../Layouts/BooksPage';
+import LoginPage from '../Layouts/LoginPage';
+import AuthorizationWindow from '../Components/Authorization/AuthorizationWindow'
 import BookContent from '../Scenes/BookContent';
+
+//CONSTANS
+import { BOOKS_ROUTES } from '../constans/routes';
 
 //Routing
 import { Routes, Route } from 'react-router-dom';
@@ -16,12 +21,12 @@ function RootRoute() {
                 <Route path='/' element={<InitialScene/>}></Route>
             </Route>
             
-            <Route path='/authorization' element={<MainLayout />}>
-                <Route path='/authorization' element={Authorization}></Route>
+            <Route path='/authorization' element={<LoginPage />}>
+                <Route path='/authorization' element={<AuthorizationWindow />}></Route>
             </Route>
 
-            <Route path='/bookContent' element={<MainLayout />}>
-                <Route path='/bookContent' element={BookContent}></Route>
+            <Route path={BOOKS_ROUTES.bookPage} element={<BooksPage />}>
+                <Route path={BOOKS_ROUTES.bookPage} element={<BookContent />}></Route>
             </Route>
         </Routes>
     )

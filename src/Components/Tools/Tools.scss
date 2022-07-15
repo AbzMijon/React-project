@@ -6,8 +6,8 @@
 .tools__list {
 	position: relative;
 	display: grid;
-	grid-template-columns: repeat(4, 200px);
-	column-gap: 20px;
+	grid-template-columns: repeat(auto-fit, minmax(130px, 200px));
+	gap: 20px;
 
 	.tools__item {
 		display: flex;
@@ -83,8 +83,8 @@
 }
 
 //responsive
-@media only screen and (max-width: 1000px) {
-	.tools__list {
-		grid-template-columns: repeat(3, 200px);
+@media only screen and (max-width: 550px) {
+	.cloud-1 {
+		display: none;
 	}
 }

@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 
-//Components
-import BooksSection from '../Components/Books/BooksSection';
-import Tools from '../Components/Tools/Tools';
+//Components !!!
+import Sorting from '../Components/Sorting.jsx/Sorting';
 
 function InitialScene() {
 
@@ -13,8 +12,7 @@ function InitialScene() {
     return (
         <main className='main'>
             <div className='container'>  
-                <Tools headerCheckbox={allChecked} />
-                <BooksSection />
+                <Sorting headerCheckbox={allChecked} />
             </div>
         </main>
     )

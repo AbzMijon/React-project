@@ -25,8 +25,8 @@ function RootRoute() {
                 <Route path='/authorization' element={<AuthorizationWindow />}></Route>
             </Route>
 
-            <Route path={BOOKS_ROUTES.bookPage} element={<BooksPage />}>
-                <Route path={BOOKS_ROUTES.bookPage} element={<BookContent />}></Route>
+            <Route path='/bookContent/id?=3' element={<BooksPage />}>
+                <Route path='/bookContent/id?=3' element={<BookContent />}></Route>
             </Route>
         </Routes>
     )

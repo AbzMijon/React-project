@@ -26,8 +26,32 @@ function Sorting({ headerCheckbox,  }) {
     }    
     const [valueOfAvailableModal, setAvailableModal] = useState(false);
     const navigate = useNavigate();
+
     const dataBaseCopy = [...dataBaseBooks];
-    const filterBooks = () => dataBaseCopy.filter(e => e.author);
+    const filterBooks = () => dataBaseCopy.filter(e => {
+        switch (sortingValue) {
+            case 'Ханс Христиан Андерсен':
+                return e.author === 'Ханс Христиан Андерсен';
+            case 'Леонид Пантеллев':
+                return e.author === 'Леонид Пантеллев';
+            case 'Виктор Драгунский':
+                return e.author === 'Виктор Драгунский';
+            case 'Джозеф Джейкобс':
+                return e.author === 'Джозеф Джейкобс';
+            case 'Дина Непомнящая':
+                return e.author === 'Дина Непомнящая';
+            case 'Эндрю Лэнг':
+                return e.author === 'Эндрю Лэнг';
+            case 'Джек Лондон':
+                return e.author === 'Джек Лондон';
+            case 'Жанна-Мари Лепренс де Бомон':
+                return e.author === 'Жанна-Мари Лепренс де Бомон';
+            case 'Братья Гримм':
+                return e.author === 'Братья Гримм';
+            default:
+                return e.author || e.genre || e.isAvailable;
+        }
+    });
 
     const updateData = (childSelectValue) => {
         setSortingValue(childSelectValue);

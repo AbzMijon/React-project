@@ -99,8 +99,10 @@
 	grid-template-columns: repeat(auto-fill, minmax(215px, 1fr));
 	column-gap: 20px;
 	row-gap: 40px;
-	max-height: 5 00px;
+	max-height: 625px;
+	min-height: 310px;
 	overflow-y: scroll;
+	padding-bottom: 30px;
 }
 
 .books__item {

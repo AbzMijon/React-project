@@ -1,12 +1,12 @@
 import React from 'react';
 
 //Components
-import InitialScene from '../Scenes/Initial';
 import MainLayout from '../Layouts/MainLayout';
 import BooksPage from '../Layouts/BooksPage';
 import LoginPage from '../Layouts/LoginPage';
 import AuthorizationWindow from '../Components/Authorization/AuthorizationWindow'
 import BookContent from '../Scenes/BookContent';
+import Sorting from '../Scenes/Sorting/Sorting';
 
 //CONSTANS
 import { BOOKS_ROUTES } from '../constans/routes';
@@ -18,7 +18,7 @@ function RootRoute() {
     return (
         <Routes>
             <Route path='/' element={<MainLayout />}>
-                <Route path='/' element={<InitialScene/>}></Route>
+                <Route path='/' element={<Sorting/>}></Route>
             </Route>
             
             <Route path='/authorization' element={<LoginPage />}>

@@ -4,7 +4,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
 //styles
-import './GlobalErrorBoundary.scss';
+import './globalErrorBoundary.scss';
 
 class GlobalErrorBoundary extends Component {
     constructor(props) {

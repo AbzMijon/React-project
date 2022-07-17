@@ -6,6 +6,7 @@ export const dataBaseBooks = [
         'isAvailable': false,
         'author': 'Ханс Христиан Андерсен',
         'genre': 'Приключение',
+        'onlyText': true,
     },
     {
         'id': 2,
@@ -14,6 +15,7 @@ export const dataBaseBooks = [
         'isAvailable': false,
         'author': 'Леонид Пантеллев',
         'genre': 'Колыбельная песня',
+        'onlyText': true,
     },
     {
         'id': 3,
@@ -22,6 +24,7 @@ export const dataBaseBooks = [
         'isAvailable': true,
         'author': 'Виктор Драгунский',
         'genre': 'Приключение',
+        'onlyText': true,
     },
     {
         'id': 4,
@@ -29,7 +32,8 @@ export const dataBaseBooks = [
         'src': 'https://s3.eu-west-1.amazonaws.com/fairytalesbucket/img/1619356519779.jpeg',
         'isAvailable': false,
         'author': 'Джозеф Джейкобс',
-        'genre': '',
+        'genre': 'Обучение',
+        'onlyText': true,
     },
     {
         'id': 5,
@@ -38,6 +42,7 @@ export const dataBaseBooks = [
         'isAvailable': false,
         'author': 'Дина Непомнящая',
         'genre': 'Приключение',
+        'onlyText': true,
     },
     {
         'id': 6,
@@ -46,6 +51,7 @@ export const dataBaseBooks = [
         'isAvailable': false,
         'author': 'Эндрю Лэнг',
         'genre': '',
+        'onlyText': true,
     },
     {
         'id': 7,
@@ -54,6 +60,7 @@ export const dataBaseBooks = [
         'isAvailable': false,
         'author': 'Джек Лондон',
         'genre': 'Обучние',
+        'onlyText': true,
     },
     {
         'id': 8,
@@ -62,6 +69,7 @@ export const dataBaseBooks = [
         'isAvailable': false,
         'author': 'Жанна-Мари Лепренс де Бомон',
         'genre': 'Приключение',
+        'onlyText': true,
     },
     {
         'id': 9,
@@ -70,5 +78,6 @@ export const dataBaseBooks = [
         'isAvailable': true,
         'author': 'Братья Гримм',
         'genre': '',
+        'onlyText': true,
     },
 ]

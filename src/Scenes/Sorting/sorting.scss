@@ -133,6 +133,7 @@
 		background-color: var(#{--componentsTheme--default});
 		border-radius: 50%;
 		transition: 0.2s all;
+		cursor: default;
 		&:hover {
 			transform: scale(1.1);
 		}

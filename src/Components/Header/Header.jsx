@@ -8,7 +8,7 @@ import { FaSearch } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
 //styles
-import './Header.scss';
+import './header.scss';
 
 function Header() {
 	

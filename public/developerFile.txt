@@ -1,3 +1,4 @@
 context provider window (elem is close)
 useSearchParams - p.s. telegram
 поставить переменные на цему цвета у текстов
+

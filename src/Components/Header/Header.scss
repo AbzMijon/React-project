@@ -17,12 +17,17 @@
 		z-index: 1;
 	}
 	.header__login {
+		display: inline-flex;
+		align-items: center;
 		cursor: pointer;
 		justify-self: left;
 		transition: 0.2s ease-in-out;
 		z-index: 1;
 		&:hover {
 			transform: scale(1.05);
+		}
+		.mini-icon-for-ui {
+			margin-right: 5px;
 		}
 	}
 
@@ -80,5 +85,26 @@
 			font-size: 17px;
 			color: #fff;
 		}
+	}
+	.header__icon--mobile {
+		font-size: 40px;
+		color: #ffffff;
+		display: none;
+		cursor: pointer;
+		justify-self: left;
+		transition: 0.2s ease-in-out;
+		z-index: 1;
+		&:hover {
+			transform: scale(1.05);
+		}
+	}
+}
+
+@media only screen and (max-width: 550px) {
+	.header__wrap .header__login {
+		display: none;
+	}
+	.header__wrap .header__icon--mobile {
+		display: inline-block;
 	}
 }

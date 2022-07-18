@@ -27,6 +27,7 @@
 	.modal__text {
 		color: var(#{--colorTheme--default});
 		letter-spacing: 0.5px;
+		margin-top: 15px;
 	}
 	.modal-ok {
 		padding: 5px 15px;
@@ -43,4 +44,9 @@
 
 .modal.active {
 	transform: scale(1);
+}
+
+.modal__img {
+	width: 180px;
+	height: 230px;
 }

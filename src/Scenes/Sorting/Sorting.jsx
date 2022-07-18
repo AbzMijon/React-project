@@ -18,8 +18,9 @@ import { useNavigate } from 'react-router-dom';
 //styles
 import './sorting.scss';
 
-    function Sorting() {
+    function Sorting({ searchValue }) {
 
+    const [bookSrc, setBookSrc] = useState('');
     const [isCheckboxClicked, setAllChecked] = useState(false);
     const [sortingValue, setSortingValue] = useState('');
     const [theme, setTheme] = useState('light');
@@ -28,7 +29,7 @@ import './sorting.scss';
     }    
     const [valueOfAvailableModal, setAvailableModal] = useState(false);
     const navigate = useNavigate();
-
+    console.log(searchValue);
     const filterBooks = () =>  [...dataBaseBooks].filter(e => {
         if(isCheckboxClicked) {
             return e.isAvailable;
@@ -112,7 +113,7 @@ import './sorting.scss';
                     <ul className='books__list'>
                         {filterBooks().map((e) => {
                             return (
-                                <div className="books__wrapper" key={e.id}>
+                                <div className="books__wrapper" key={e.id} onClick={() => setBookSrc(e.src)}>
                                             <li className='books__item' onClick={e.isAvailable ? () => {navigate(`/bookContent/id?=${e.id}`)} : () => {setAvailableModal(true)}}>
                                                 <figure className='books__figure'>
                                                     <img src= {e.src}  alt='' className='books__img' />
@@ -124,8 +125,8 @@ import './sorting.scss';
                                                 <figcaption className='books__name'>{e.title}</figcaption>
                                             </li>
                                         {valueOfAvailableModal &&
-                                            <NotAvailableModal valueOfAvailableModal={valueOfAvailableModal} setAvailableModal={setAvailableModal}/>
-                                        }     
+                                            <NotAvailableModal bookSrc={bookSrc} valueOfAvailableModal={valueOfAvailableModal} setAvailableModal={setAvailableModal}/>
+                                        }    
                                 </div>
                             ) 
                         })}

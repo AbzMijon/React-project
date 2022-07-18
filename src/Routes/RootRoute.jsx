@@ -5,7 +5,7 @@ import MainLayout from '../Layouts/MainLayout';
 import BooksPage from '../Layouts/BooksPage';
 import LoginPage from '../Layouts/LoginPage';
 import AuthorizationWindow from '../Components/Authorization/AuthorizationWindow'
-import BookContent from '../Scenes/BookContent';
+import BookContent from '../Scenes/BookContent/BookContent'
 import Sorting from '../Scenes/Sorting/Sorting';
 
 //CONSTANS
@@ -28,6 +28,8 @@ function RootRoute() {
             <Route path='/bookContent/id?=3' element={<BooksPage />}>
                 <Route path='/bookContent/id?=3' element={<BookContent />}></Route>
             </Route>
+            
+            <Route path='*' element={<h2 className='erorr--not-found'>Ресурс не найден!</h2>}></Route>
         </Routes>
     )
 }

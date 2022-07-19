@@ -39,39 +39,40 @@ function Sorting() {
         }
         if(sortingValue) {
             switch (sortingValue) {
-            case 'Ханс Христиан Андерсен':
-                return e.author === 'Ханс Христиан Андерсен';
-            case 'Леонид Пантеллев':
-                return e.author === 'Леонид Пантеллев';
-            case 'Виктор Драгунский':
-                return e.author === 'Виктор Драгунский';
-            case 'Джозеф Джейкобс':
-                return e.author === 'Джозеф Джейкобс';
-            case 'Дина Непомнящая':
-                return e.author === 'Дина Непомнящая';
-            case 'Эндрю Лэнг':
-                return e.author === 'Эндрю Лэнг';
-            case 'Джек Лондон':
-                return e.author === 'Джек Лондон';
-            case 'Жанна-Мари Лепренс де Бомон':
-                return e.author === 'Жанна-Мари Лепренс де Бомон';
-            case 'Братья Гримм':
-                return e.author === 'Братья Гримм';
-            case 'Приключение':
-                return e.genre === 'Приключение';
-            case 'Обучение':
-                return e.genre === 'Обучение';
-            case 'Колыбельная песня':
-                return e.genre === 'Колыбельная песня';
-            case 'Показать только с текстом':
-                return e.onlyText;
-            default:
-                return e.author || e.genre || e.isAvailable || e.onlyText;
+                case 'Ханс Христиан Андерсен':
+                    return e.author === 'Ханс Христиан Андерсен';
+                case 'Леонид Пантеллев':
+                    return e.author === 'Леонид Пантеллев';
+                case 'Виктор Драгунский':
+                    return e.author === 'Виктор Драгунский';
+                case 'Джозеф Джейкобс':
+                    return e.author === 'Джозеф Джейкобс';
+                case 'Дина Непомнящая':
+                    return e.author === 'Дина Непомнящая';
+                case 'Эндрю Лэнг':
+                    return e.author === 'Эндрю Лэнг';
+                case 'Джек Лондон':
+                    return e.author === 'Джек Лондон';
+                case 'Жанна-Мари Лепренс де Бомон':
+                    return e.author === 'Жанна-Мари Лепренс де Бомон';
+                case 'Братья Гримм':
+                    return e.author === 'Братья Гримм';
+                case 'Приключение':
+                    return e.genre === 'Приключение';
+                case 'Обучение':
+                    return e.genre === 'Обучение';
+                case 'Колыбельная песня':
+                    return e.genre === 'Колыбельная песня';
+                case 'Показать только с текстом':
+                    return e.onlyText;
+                default:
+                    return e.author || e.genre || e.isAvailable || e.onlyText;
+            }
         }
-    }
         if(value) {
             return e.title.toLowerCase().includes(value.toLowerCase());
         }
+        return e;
     });
 
     const updateData = (childSelectValue) => {
@@ -158,7 +159,7 @@ function Sorting() {
                                             <li className='books__item' onClick={e.isAvailable ? () => {navigate(`/bookContent/id?=${e.id}`)} : () => {setAvailableModal(true)}}>
                                                 <figure className='books__figure'>
                                                     <img src= {e.src}  alt='' className='books__img' />
-                                                    <div className='books__add'><BsHeart className='fa-add-heart' /></div>
+                                                    <div className='books__add' onClick={() => console.log(e)}><BsHeart className='fa-add-heart' /></div>
                                                     {!e.isAvailable &&
                                                         <FaLock className='fa-lock' />
                                                     }

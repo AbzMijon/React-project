@@ -11,15 +11,18 @@ import { dataBaseBooks } from '/fakeServer/db';
 //React-Icons
 import { FaLock } from 'react-icons/fa';
 import { BsHeart } from 'react-icons/bs';
+import { FaSearch } from 'react-icons/fa';
+import { FaRegUserCircle } from 'react-icons/fa'
 
 //Routing
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 //styles
 import './sorting.scss';
 
-    function Sorting({ searchValue }) {
+function Sorting() {
 
+    const [value, setValue] = useState('');
     const [bookSrc, setBookSrc] = useState('');
     const [isCheckboxClicked, setAllChecked] = useState(false);
     const [sortingValue, setSortingValue] = useState('');
@@ -29,12 +32,12 @@ import './sorting.scss';
     }    
     const [valueOfAvailableModal, setAvailableModal] = useState(false);
     const navigate = useNavigate();
-    console.log(searchValue);
+
     const filterBooks = () =>  [...dataBaseBooks].filter(e => {
         if(isCheckboxClicked) {
             return e.isAvailable;
         }
-        else {
+        if(sortingValue) {
             switch (sortingValue) {
             case 'Ханс Христиан Андерсен':
                 return e.author === 'Ханс Христиан Андерсен';
@@ -66,6 +69,7 @@ import './sorting.scss';
                 return e.author || e.genre || e.isAvailable || e.onlyText;
         }
     }
+        return e.title.toLowerCase().includes(value.toLowerCase());
     });
 
     const updateData = (childSelectValue) => {
@@ -82,6 +86,41 @@ import './sorting.scss';
 
 
     return (
+        <React.Fragment>
+            <header className='header'>
+				<div className='container'>
+					<div className='header__wrap'>
+							{window.location.href !== 'http://localhost:3000/authorization' ?
+								<Link to='/authorization'>
+									<h2 className='header__login'><FaRegUserCircle className='mini-icon-for-ui' /> Войти</h2>
+									<FaRegUserCircle className='header__icon--mobile' />
+								</Link>
+								:
+								<Link to='/'>
+									<h2 className='header__login'>Назад </h2>
+									<FaRegUserCircle className='header__icon--mobile' />
+								</Link>
+							}
+						<div className='header__input-wrap'>
+							<input
+							type='text'
+							placeholder='Поиск..'
+							className='header__search'
+							value={value} 
+							onChange={e => setValue(e.target.value)} />
+							
+							<button className='header__submit' type='submit'>{<FaSearch className='fa-search'/>}</button>
+
+								{value &&
+									<p className='header__search-prompt'>{value + '?'}</p>
+								}
+							
+						</div>
+						<div className='header__liked'><BsHeart className='fa-heart' /></div>
+					</div>
+                    
+                </div>
+			</header>
         <main className='main'>
             <div className='container'>  
                 <section className='tools'>
@@ -134,6 +173,8 @@ import './sorting.scss';
                 </section>
             </div>
         </main>
+        </React.Fragment>
+        
     )
 }
 

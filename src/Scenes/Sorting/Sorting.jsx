@@ -69,7 +69,9 @@ function Sorting() {
                 return e.author || e.genre || e.isAvailable || e.onlyText;
         }
     }
-        return e.title.toLowerCase().includes(value.toLowerCase());
+        if(value) {
+            return e.title.toLowerCase().includes(value.toLowerCase());
+        }
     });
 
     const updateData = (childSelectValue) => {

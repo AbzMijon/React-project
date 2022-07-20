@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import NotAvailableModal from "../../Components/NotAvailableModal/NotAvailableModal";
 import HiddenBlock from '../../Components/InitialElems/HiddenBlock';
 import SkyLogic from "../../Components/InitialElems/SkyLogic";
+import SelectedBooks from "../../Components/SelectedBooks/SelectedBooks";
 
 //fake server
 import { dataBaseBooks } from '/fakeServer/db';
@@ -22,6 +23,8 @@ import './sorting.scss';
 
 function Sorting() {
 
+    const [selectedBooks, setSelectedBooks] = useState([]);
+    const [checkLikedBooks, setCheckLikedBooks] = useState(false);
     const [value, setValue] = useState('');
     const [bookSrc, setBookSrc] = useState('');
     const [isCheckboxClicked, setAllChecked] = useState(false);
@@ -32,7 +35,6 @@ function Sorting() {
     }    
     const [valueOfAvailableModal, setAvailableModal] = useState(false);
     const navigate = useNavigate();
-
     const filterBooks = () =>  [...dataBaseBooks].filter(e => {
         if(isCheckboxClicked) {
             return e.isAvailable;
@@ -119,7 +121,10 @@ function Sorting() {
 								}
 							
 						</div>
-						<div className='header__liked'><BsHeart className='fa-heart' /></div>
+						<div className='header__liked' onClick={() => setCheckLikedBooks(true)}><BsHeart className='fa-heart' /></div>
+                        {checkLikedBooks &&
+                            <SelectedBooks selectedBooks={selectedBooks} setCheckLikedBooks={setCheckLikedBooks} />
+                        }
 					</div>
                     
                 </div>
@@ -156,10 +161,13 @@ function Sorting() {
                         {filterBooks().map((e) => {
                             return (
                                 <div className="books__wrapper" key={e.id} onClick={() => setBookSrc(e.src)}>
-                                            <li className='books__item' onClick={e.isAvailable ? () => {navigate(`/bookContent/id?=${e.id}`)} : () => {setAvailableModal(true)}}>
+                                            <li className='books__item' onClick={e.isAvailable ? () => {navigate(`/bookContent:id=${e.id}`)} : () => {setAvailableModal(true)}}>
                                                 <figure className='books__figure'>
                                                     <img src= {e.src}  alt='' className='books__img' />
-                                                    <div className='books__add' onClick={() => console.log(e)}><BsHeart className='fa-add-heart' /></div>
+                                                    <div className='books__add' onClick={(event) => {
+                                                        setSelectedBooks([...selectedBooks, e]);
+                                                        event.stopPropagation();
+                                                    }}><BsHeart className='fa-add-heart' /></div>
                                                     {!e.isAvailable &&
                                                         <FaLock className='fa-lock' />
                                                     }

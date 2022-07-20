@@ -13,6 +13,7 @@ function AuthorizationWindow() {
                 <button>Отправить</button>
             </form>
         </div>
+        
     )
 }
 

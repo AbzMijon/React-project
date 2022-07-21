@@ -53,7 +53,7 @@
 		z-index: 1;
 	}
 	.fa-heart {
-		font-size: 25px;
+		font-size: 35px;
 		cursor: pointer;
 		transition: 0.2s ease-in;
 		color: #fff;
@@ -250,10 +250,13 @@
 		}
 	}
 	.fa-add-heart {
-		color: var(#{--colorTheme--default});
 		font-size: 25px;
 		transition: 0.2s all;
 	}
+	.fa-add-heart.active {
+		color: #dd2424;
+	}
+
 	&::before {
 		content: '';
 		position: absolute;

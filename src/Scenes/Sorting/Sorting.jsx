@@ -11,7 +11,7 @@ import { dataBaseBooks } from '/fakeServer/db';
 
 //React-Icons
 import { FaLock } from 'react-icons/fa';
-import { BsHeart } from 'react-icons/bs';
+import { AiFillHeart } from 'react-icons/ai';
 import { FaSearch } from 'react-icons/fa';
 import { FaRegUserCircle } from 'react-icons/fa'
 
@@ -83,7 +83,7 @@ function Sorting() {
 
     useEffect(() => {
         const root = document.querySelector(':root');
-        const rootsArray = ['backgroundTheme', 'componentsTheme', 'searchBackgroundTheme', 'colorTheme'];
+        const rootsArray = ['backgroundTheme', 'skyTheme', 'componentsTheme', 'searchBackgroundTheme', 'colorTheme'];
         rootsArray.forEach(component => {
             root.style.setProperty(`--${component}--default`, `var(--${component}--${theme})`)
         })
@@ -121,9 +121,9 @@ function Sorting() {
 								}
 							
 						</div>
-						<div className='header__liked' onClick={() => setCheckLikedBooks(true)}><BsHeart className='fa-heart' /></div>
+						<div className='header__liked' onClick={() => setCheckLikedBooks(true)}><AiFillHeart className='fa-heart' /></div>
                         {checkLikedBooks &&
-                            <SelectedBooks selectedBooks={selectedBooks} setCheckLikedBooks={setCheckLikedBooks} />
+                            <SelectedBooks selectedBooks={selectedBooks} setSelectedBooks={setSelectedBooks} setCheckLikedBooks={setCheckLikedBooks} />
                         }
 					</div>
                     
@@ -165,9 +165,15 @@ function Sorting() {
                                                 <figure className='books__figure'>
                                                     <img src= {e.src}  alt='' className='books__img' />
                                                     <div className='books__add' onClick={(event) => {
-                                                        setSelectedBooks([...selectedBooks, e]);
+                                                        if(!selectedBooks.includes(e)){
+                                                            setSelectedBooks([...selectedBooks, e]);
+                                                        }   else {
+                                                            const findElem = [...selectedBooks].find(elem => +elem.id === +e.id);
+                                                            const newSelectedBooks = [...selectedBooks].filter(book => book.id !== findElem.id);
+                                                            setSelectedBooks(newSelectedBooks);
+                                                        }
                                                         event.stopPropagation();
-                                                    }}><BsHeart className='fa-add-heart' /></div>
+                                                    }}><AiFillHeart className={selectedBooks.includes(e) ? 'fa-add-heart active' : 'fa-add-heart'} /></div>
                                                     {!e.isAvailable &&
                                                         <FaLock className='fa-lock' />
                                                     }

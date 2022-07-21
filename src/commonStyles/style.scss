@@ -18,6 +18,8 @@ $searchBackgroundTheme--dark: #3b3b3b;
 $searchBackgroundTheme--light: #8bc8e1;
 $colorTheme--dark: #ffffff;
 $colorTheme--light: #373277;
+$skyTheme--dark: 'https://flomaster.club/uploads/posts/2021-11/thumbs/1636502996_85-flomaster-club-p-zvezdnoe-nebo-illyustratsiya-krasivie-risu-92.jpg';
+$skyTheme--light: 'https://funart.pro/uploads/posts/2021-04/1618576717_14-funart_pro-p-oboi-fon-nebo-vektor-16.jpg';
 
 //Variables Css
 :root {
@@ -25,6 +27,9 @@ $colorTheme--light: #373277;
 	--backgroundTheme--dark: #{$backgroundTheme--dark};
 	--backgroundTheme--light: #{$backgroundTheme--light};
 	--backgroundTheme--default: var(#{--backgroundTheme--light});
+	--skyTheme--dark: #{$skyTheme--dark};
+	--skyTheme--light: #{$skyTheme--light};
+	--skyTheme--default: var(#{--skyTheme--light});
 		//Components
 		--componentsTheme--dark: #{$componentsTheme--dark};
 		--componentsTheme--light: #{$componentsTheme--light};

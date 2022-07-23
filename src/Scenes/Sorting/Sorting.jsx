@@ -29,10 +29,7 @@ function Sorting() {
     const [bookSrc, setBookSrc] = useState('');
     const [allChecked, setAllChecked] = useState(false);
     const [sortingValue, setSortingValue] = useState('');
-    const [theme, setTheme] = useState('light');
-    const setDarkTheme = () => {
-        setTheme(theme === 'light' ? 'dark' : 'light');
-    }    
+    const [theme, setTheme] = useState('light');   
     const [valueOfAvailableModal, setAvailableModal] = useState(false);
     const navigate = useNavigate();
     const filterBooks = () =>  [...dataBaseBooks].filter(e => {
@@ -159,7 +156,7 @@ function Sorting() {
                             <input type='checkbox' className='tools__checkbox' id='tools__check' />
                             <label htmlFor='tools__check' onClick={() => setAllChecked(!allChecked)}><p className='tools__available'>Посмотреть доступные</p></label> 
                         </div>
-                        <div className='tools__theme' onClick={setDarkTheme}>
+                        <div className='tools__theme' onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}>
                             {theme === 'dark' ?
                                 <div className="tools__wrap-theme--dark wrap-theme">
                                     <div className="tools__circle-theme--dark circle"></div>

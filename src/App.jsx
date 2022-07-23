@@ -5,7 +5,7 @@ import { BrowserRouter } from 'react-router-dom';
 
 //Components
 import RootRoute from './Routes/RootRoute';
-import GlobalErrorBoundary from './HOC/GlobalErrorBoundary';
+import GlobalErrorBoundary from './HOC/GlobalErrorBoundary/GlobalErrorBoundary';
 
 function App() {
 	return (

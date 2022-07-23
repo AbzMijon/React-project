@@ -1,10 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-//Routing
 import { Outlet } from 'react-router-dom'
 
 function MainLayout () {
-
         return (
             <React.Fragment>
                 <Outlet />

@@ -1,9 +1,8 @@
 import React from "react";
 
-//Routing
 import { Outlet } from 'react-router-dom';
 
-function BooksPage() {
+function BookContensPage() {
     return (
         <React.Fragment>
             <Outlet />
@@ -11,4 +10,4 @@ function BooksPage() {
     )
 }
 
-export default BooksPage;
+export default BookContensPage;

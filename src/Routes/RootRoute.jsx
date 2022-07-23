@@ -2,10 +2,10 @@ import React from 'react';
 
 //Components
 import MainLayout from '../Layouts/MainLayout';
-import BooksPage from '../Layouts/BooksPage';
+import BookContensPage from '../Layouts/BookContensPage';
 import LoginPage from '../Layouts/LoginPage';
 import AuthorizationWindow from '../Components/Authorization/AuthorizationWindow'
-import BookContent from '../Scenes/BookContent/BookContent'
+import BookContent from '../Components/BookContent/BookContent';
 import Sorting from '../Scenes/Sorting/Sorting';
 
 //CONSTANS
@@ -25,8 +25,8 @@ function RootRoute() {
                 <Route path='/authorization' element={<AuthorizationWindow />}></Route>
             </Route>
 
-            <Route path='/bookContent/id?=3' element={<BooksPage />}>
-                <Route path='/bookContent/id?=3' element={<BookContent />}></Route>
+            <Route path='/bookContent/:bookID' element={<BookContensPage />}>
+                <Route path='/bookContent/:bookID' element={<BookContent />}></Route>
             </Route>
             
             <Route path='*' element={<h2 className='erorr--not-found'>Ресурс не найден!</h2>}></Route>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 
 //Components
 import NotAvailableModal from "../../Components/NotAvailableModal/NotAvailableModal";
@@ -7,7 +7,7 @@ import SkyLogic from "../../Components/InitialElems/SkyLogic";
 import SelectedBooks from "../../Components/SelectedBooks/SelectedBooks";
 
 //fake server
-import { dataBaseBooks } from '/fakeServer/db';
+import { dataBaseBooks } from "../../../database";
 
 //React-Icons
 import { FaLock } from 'react-icons/fa';
@@ -25,9 +25,9 @@ function Sorting() {
 
     const [selectedBooks, setSelectedBooks] = useState([]);
     const [checkLikedBooks, setCheckLikedBooks] = useState(false);
-    const [value, setValue] = useState('');
+    const [searchString, setsearchString] = useState('');
     const [bookSrc, setBookSrc] = useState('');
-    const [isCheckboxClicked, setAllChecked] = useState(false);
+    const [allChecked, setAllChecked] = useState(false);
     const [sortingValue, setSortingValue] = useState('');
     const [theme, setTheme] = useState('light');
     const setDarkTheme = () => {
@@ -36,7 +36,7 @@ function Sorting() {
     const [valueOfAvailableModal, setAvailableModal] = useState(false);
     const navigate = useNavigate();
     const filterBooks = () =>  [...dataBaseBooks].filter(e => {
-        if(isCheckboxClicked) {
+        if(allChecked) {
             return e.isAvailable;
         }
         if(sortingValue) {
@@ -71,8 +71,8 @@ function Sorting() {
                     return e.author || e.genre || e.isAvailable || e.onlyText;
             }
         }
-        if(value) {
-            return e.title.toLowerCase().includes(value.toLowerCase());
+        if(searchString) {
+            return e.title.toLowerCase().includes(searchString.toLowerCase());
         }
         return e;
     });
@@ -89,6 +89,20 @@ function Sorting() {
         })
     }, [theme])
 
+    //!!!!
+    let dataBookArr;
+    const getBooksFromServer = useCallback(async () => {
+        const response = await fetch("http://localhost:8000/dataBaseBooks");
+        const books = await response.json();
+        dataBookArr = books;
+        console.log(dataBookArr);
+    }, [])
+    
+    useEffect(() => {
+        getBooksFromServer()
+    }, [])
+    //json-server --watch db.json --port 8000
+    //!!!!
 
     return (
         <React.Fragment>
@@ -111,19 +125,23 @@ function Sorting() {
 							type='text'
 							placeholder='Поиск..'
 							className='header__search'
-							value={value} 
-							onChange={e => setValue(e.target.value)} />
+							value={searchString} 
+							onChange={e => setsearchString(e.target.value)} />
 							
 							<button className='header__submit' type='submit'>{<FaSearch className='fa-search'/>}</button>
 
-								{value &&
-									<p className='header__search-prompt'>{value + '?'}</p>
+								{searchString &&
+									<p className='header__search-prompt'>{searchString + '?'}</p>
 								}
 							
 						</div>
-						<div className='header__liked' onClick={() => setCheckLikedBooks(true)}><AiFillHeart className='fa-heart' /></div>
+						<div className='header__liked' onClick={() => setCheckLikedBooks(true)}><AiFillHeart className='fa-heart' />
+                            {selectedBooks.length > 0 &&
+                                <div className="header__heart-counter">{selectedBooks.length}</div>
+                            }
+                        </div>
                         {checkLikedBooks &&
-                            <SelectedBooks selectedBooks={selectedBooks} setSelectedBooks={setSelectedBooks} setCheckLikedBooks={setCheckLikedBooks} />
+                            <SelectedBooks setAvailableModal={setAvailableModal} selectedBooks={selectedBooks} setSelectedBooks={setSelectedBooks} setCheckLikedBooks={setCheckLikedBooks} />
                         }
 					</div>
                     
@@ -139,7 +157,7 @@ function Sorting() {
                         <HiddenBlock dataToParent={updateData} dataArray={['Показать все', 'Показать только с текстом', 'Показать только со звуком']}/>
                         <div className='tools__item'>
                             <input type='checkbox' className='tools__checkbox' id='tools__check' />
-                            <label htmlFor='tools__check' onClick={() => setAllChecked(!isCheckboxClicked)}><p className='tools__available'>Посмотреть доступные</p></label> 
+                            <label htmlFor='tools__check' onClick={() => setAllChecked(!allChecked)}><p className='tools__available'>Посмотреть доступные</p></label> 
                         </div>
                         <div className='tools__theme' onClick={setDarkTheme}>
                             {theme === 'dark' ?
@@ -161,7 +179,7 @@ function Sorting() {
                         {filterBooks().map((e) => {
                             return (
                                 <div className="books__wrapper" key={e.id} onClick={() => setBookSrc(e.src)}>
-                                            <li className='books__item' onClick={e.isAvailable ? () => {navigate(`/bookContent:id=${e.id}`)} : () => {setAvailableModal(true)}}>
+                                            <li className='books__item' onClick={e.isAvailable ? () => {navigate(`/bookContent/${e.id}`)} : () => {setAvailableModal(true)}}>
                                                 <figure className='books__figure'>
                                                     <img src= {e.src}  alt='' className='books__img' />
                                                     <div className='books__add' onClick={(event) => {

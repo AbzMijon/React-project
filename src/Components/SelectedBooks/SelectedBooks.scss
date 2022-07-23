@@ -13,12 +13,12 @@
 }
 .selected__wrap {
     position: relative;
-    background-color: #e4e4e4;
+    background-color: var(#{--componentsTheme--default});
     padding: 20px 25px;
     border-radius: 7px;
 }
 .selected__title {
-    color: #000;
+    color: var(#{--colorTheme--default});
     font-weight: normal;
 }
 .selected__list {
@@ -27,7 +27,7 @@
     width: 400px;
     max-height: 500px;
     z-index: 3;
-    color: #000;
+    color: var(#{--colorTheme--default});
 }
 .selected__book {
     display: flex;

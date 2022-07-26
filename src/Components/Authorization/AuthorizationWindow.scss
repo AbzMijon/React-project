@@ -36,3 +36,14 @@
     padding: 10px 15px;
     font-size: 20px;
 }
+
+.login__back {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    transition: 0.2s all;
+    &:hover {
+        border-bottom: 1px solid #fff;
+        transform: scale(0.9);
+    }
+}

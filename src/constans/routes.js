@@ -1,7 +1,11 @@
-export const BOOKS_ROUTES = {
-    bookPage: 'someBook/:bookID', 
+export const ROUTES = {
+    initialPage: `/`,
+    bookPage: '/bookContent/:bookID',
+    loginPage: `/authorization`,
 }
 
-export const BOOKS_PATH = {
-    bookPage: (id) => `someBook/${id}`,
+export const PATH = {
+    initialPage: `/`,
+    bookPage: (id) => `/bookContent/${id}`,
+    loginPage: `/authorization`,
 }

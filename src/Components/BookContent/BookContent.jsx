@@ -24,8 +24,8 @@ function BookContent() {
                     <header className="book__header">
                         <Link to='/'><AiFillHome className="home-icon" /></Link>
                         <h2 className="book__name">{book.author + ` "${book.title}"`}</h2>
-                        <select className="book__text-settings" onChange={(e) => setFontSizeType(e.target.value)}>
-                            <option value="default_value" disabled selected>Размер шрифта</option>
+                        <select className="book__text-settings" defaultValue={"default_value"} onChange={(e) => setFontSizeType(e.target.value)}>
+                            <option value="default_value" disabled>Размер шрифта</option>
                             <option value="mini">mini</option>
                             <option value="medium">medium (default)</option>
                             <option value="max">max</option>

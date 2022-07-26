@@ -9,7 +9,7 @@ import BookContent from '../Components/BookContent/BookContent';
 import Sorting from '../Scenes/Sorting/Sorting';
 
 //CONSTANS
-import { BOOKS_ROUTES } from '../constans/routes';
+import { ROUTES } from '../constans/routes';
 
 //Routing
 import { Routes, Route } from 'react-router-dom';
@@ -17,16 +17,16 @@ import { Routes, Route } from 'react-router-dom';
 function RootRoute() {
     return (
         <Routes>
-            <Route path='/' element={<MainLayout />}>
-                <Route path='/' element={<Sorting/>}></Route>
+            <Route path={ROUTES.initialPage} element={<MainLayout />}>
+                <Route path={ROUTES.initialPage} element={<Sorting/>}></Route>
             </Route>
             
-            <Route path='/authorization' element={<LoginPage />}>
-                <Route path='/authorization' element={<AuthorizationWindow />}></Route>
+            <Route path={ROUTES.loginPage} element={<LoginPage />}>
+                <Route path={ROUTES.loginPage} element={<AuthorizationWindow />}></Route>
             </Route>
 
-            <Route path='/bookContent/:bookID' element={<BookContensPage />}>
-                <Route path='/bookContent/:bookID' element={<BookContent />}></Route>
+            <Route path={ROUTES.bookPage} element={<BookContensPage />}>
+                <Route path={ROUTES.bookPage} element={<BookContent />}></Route>
             </Route>
             
             <Route path='*' element={<h2 className='erorr--not-found'>Ресурс не найден!</h2>}></Route>

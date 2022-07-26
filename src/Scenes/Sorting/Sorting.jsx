@@ -1,19 +1,19 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback, useContext } from "react";
 
 //Components
+import { GlobalThemeContext } from "../../Contexts/theme";
 import NotAvailableModal from "../../Components/NotAvailableModal/NotAvailableModal";
-import HiddenBlock from '../../Components/InitialElems/HiddenBlock';
-import SkyLogic from "../../Components/InitialElems/SkyLogic";
+import HiddenBlock from '../../Components/UI/HiddenBlock';
+import SkyLogic from "../../Components/UI/SkyLogic";
 import SelectedBooks from "../../Components/SelectedBooks/SelectedBooks";
+import { PATH } from "../../constans/routes";
 
 //fake server
-import { dataBaseBooks } from "../../../database";
+import { dataBaseBooks } from '../../../database';
 
 //React-Icons
-import { FaLock } from 'react-icons/fa';
+import { FaLock, FaRegUserCircle, FaSearch } from 'react-icons/fa';
 import { AiFillHeart } from 'react-icons/ai';
-import { FaSearch } from 'react-icons/fa';
-import { FaRegUserCircle } from 'react-icons/fa'
 
 //Routing
 import { useNavigate, Link } from 'react-router-dom';
@@ -23,100 +23,78 @@ import './sorting.scss';
 
 function Sorting() {
 
+    const {theme, setTheme} = useContext(GlobalThemeContext);
+    const [filteredBooks, setFilteredBooks] = useState(dataBaseBooks);
     const [selectedBooks, setSelectedBooks] = useState([]);
     const [checkLikedBooks, setCheckLikedBooks] = useState(false);
     const [searchString, setsearchString] = useState('');
     const [bookSrc, setBookSrc] = useState('');
     const [allChecked, setAllChecked] = useState(false);
-    const [sortingValue, setSortingValue] = useState('');
-    const [theme, setTheme] = useState('light');   
+    const [sortingValue, setSortingValue] = useState({});  
     const [valueOfAvailableModal, setAvailableModal] = useState(false);
     const navigate = useNavigate();
-    const filterBooks = () =>  [...dataBaseBooks].filter(e => {
-        if(allChecked) {
-            return e.isAvailable;
+
+    //soring logic ======================
+    const filterBooks = (booksToFilter, sortingValue, handleAvailable, searchString) =>  booksToFilter.filter(book => {
+        let isPassed = true;
+
+        if(handleAvailable && !book.isAvailable) {
+            isPassed = false;
         }
-        if(sortingValue) {
-            switch (sortingValue) {
-                case 'Ханс Христиан Андерсен':
-                    return e.author === 'Ханс Христиан Андерсен';
-                case 'Леонид Пантеллев':
-                    return e.author === 'Леонид Пантеллев';
-                case 'Виктор Драгунский':
-                    return e.author === 'Виктор Драгунский';
-                case 'Джозеф Джейкобс':
-                    return e.author === 'Джозеф Джейкобс';
-                case 'Дина Непомнящая':
-                    return e.author === 'Дина Непомнящая';
-                case 'Эндрю Лэнг':
-                    return e.author === 'Эндрю Лэнг';
-                case 'Джек Лондон':
-                    return e.author === 'Джек Лондон';
-                case 'Жанна-Мари Лепренс де Бомон':
-                    return e.author === 'Жанна-Мари Лепренс де Бомон';
-                case 'Братья Гримм':
-                    return e.author === 'Братья Гримм';
-                case 'Приключение':
-                    return e.genre === 'Приключение';
-                case 'Обучение':
-                    return e.genre === 'Обучение';
-                case 'Колыбельная песня':
-                    return e.genre === 'Колыбельная песня';
-                case 'Показать только с текстом':
-                    return e.onlyText;
+        if(searchString && !book.title.toLowerCase().includes(searchString.toLowerCase())) {
+            isPassed = false;
+        }
+        Object.keys(sortingValue).forEach(sortFieldName => {
+            switch(sortFieldName) {
                 default:
-                    return e.author || e.genre || e.isAvailable || e.onlyText;
+                    if(book[sortFieldName] !== sortingValue[sortFieldName]) {
+                        isPassed = false;
+                    }
             }
-        }
-        if(searchString) {
-            return e.title.toLowerCase().includes(searchString.toLowerCase());
-        }
-        return e;
+        })
+        Object.values(sortingValue).forEach(defaultSortFiledName => {
+            if(defaultSortFiledName === 'Все авторы' || defaultSortFiledName === 'Все жанры' || defaultSortFiledName === 'Показать все') {
+                isPassed = true;
+            }
+        })
+        console.log(isPassed);
+        return isPassed;
     });
 
-    const updateData = (childSelectValue) => {
-        setSortingValue(childSelectValue);
+    const updateData = (sortFieldName) => (childSelectValue) => {
+        const newSoringValue = {...sortingValue};
+        newSoringValue[sortFieldName] = childSelectValue;
+        setSortingValue(newSoringValue);
     }
 
     useEffect(() => {
-        const root = document.querySelector(':root');
-        const rootsArray = ['backgroundTheme', 'skyTheme', 'componentsTheme', 'searchBackgroundTheme', 'colorTheme'];
-        rootsArray.forEach(component => {
-            root.style.setProperty(`--${component}--default`, `var(--${component}--${theme})`)
-        })
-    }, [theme])
+        setFilteredBooks(filterBooks(dataBaseBooks, sortingValue, allChecked, searchString));
+    }, [dataBaseBooks, sortingValue, allChecked, searchString])
+//================================================
+
 
     //!!!!
-    let dataBookArr;
+/*     let dataBookArr;
     const getBooksFromServer = useCallback(async () => {
         const response = await fetch("http://localhost:8000/dataBaseBooks");
         const books = await response.json();
         dataBookArr = books;
-        console.log(dataBookArr);
     }, [])
     
-    useEffect(() => {
-        getBooksFromServer()
-    }, [])
+    useEffect(() => { 
+        getBooksFromServer();
+    }, []) */
     //json-server --watch db.json --port 8000
     //!!!!
-
     return (
         <React.Fragment>
             <header className='header'>
 				<div className='container'>
 					<div className='header__wrap'>
-							{window.location.href !== 'http://localhost:3000/authorization' ?
-								<Link to='/authorization'>
-									<h2 className='header__login'><FaRegUserCircle className='mini-icon-for-ui' /> Войти</h2>
-									<FaRegUserCircle className='header__icon--mobile' />
-								</Link>
-								:
-								<Link to='/'>
-									<h2 className='header__login'>Назад </h2>
-									<FaRegUserCircle className='header__icon--mobile' />
-								</Link>
-							}
+						<Link to={PATH.loginPage}>
+							<h2 className='header__login'><FaRegUserCircle className='mini-icon-for-ui' /> Войти</h2>
+								<FaRegUserCircle className='header__icon--mobile' />
+						</Link>
 						<div className='header__input-wrap'>
 							<input
 							type='text'
@@ -126,7 +104,6 @@ function Sorting() {
 							onChange={e => setsearchString(e.target.value)} />
 							
 							<button className='header__submit' type='submit'>{<FaSearch className='fa-search'/>}</button>
-
 								{searchString &&
 									<p className='header__search-prompt'>{searchString + '?'}</p>
 								}
@@ -148,52 +125,45 @@ function Sorting() {
             <div className='container'>  
                 <section className='tools'>
                     <ul className='tools__list'>
-
-                        <HiddenBlock dataToParent={updateData} dataArray={['Все авторы', 'Ханс Христиан Андерсен', 'Леонид Пантеллев', 'Виктор Драгунский', 'Джозеф Джейкобс', 'Дина Непомнящая', 'Эндрю Лэнг', 'Джек Лондон']}/>
-                        <HiddenBlock dataToParent={updateData} dataArray={['Все жанры', 'Приключение', 'Обучение', 'Колыбельная песня']}/>
-                        <HiddenBlock dataToParent={updateData} dataArray={['Показать все', 'Показать только с текстом', 'Показать только со звуком']}/>
+                        <HiddenBlock handleSelect={updateData('author')} dataArray={['Все авторы', 'Ханс Христиан Андерсен', 'Леонид Пантеллев', 'Виктор Драгунский', 'Джозеф Джейкобс', 'Дина Непомнящая', 'Эндрю Лэнг', 'Джек Лондон']}/>
+                        <HiddenBlock handleSelect={updateData('genre')} dataArray={['Все жанры', 'Приключение', 'Обучение', 'Колыбельная песня']}/>
+                        <HiddenBlock handleSelect={updateData('onlyText')} dataArray={['Показать все', 'Показать только с текстом', 'Показать только со звуком']}/>
                         <div className='tools__item'>
                             <input type='checkbox' className='tools__checkbox' id='tools__check' />
                             <label htmlFor='tools__check' onClick={() => setAllChecked(!allChecked)}><p className='tools__available'>Посмотреть доступные</p></label> 
                         </div>
                         <div className='tools__theme' onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}>
-                            {theme === 'dark' ?
-                                <div className="tools__wrap-theme--dark wrap-theme">
-                                    <div className="tools__circle-theme--dark circle"></div>
+                                <div className={theme === 'dark' ? "tools__wrap-theme--dark wrap-theme" : "tools__wrap-theme wrap-theme"}>
+                                    <div className={theme === 'dark' ? "tools__circle-theme--dark circle" : "tools__circle-theme circle"}></div>
                                 </div>
-                                :
-                                <div className="tools__wrap-theme wrap-theme">
-                                    <div className="tools__circle-theme circle"></div>
-                                </div>
-                            }
                         </div>
                         
                     </ul>
-                    <SkyLogic theme={theme}/>
+                    <SkyLogic theme={theme} />
                 </section>
                 <section className='books'>
                     <ul className='books__list'>
-                        {filterBooks().map((e) => {
+                        {filteredBooks.map(filteredBook => {
                             return (
-                                <div className="books__wrapper" key={e.id} onClick={() => setBookSrc(e.src)}>
-                                            <li className='books__item' onClick={e.isAvailable ? () => {navigate(`/bookContent/${e.id}`)} : () => {setAvailableModal(true)}}>
+                                <div className="books__wrapper" key={filteredBook.id} onClick={() => setBookSrc(filteredBook.src)}>
+                                            <li className='books__item' onClick={filteredBook.isAvailable ? () => {navigate(`${PATH.bookPage(filteredBook.id)}`)} : () => {setAvailableModal(true)}}>
                                                 <figure className='books__figure'>
-                                                    <img src= {e.src}  alt='' className='books__img' />
+                                                    <img src= {filteredBook.src}  alt='' className='books__img' />
                                                     <div className='books__add' onClick={(event) => {
-                                                        if(!selectedBooks.includes(e)){
-                                                            setSelectedBooks([...selectedBooks, e]);
+                                                        if(!selectedBooks.includes(filteredBook)){
+                                                            setSelectedBooks([...selectedBooks, filteredBook]);
                                                         }   else {
-                                                            const findElem = [...selectedBooks].find(elem => +elem.id === +e.id);
-                                                            const newSelectedBooks = [...selectedBooks].filter(book => book.id !== findElem.id);
+                                                            const findElem = [...selectedBooks].find(elem => +elem.id === +filteredBook.id);
+                                                            const newSelectedBooks = [...selectedBooks].filter(selectBook => selectBook.id !== findElem.id);
                                                             setSelectedBooks(newSelectedBooks);
                                                         }
                                                         event.stopPropagation();
-                                                    }}><AiFillHeart className={selectedBooks.includes(e) ? 'fa-add-heart active' : 'fa-add-heart'} /></div>
-                                                    {!e.isAvailable &&
+                                                    }}><AiFillHeart className={selectedBooks.includes(filteredBook) ? 'fa-add-heart active' : 'fa-add-heart'} /></div>
+                                                    {!filteredBook.isAvailable &&
                                                         <FaLock className='fa-lock' />
                                                     }
                                                 </figure>
-                                                <figcaption className='books__name'>{e.title}</figcaption>
+                                                <figcaption className='books__name'>{filteredBook.title}</figcaption>
                                             </li>
                                         {valueOfAvailableModal &&
                                             <NotAvailableModal bookSrc={bookSrc} valueOfAvailableModal={valueOfAvailableModal} setAvailableModal={setAvailableModal}/>
@@ -206,7 +176,6 @@ function Sorting() {
             </div>
         </main>
         </React.Fragment>
-        
     )
 }
 

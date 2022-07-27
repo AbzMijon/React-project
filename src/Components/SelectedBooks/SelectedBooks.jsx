@@ -1,9 +1,6 @@
 import React from "react";
 
-//routing
 import { useNavigate } from "react-router-dom";
-
-//styles
 import './SelectedBooks.scss';
 
 function SelectedBooks({ selectedBooks, setCheckLikedBooks, setSelectedBooks }) {

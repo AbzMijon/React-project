@@ -15,34 +15,34 @@
 
 .book__page {
     padding: 40px 50px;
-    color: #544747;
+    color: #ebebeb;
     margin-top: 25px;
-    max-width: 1700px;
-    max-height: 700px;
-    overflow-y: scroll;
-    border: 50px solid #544747;
+    max-width: 1400px;
     border-radius: 0 10px 0 10px;
     border-radius: 5px;
-    background-color: #d8d8c5;
     font-size: 25px;
     margin: 30px auto;
-    text-align: center;
+    box-shadow: 0 0 30px #544747;
 }
 
 .book__text--mini, .book__text--medium, .book__text--max{
     transition: 0.2s all;
+    &::first-letter {
+        font-size: 40px;
+        color: #afa1a1(255, 255, 255);
+    }
 }
 
 .book__text--mini {
-    line-height: 20px;
+    line-height: 25px;
     font-size: 15px;
 }
 .book__text--medium {
-    line-height: 25px;
+    line-height: 30px;
     font-size: 20px;
 }
 .book__text--max {
-    line-height: 30px;
+    line-height: 40px;
     font-size: 30px;
 }
 

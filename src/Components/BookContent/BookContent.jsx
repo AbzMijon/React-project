@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-
 import './bookContent.scss';
 import { useParams } from 'react-router-dom';
 import { AiFillHome } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
+import { fetchBooksList } from "../../api/booksApi";
 
 function BookContent() {
 
@@ -11,11 +11,13 @@ function BookContent() {
     const {bookID} = useParams();
     const [book, setBook] = useState(null);
 
-    useEffect(() => {
-        fetch(`http://localhost:8000/dataBaseBooks/${bookID}`)
-        .then(response => response.json())
-        .then(books => setBook(books))
+    useEffect(() => {   
+        fetchBooksList().then(({data}) => {
+            const findBook = data.find(bookApi => bookApi.id === bookID);
+            setBook(findBook);
+        }).catch(() => {})
     }, [bookID])
+    console.log(book);
 
     return (
         <React.Fragment>

@@ -1,8 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { PATH } from "../../constans/routes";
-
-//styles
 import './authorizationWindow.scss';
 
 function AuthorizationWindow() {

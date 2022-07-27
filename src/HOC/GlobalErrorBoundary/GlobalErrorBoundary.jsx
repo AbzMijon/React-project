@@ -1,9 +1,6 @@
 import React, { Component } from "react";
 
-//Routing
 import { Link } from "react-router-dom";
-
-//styles
 import './globalErrorBoundary.scss';
 
 class GlobalErrorBoundary extends Component {

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 
 //Components
 import { GlobalThemeContext } from "../../Contexts/theme";
@@ -34,7 +34,6 @@ function Sorting() {
     const [valueOfAvailableModal, setAvailableModal] = useState(false);
     const navigate = useNavigate();
 
-    //soring logic ======================
     const filterBooks = (booksToFilter, sortingValue, handleAvailable, searchString) =>  booksToFilter.filter(book => {
         let isPassed = true;
 
@@ -70,22 +69,7 @@ function Sorting() {
     useEffect(() => {
         setFilteredBooks(filterBooks(dataBaseBooks, sortingValue, allChecked, searchString));
     }, [dataBaseBooks, sortingValue, allChecked, searchString])
-//================================================
 
-
-    //!!!!
-/*     let dataBookArr;
-    const getBooksFromServer = useCallback(async () => {
-        const response = await fetch("http://localhost:8000/dataBaseBooks");
-        const books = await response.json();
-        dataBookArr = books;
-    }, [])
-    
-    useEffect(() => { 
-        getBooksFromServer();
-    }, []) */
-    //json-server --watch db.json --port 8000
-    //!!!!
     return (
         <React.Fragment>
             <header className='header'>
@@ -133,9 +117,9 @@ function Sorting() {
                             <label htmlFor='tools__check' onClick={() => setAllChecked(!allChecked)}><p className='tools__available'>Посмотреть доступные</p></label> 
                         </div>
                         <div className='tools__theme' onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}>
-                                <div className={theme === 'dark' ? "tools__wrap-theme--dark wrap-theme" : "tools__wrap-theme wrap-theme"}>
-                                    <div className={theme === 'dark' ? "tools__circle-theme--dark circle" : "tools__circle-theme circle"}></div>
-                                </div>
+                            <div className={theme === 'dark' ? "tools__wrap-theme--dark wrap-theme" : "tools__wrap-theme wrap-theme"}>
+                                <div className={theme === 'dark' ? "tools__circle-theme--dark circle" : "tools__circle-theme circle"}></div>
+                            </div>
                         </div>
                         
                     </ul>

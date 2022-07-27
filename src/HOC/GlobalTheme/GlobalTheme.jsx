@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { GlobalThemeContext } from '../../Contexts/theme';
 
 function GlobalTheme(props) {
+    
     const [theme, setTheme] = useState('light'); 
     useEffect(() => {
         const root = document.querySelector(':root');

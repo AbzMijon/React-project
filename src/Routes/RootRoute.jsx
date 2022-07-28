@@ -4,7 +4,7 @@ import React from 'react';
 import MainLayout from '../Layouts/MainLayout';
 import BookContensPage from '../Layouts/BookContensPage';
 import LoginPage from '../Layouts/LoginPage';
-import AuthorizationWindow from '../Components/Authorization/AuthorizationWindow'
+import AuthorizationWindow from '../Scenes/Login/AuthorizationWindow';
 import BookContent from '../Components/BookContent/BookContent';
 import Sorting from '../Scenes/Sorting/Sorting';
 

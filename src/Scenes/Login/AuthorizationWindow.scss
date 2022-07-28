@@ -13,7 +13,8 @@
 }
 
 .login__title {
-    margin-bottom: 20px;
+    font-size: 50px;
+    margin-bottom: 30px;
     color: #fff;
     letter-spacing: 0.5px;
 }
@@ -37,13 +38,8 @@
     font-size: 20px;
 }
 
-.login__back {
+.go-home--login {
     position: absolute;
-    top: 30px;
-    left: 30px;
-    transition: 0.2s all;
-    &:hover {
-        border-bottom: 1px solid #fff;
-        transform: scale(0.9);
-    }
+    top: 20px;
+    left: 20px;
 }

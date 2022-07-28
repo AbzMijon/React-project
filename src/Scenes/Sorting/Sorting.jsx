@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useContext } from "react";
 
 //Components
-import { GlobalThemeContext } from "../../Contexts/theme";
-import NotAvailableModal from "../../Components/NotAvailableModal/NotAvailableModal";
+import { GlobalThemeContext } from '../../Contexts/theme';
+import NotAvailableModal from '../../Components/NotAvailableModal/NotAvailableModal';
 import HiddenBlock from '../../Components/UI/HiddenBlock';
 import SkyLogic from "../../Components/UI/SkyLogic";
 import SelectedBooks from "../../Components/SelectedBooks/SelectedBooks";
@@ -31,7 +31,7 @@ function Sorting() {
     const [bookSrc, setBookSrc] = useState('');
     const [allChecked, setAllChecked] = useState(false);
     const [sortingValue, setSortingValue] = useState({});  
-    const [valueOfAvailableModal, setAvailableModal] = useState(false);
+    const [valueOfAvailableModal, setValueOfAvailableModal] = useState(false);
     const navigate = useNavigate();
 
     const filterBooks = (booksToFilter, sortingValue, handleAvailable, searchString) =>  booksToFilter.filter(book => {
@@ -99,7 +99,7 @@ function Sorting() {
                             }
                         </div>
                         {checkLikedBooks &&
-                            <SelectedBooks setAvailableModal={setAvailableModal} selectedBooks={selectedBooks} setSelectedBooks={setSelectedBooks} setCheckLikedBooks={setCheckLikedBooks} />
+                            <SelectedBooks setValueOfAvailableModal={setValueOfAvailableModal} selectedBooks={selectedBooks} setSelectedBooks={setSelectedBooks} setCheckLikedBooks={setCheckLikedBooks} />
                         }
 					</div>
                     
@@ -130,28 +130,28 @@ function Sorting() {
                         {filteredBooks.map(filteredBook => {
                             return (
                                 <div className="books__wrapper" key={filteredBook.id} onClick={() => setBookSrc(filteredBook.src)}>
-                                            <li className='books__item' onClick={filteredBook.isAvailable ? () => {navigate(`${PATH.bookPage(filteredBook.id)}`)} : () => {setAvailableModal(true)}}>
-                                                <figure className='books__figure'>
-                                                    <img src= {filteredBook.src}  alt='' className='books__img' />
-                                                    <div className='books__add' onClick={(event) => {
-                                                        if(!selectedBooks.includes(filteredBook)){
-                                                            setSelectedBooks([...selectedBooks, filteredBook]);
-                                                        }   else {
-                                                            const findElem = [...selectedBooks].find(elem => +elem.id === +filteredBook.id);
-                                                            const newSelectedBooks = [...selectedBooks].filter(selectBook => selectBook.id !== findElem.id);
-                                                            setSelectedBooks(newSelectedBooks);
-                                                        }
-                                                        event.stopPropagation();
-                                                    }}><AiFillHeart className={selectedBooks.includes(filteredBook) ? 'fa-add-heart active' : 'fa-add-heart'} /></div>
-                                                    {!filteredBook.isAvailable &&
-                                                        <FaLock className='fa-lock' />
-                                                    }
-                                                </figure>
-                                                <figcaption className='books__name'>{filteredBook.title}</figcaption>
-                                            </li>
-                                        {valueOfAvailableModal &&
-                                            <NotAvailableModal bookSrc={bookSrc} valueOfAvailableModal={valueOfAvailableModal} setAvailableModal={setAvailableModal}/>
-                                        }    
+                                    <li className='books__item' onClick={filteredBook.isAvailable ? () => {navigate(`${PATH.bookPage(filteredBook.id)}`)} : () => {setValueOfAvailableModal(true)}}>
+                                        <figure className='books__figure'>
+                                            <img src= {filteredBook.src}  alt='' className='books__img' />
+                                            <div className='books__add' onClick={(event) => {
+                                                if(!selectedBooks.includes(filteredBook)){
+                                                    setSelectedBooks([...selectedBooks, filteredBook]);
+                                                }   else {
+                                                    const findElem = [...selectedBooks].find(elem => +elem.id === +filteredBook.id);
+                                                    const newSelectedBooks = [...selectedBooks].filter(selectBook => selectBook.id !== findElem.id);
+                                                    setSelectedBooks(newSelectedBooks);
+                                                }
+                                                event.stopPropagation();
+                                            }}><AiFillHeart className={selectedBooks.includes(filteredBook) ? 'fa-add-heart active' : 'fa-add-heart'} /></div>
+                                            {!filteredBook.isAvailable &&
+                                                <FaLock className='fa-lock' />
+                                            }
+                                        </figure>
+                                        <figcaption className='books__name'>{filteredBook.title}</figcaption>
+                                    </li>
+                                    {valueOfAvailableModal &&
+                                        <NotAvailableModal bookSrc={bookSrc} valueOfAvailableModal={valueOfAvailableModal} setValueOfAvailableModal={setValueOfAvailableModal}/>
+                                    }    
                                 </div>
                             ) 
                         })}

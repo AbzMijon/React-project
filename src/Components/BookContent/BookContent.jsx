@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
-import './bookContent.scss';
 import { useParams } from 'react-router-dom';
 import { AiFillHome } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
 import { fetchBooksList } from "../../api/booksApi";
+import { PATH } from "../../constans/routes";
+import './bookContent.scss';
 
 function BookContent() {
 
@@ -24,7 +25,7 @@ function BookContent() {
             {book &&
                 <div className="book__wrapper">
                     <header className="book__header">
-                        <Link to='/'><AiFillHome className="home-icon" /></Link>
+                        <Link to={PATH.initialPage}><AiFillHome className="home-icon" /></Link>
                         <h2 className="book__name">{book.author + ` "${book.title}"`}</h2>
                         <select className="book__text-settings" defaultValue={"default_value"} onChange={(e) => setFontSizeType(e.target.value)}>
                             <option value="default_value" disabled>Размер шрифта</option>

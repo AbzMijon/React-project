@@ -7,9 +7,7 @@ import HiddenBlock from '../../Components/UI/HiddenBlock';
 import SkyLogic from "../../Components/UI/SkyLogic";
 import SelectedBooks from "../../Components/SelectedBooks/SelectedBooks";
 import { PATH } from "../../constans/routes";
-
-//fake server
-import { dataBaseBooks } from '../../../database';
+import { fetchBooksList } from "../../api/booksApi";
 
 //React-Icons
 import { FaLock, FaRegUserCircle, FaSearch } from 'react-icons/fa';
@@ -23,8 +21,9 @@ import './sorting.scss';
 
 function Sorting() {
 
+    const [fetchBooks, setFetchBooks] = useState(null);
     const {theme, setTheme} = useContext(GlobalThemeContext);
-    const [filteredBooks, setFilteredBooks] = useState(dataBaseBooks);
+    const [filteredBooks, setFilteredBooks] = useState([]);
     const [selectedBooks, setSelectedBooks] = useState([]);
     const [checkLikedBooks, setCheckLikedBooks] = useState(false);
     const [searchString, setsearchString] = useState('');
@@ -33,6 +32,12 @@ function Sorting() {
     const [sortingValue, setSortingValue] = useState({});  
     const [valueOfAvailableModal, setValueOfAvailableModal] = useState(false);
     const navigate = useNavigate();
+
+    useEffect(() => {
+        fetchBooksList().then(({data}) => {
+            setFetchBooks(data);
+        })
+    }, [])
 
     const filterBooks = (booksToFilter, sortingValue, handleAvailable, searchString) =>  booksToFilter.filter(book => {
         let isPassed = true;
@@ -67,8 +72,8 @@ function Sorting() {
     }
 
     useEffect(() => {
-        setFilteredBooks(filterBooks(dataBaseBooks, sortingValue, allChecked, searchString));
-    }, [dataBaseBooks, sortingValue, allChecked, searchString])
+        if(fetchBooks !== null) setFilteredBooks(filterBooks(fetchBooks, sortingValue, allChecked, searchString));
+    }, [fetchBooks, sortingValue, allChecked, searchString])
 
     return (
         <React.Fragment>

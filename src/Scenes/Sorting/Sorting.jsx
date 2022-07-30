@@ -75,6 +75,16 @@ function Sorting() {
         if(fetchBooks !== null) setFilteredBooks(filterBooks(fetchBooks, sortingValue, allChecked, searchString));
     }, [fetchBooks, sortingValue, allChecked, searchString])
 
+    if(fetchBooks === null) {
+        return (
+            <div className="spinner">
+                <h5 className="spinner__title">Подождите немного</h5>
+                <img className="spinner__img" src="https://i.gifer.com/VAyR.gif" alt="" />
+            </div>
+        )
+    }
+
+
     return (
         <React.Fragment>
             <header className='header'>
@@ -118,8 +128,8 @@ function Sorting() {
                         <HiddenBlock handleSelect={updateData('genre')} dataArray={['Все жанры', 'Приключение', 'Обучение', 'Колыбельная песня']}/>
                         <HiddenBlock handleSelect={updateData('onlyText')} dataArray={['Показать все', 'Показать только с текстом', 'Показать только со звуком']}/>
                         <div className='tools__item'>
-                            <input type='checkbox' className='tools__checkbox' id='tools__check' />
-                            <label htmlFor='tools__check' onClick={() => setAllChecked(!allChecked)}><p className='tools__available'>Посмотреть доступные</p></label> 
+                            <input type='checkbox' className='tools__checkbox' onChange={() => setAllChecked(!allChecked)} id='tools__check' />
+                            <label htmlFor='tools__check'><p className='tools__available'>Посмотреть доступные</p></label> 
                         </div>
                         <div className='tools__theme' onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}>
                             <div className={theme === 'dark' ? "tools__wrap-theme--dark wrap-theme" : "tools__wrap-theme wrap-theme"}>
@@ -142,9 +152,9 @@ function Sorting() {
                                                 if(!selectedBooks.includes(filteredBook)){
                                                     setSelectedBooks([...selectedBooks, filteredBook]);
                                                 }   else {
-                                                    const findElem = [...selectedBooks].find(elem => +elem.id === +filteredBook.id);
-                                                    const newSelectedBooks = [...selectedBooks].filter(selectBook => selectBook.id !== findElem.id);
-                                                    setSelectedBooks(newSelectedBooks);
+                                                        const findElem = [...selectedBooks].find(elem => +elem.id === +filteredBook.id);
+                                                        const newSelectedBooks = [...selectedBooks].filter(selectBook => selectBook.id !== findElem.id);
+                                                        setSelectedBooks(newSelectedBooks);
                                                 }
                                                 event.stopPropagation();
                                             }}><AiFillHeart className={selectedBooks.includes(filteredBook) ? 'fa-add-heart active' : 'fa-add-heart'} /></div>

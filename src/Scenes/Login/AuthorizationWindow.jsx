@@ -20,7 +20,7 @@ function AuthorizationWindow() {
                 <Form className="login__card">
                     <FormikInput name='email' type='email' placeholder='Email' required className="login__email"/>
                     <FormikInput name='password' type='password' placeholder='Password' required className="login__pass"/>
-                    <button type="submit">Отправить</button>
+                    <button>Отправить</button>
                 </Form>
             </Formik>
         </div>

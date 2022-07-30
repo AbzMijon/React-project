@@ -5,7 +5,7 @@ import MainLayout from '../Layouts/MainLayout';
 import BookContensPage from '../Layouts/BookContensPage';
 import LoginPage from '../Layouts/LoginPage';
 import AuthorizationWindow from '../Scenes/Login/AuthorizationWindow';
-import BookContent from '../Components/BookContent/BookContent';
+import BookContent from '../Scenes/BookContent/BookContent';
 import Sorting from '../Scenes/Sorting/Sorting';
 
 //CONSTANS

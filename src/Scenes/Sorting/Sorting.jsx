@@ -3,8 +3,8 @@ import React, { useState, useEffect, useContext } from "react";
 //Components
 import { GlobalThemeContext } from '../../Contexts/theme';
 import NotAvailableModal from '../../Components/NotAvailableModal/NotAvailableModal';
-import HiddenBlock from '../../Components/UI/HiddenBlock';
-import SkyLogic from "../../Components/UI/SkyLogic";
+import HiddenBlock from '../../Components/HiddenBlock';
+import SkyLogic from "../../Components/SkyLogic";
 import SelectedBooks from "../../Components/SelectedBooks/SelectedBooks";
 import { PATH } from "../../constans/routes";
 import { fetchBooksList } from "../../api/booksApi";
@@ -32,7 +32,6 @@ function Sorting() {
     const [sortingValue, setSortingValue] = useState({});  
     const [valueOfAvailableModal, setValueOfAvailableModal] = useState(false);
     const navigate = useNavigate();
-
     useEffect(() => {
         fetchBooksList().then(({data}) => {
             setFetchBooks(data);

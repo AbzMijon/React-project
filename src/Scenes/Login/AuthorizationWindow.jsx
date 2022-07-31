@@ -8,25 +8,27 @@ import './authorizationWindow.scss';
 
 function AuthorizationWindow() {
     
+    const [successAuth, setSuccessAuth] = useState(false);
     const navigate = useNavigate();
     const initialFormValues = {
         email: '',
         password: ''
     }
-    const allStorageUsers = localStorage.setItem('user', JSON.stringify([]));
     return (
         <div className="login__wrap">
             <Link to={PATH.initialPage} className='go-home--login'><AiFillHome className="home-icon" /></Link>
             <h3 className="login__title">Авторизация</h3>
             <Formik initialValues={initialFormValues} onSubmit={(newFormikValues) => {
-                console.log(newFormikValues);
-                localStorage.setItem('user', JSON.stringify(newFormikValues))
-                navigate('/');
+                setSuccessAuth(true);
+                setTimeout(() => {
+                    navigate('/');
+                }, 1000);
             }}>
                 <Form className="login__card">
                     <FormikInput name='email' type='email' placeholder='Email' required className="login__email" />
                     <FormikInput name='password' type='password' placeholder='Password' required className="login__pass" />
-                    <button type={"submit"}>Отправить</button>
+                    <button className="login__submit" type={"submit"}>Отправить</button>
+                    {successAuth && <h4 className="success__auth-title">Вы успешно зарегистрировались!</h4>}
                 </Form>
             </Formik>
         </div>

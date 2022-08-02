@@ -4,7 +4,13 @@ import { useField } from 'formik';
 function FormikInput(props) {
     const [field, meta, helpers] = useField(props.name);
     return (
-        <input {...props} value={field.value} onChange={field.onChange} onBlur={field.onBlur}/>
+        <div className="field">
+            <h5 className="login__title-field">{props.name}</h5>
+            <input {...props} {...field}/>
+            {(meta.touched && meta.error) && 
+                <p className="field__error">{meta.error}</p>
+            }
+        </div>
     )
 }
 

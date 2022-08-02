@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { AiFillHome } from 'react-icons/ai';
-import { Link } from 'react-router-dom';
 import { fetchBooksList } from "../../api/booksApi";
 import { PATH } from "../../constans/routes";
 import './bookContent.scss';
@@ -18,6 +17,7 @@ function BookContent() {
             setBook(findBook);
         }).catch(() => {})
     }, [bookID])
+
     if(book === null) {
         return (
             <div className="spinner">
@@ -47,7 +47,7 @@ function BookContent() {
                             <div className={'book__text--' + fontSizeType}>{book.text}</div>
                         </div>
                     </main>
-                    </div>
+                </div>
             }
         </React.Fragment>
     )

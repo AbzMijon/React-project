@@ -24,7 +24,7 @@ function Sorting() {
     const [fetchBooks, setFetchBooks] = useState(null);
     const {theme, setTheme} = useContext(GlobalThemeContext);
     const [filteredBooks, setFilteredBooks] = useState([]);
-    const [selectedBooks, setSelectedBooks] = useState([]);
+    const [selectedBooks, setSelectedBooks] = useState(JSON.parse(localStorage.getItem('selectedBooks')) || []);
     const [checkLikedBooks, setCheckLikedBooks] = useState(false);
     const [searchString, setsearchString] = useState('');
     const [bookSrc, setBookSrc] = useState('');
@@ -41,7 +41,7 @@ function Sorting() {
     const filterBooks = (booksToFilter, sortingValue, handleAvailable, searchString) =>  booksToFilter.filter(book => {
         let isPassed = true;
 
-        if(handleAvailable && !book.isAvailable) {
+        if(handleAvailable && !book.isAvailableForGuest) {
             isPassed = false;
         }
         if(searchString && !book.title.toLowerCase().includes(searchString.toLowerCase())) {
@@ -72,7 +72,11 @@ function Sorting() {
 
     useEffect(() => {
         if(fetchBooks !== null) setFilteredBooks(filterBooks(fetchBooks, sortingValue, allChecked, searchString));
-    }, [fetchBooks, sortingValue, allChecked, searchString])
+    }, [fetchBooks, sortingValue, allChecked, searchString]);
+
+    useEffect(() => {
+        localStorage.setItem('selectedBooks', JSON.stringify(selectedBooks));
+    }, [selectedBooks]);
 
     if(fetchBooks === null) {
         return (
@@ -82,7 +86,6 @@ function Sorting() {
             </div>
         )
     }
-
 
     return (
         <React.Fragment>
@@ -144,11 +147,12 @@ function Sorting() {
                         {filteredBooks.map(filteredBook => {
                             return (
                                 <div className="books__wrapper" key={filteredBook.id} onClick={() => setBookSrc(filteredBook.src)}>
-                                    <li className='books__item' onClick={filteredBook.isAvailable ? () => {navigate(`${PATH.bookPage(filteredBook.id)}`)} : () => {setValueOfAvailableModal(true)}}>
+                                    <li className='books__item' onClick={filteredBook.isAvailableForGuest ? () => {navigate(`${PATH.bookPage(filteredBook.id)}`)} : () => {setValueOfAvailableModal(true)}}>
                                         <figure className='books__figure'>
                                             <img src= {filteredBook.src}  alt='' className='books__img' />
                                             <div className='books__add' onClick={(event) => {
                                                 if(!selectedBooks.includes(filteredBook)){
+                                                    console.log(filteredBook);
                                                     setSelectedBooks([...selectedBooks, filteredBook]);
                                                 }   else {
                                                         const findElem = [...selectedBooks].find(elem => +elem.id === +filteredBook.id);
@@ -157,7 +161,7 @@ function Sorting() {
                                                 }
                                                 event.stopPropagation();
                                             }}><AiFillHeart className={selectedBooks.includes(filteredBook) ? 'fa-add-heart active' : 'fa-add-heart'} /></div>
-                                            {!filteredBook.isAvailable &&
+                                            {!filteredBook.isAvailableForGuest &&
                                                 <FaLock className='fa-lock' />
                                             }
                                         </figure>

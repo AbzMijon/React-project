@@ -8,28 +8,52 @@ import './authorizationWindow.scss';
 
 function AuthorizationWindow() {
     
-    const [successAuth, setSuccessAuth] = useState(false);
     const navigate = useNavigate();
+    const [successAuth, setSuccessAuth] = useState(false);
     const initialFormValues = {
-        email: '',
-        password: ''
+        Почта: '',
+        Пароль: ''
     }
+
+    const validateForm = (formValues) => {
+        let isValid = true;
+        let errorsObject = {};
+
+        if(!formValues.Почта) {
+            isValid = false;
+            errorsObject.Почта = "Поле не должно быть пустым!";
+        }
+        if(formValues.Пароль.length < 5) {
+            isValid = false;
+            errorsObject.Пароль = "Пороль должен содержать больше 5 символов!";
+        }
+
+        isValid = false;
+
+        if (!isValid) return errorsObject
+    }
+
     return (
         <div className="login__wrap">
             <Link to={PATH.initialPage} className='go-home--login'><AiFillHome className="home-icon" /></Link>
-            <h3 className="login__title">Авторизация</h3>
-            <Formik initialValues={initialFormValues} onSubmit={(newFormikValues) => {
+            <Formik initialValues={initialFormValues} validate={validateForm} onSubmit={(formValues) => {
                 setSuccessAuth(true);
                 setTimeout(() => {
                     navigate('/');
-                }, 1000);
+                }, 1000); 
             }}>
-                <Form className="login__card">
-                    <FormikInput name='email' type='email' placeholder='Email' required className="login__email" />
-                    <FormikInput name='password' type='password' placeholder='Password' required className="login__pass" />
-                    <button className="login__submit" type={"submit"}>Отправить</button>
-                    {successAuth && <h4 className="success__auth-title">Вы успешно зарегистрировались!</h4>}
-                </Form>
+                <div className="login__card-wrapper">
+                    <Form className="login__card">
+                        <h3 className="login__title">Авторизация</h3>
+                        <FormikInput name='Почта' type='email' placeholder='vasyapupkin@gmail.com' required className="login__email" />
+                        <FormikInput name='Пароль' type='password' required className="login__pass" placeholder="сложный пароль" />
+                        <div className="login__footer-card">
+                            <button className="login__submit" type={"submit"}>Отправить</button>
+                            <Link to={PATH.supportPage} className="login__forgot">Забыли пороль?</Link>
+                        </div>
+                    </Form>
+                        {successAuth && <h4 className="success__auth-title">Вы успешно зарегистрировались!</h4>}
+                </div>
             </Formik>
         </div>
         

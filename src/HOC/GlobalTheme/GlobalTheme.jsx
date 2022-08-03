@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { GlobalThemeContext } from '../../Contexts/theme';
+import { globalThemeContext } from '../../contexts/theme';
 
 function GlobalTheme(props) {
     
@@ -13,9 +13,9 @@ function GlobalTheme(props) {
     }, [theme]);
 
     return (
-        <GlobalThemeContext.Provider value={{theme, setTheme}}>
+        <globalThemeContext.Provider value={{theme, setTheme}}>
             {props.children}
-        </GlobalThemeContext.Provider>
+        </globalThemeContext.Provider>
     )       
 }
 

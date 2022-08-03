@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 
 //Components
-import { GlobalThemeContext } from '../../Contexts/theme';
+import { globalThemeContext } from '../../contexts/theme';
 import NotAvailableModal from '../../Components/NotAvailableModal/NotAvailableModal';
 import HiddenBlock from '../../Components/HiddenBlock';
 import SkyLogic from "../../Components/SkyLogic";
@@ -22,7 +22,7 @@ import './sorting.scss';
 function Sorting() {
 
     const [fetchBooks, setFetchBooks] = useState(null);
-    const {theme, setTheme} = useContext(GlobalThemeContext);
+    const {theme, setTheme} = useContext(globalThemeContext);
     const [filteredBooks, setFilteredBooks] = useState([]);
     const [selectedBooks, setSelectedBooks] = useState(JSON.parse(localStorage.getItem('selectedBooks')) || []);
     const [checkLikedBooks, setCheckLikedBooks] = useState(false);
@@ -32,6 +32,7 @@ function Sorting() {
     const [sortingValue, setSortingValue] = useState({});  
     const [valueOfAvailableModal, setValueOfAvailableModal] = useState(false);
     const navigate = useNavigate();
+    
     useEffect(() => {
         fetchBooksList().then(({data}) => {
             setFetchBooks(data);
@@ -56,11 +57,14 @@ function Sorting() {
             }
         })
         Object.values(sortingValue).forEach(defaultSortFiledName => {
-            if(defaultSortFiledName === 'Все авторы' || defaultSortFiledName === 'Все жанры' || defaultSortFiledName === 'Показать все') {
+            if(defaultSortFiledName === 'Все авторы') {
+                isPassed = true;
+            }   else if(defaultSortFiledName === 'Все жанры') {
+                isPassed = true;
+            }   else if(defaultSortFiledName === 'Показать все') {
                 isPassed = true;
             }
         })
-        console.log(isPassed);
         return isPassed;
     });
 
@@ -122,61 +126,60 @@ function Sorting() {
                     
                 </div>
 			</header>
-        <main className='main'>
-            <div className='container'>  
-                <section className='tools'>
-                    <ul className='tools__list'>
-                        <HiddenBlock handleSelect={updateData('author')} dataArray={['Все авторы', 'Ханс Христиан Андерсен', 'Леонид Пантеллев', 'Виктор Драгунский', 'Джозеф Джейкобс', 'Дина Непомнящая', 'Эндрю Лэнг', 'Джек Лондон']}/>
-                        <HiddenBlock handleSelect={updateData('genre')} dataArray={['Все жанры', 'Приключение', 'Обучение', 'Колыбельная песня']}/>
-                        <HiddenBlock handleSelect={updateData('onlyText')} dataArray={['Показать все', 'Показать только с текстом', 'Показать только со звуком']}/>
-                        <div className='tools__item'>
-                            <input type='checkbox' className='tools__checkbox' onChange={() => setAllChecked(!allChecked)} id='tools__check' />
-                            <label htmlFor='tools__check'><p className='tools__available'>Посмотреть доступные</p></label> 
-                        </div>
-                        <div className='tools__theme' onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}>
-                            <div className={theme === 'dark' ? "tools__wrap-theme--dark wrap-theme" : "tools__wrap-theme wrap-theme"}>
-                                <div className={theme === 'dark' ? "tools__circle-theme--dark circle" : "tools__circle-theme circle"}></div>
+            <main className='main'>
+                <div className='container'>  
+                    <section className='tools'>
+                        <ul className='tools__list'>
+                            <HiddenBlock handleSelect={updateData('author')} dataArray={['Все авторы', 'Ханс Христиан Андерсен', 'Леонид Пантеллев', 'Виктор Драгунский', 'Джозеф Джейкобс', 'Дина Непомнящая', 'Эндрю Лэнг', 'Джек Лондон']}/>
+                            <HiddenBlock handleSelect={updateData('genre')} dataArray={['Все жанры', 'Приключение', 'Обучение', 'Колыбельная песня']}/>
+                            <HiddenBlock handleSelect={updateData('onlyText')} dataArray={['Показать все', 'Показать только с текстом', 'Показать только со звуком']}/>
+                            <div className='tools__item'>
+                                <input type='checkbox' className='tools__checkbox' onChange={() => setAllChecked(!allChecked)} id='tools__check' />
+                                <label htmlFor='tools__check'><p className='tools__available'>Посмотреть доступные</p></label> 
                             </div>
-                        </div>
-                        
-                    </ul>
-                    <SkyLogic theme={theme} />
-                </section>
-                <section className='books'>
-                    <ul className='books__list'>
-                        {filteredBooks.map(filteredBook => {
-                            return (
-                                <div className="books__wrapper" key={filteredBook.id} onClick={() => setBookSrc(filteredBook.src)}>
-                                    <li className='books__item' onClick={filteredBook.isAvailableForGuest ? () => {navigate(`${PATH.bookPage(filteredBook.id)}`)} : () => {setValueOfAvailableModal(true)}}>
-                                        <figure className='books__figure'>
-                                            <img src= {filteredBook.src}  alt='' className='books__img' />
-                                            <div className='books__add' onClick={(event) => {
-                                                if(!selectedBooks.includes(filteredBook)){
-                                                    console.log(filteredBook);
-                                                    setSelectedBooks([...selectedBooks, filteredBook]);
-                                                }   else {
-                                                        const findElem = [...selectedBooks].find(elem => +elem.id === +filteredBook.id);
-                                                        const newSelectedBooks = [...selectedBooks].filter(selectBook => selectBook.id !== findElem.id);
-                                                        setSelectedBooks(newSelectedBooks);
-                                                }
-                                                event.stopPropagation();
-                                            }}><AiFillHeart className={selectedBooks.includes(filteredBook) ? 'fa-add-heart active' : 'fa-add-heart'} /></div>
-                                            {!filteredBook.isAvailableForGuest &&
-                                                <FaLock className='fa-lock' />
-                                            }
-                                        </figure>
-                                        <figcaption className='books__name'>{filteredBook.title}</figcaption>
-                                    </li>
-                                    {valueOfAvailableModal &&
-                                        <NotAvailableModal bookSrc={bookSrc} valueOfAvailableModal={valueOfAvailableModal} setValueOfAvailableModal={setValueOfAvailableModal}/>
-                                    }    
+                            <div className='tools__theme' onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}>
+                                <div className={theme === 'dark' ? "tools__wrap-theme--dark wrap-theme" : "tools__wrap-theme wrap-theme"}>
+                                    <div className={theme === 'dark' ? "tools__circle-theme--dark circle" : "tools__circle-theme circle"}></div>
                                 </div>
-                            ) 
-                        })}
-                    </ul>
-                </section>
-            </div>
-        </main>
+                            </div>
+                            
+                        </ul>
+                        <SkyLogic theme={theme} />
+                    </section>
+                    <section className='books'>
+                        <ul className='books__list'>
+                            {filteredBooks.map(filteredBook => {
+                                return (
+                                    <div className="books__wrapper" key={filteredBook.id} onClick={() => setBookSrc(filteredBook.src)}>
+                                        <li className='books__item' onClick={filteredBook.isAvailableForGuest ? () => {navigate(`${PATH.bookPage(filteredBook.id)}`)} : () => {setValueOfAvailableModal(true)}}>
+                                            <figure className='books__figure'>
+                                                <img src= {filteredBook.src}  alt='' className='books__img' />
+                                                <div className='books__add' onClick={(event) => {
+                                                    if(!selectedBooks.includes(filteredBook)) {
+                                                        setSelectedBooks([...selectedBooks, filteredBook]);
+                                                    }   else {
+                                                            const findElem = [...selectedBooks].find(elem => +elem.id === +filteredBook.id);
+                                                            const newSelectedBooks = [...selectedBooks].filter(selectBook => selectBook.id !== findElem.id);
+                                                            setSelectedBooks(newSelectedBooks);
+                                                    }
+                                                    event.stopPropagation();
+                                                }}><AiFillHeart className={selectedBooks.includes(filteredBook) ? 'fa-add-heart active' : 'fa-add-heart'} /></div>
+                                                {!filteredBook.isAvailableForGuest &&
+                                                    <FaLock className='fa-lock' />
+                                                }
+                                            </figure>
+                                            <figcaption className='books__name'>{filteredBook.title}</figcaption>
+                                        </li>
+                                        {valueOfAvailableModal &&
+                                            <NotAvailableModal bookSrc={bookSrc} valueOfAvailableModal={valueOfAvailableModal} setValueOfAvailableModal={setValueOfAvailableModal}/>
+                                        }    
+                                    </div>
+                                ) 
+                            })}
+                        </ul>
+                    </section>
+                </div>
+            </main>
         </React.Fragment>
     )
 }

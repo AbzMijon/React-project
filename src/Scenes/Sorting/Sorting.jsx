@@ -54,15 +54,15 @@ function Sorting() {
                     if(book[sortFieldName] !== sortingValue[sortFieldName]) {
                         isPassed = false;
                     }
-            }
-        })
-        Object.values(sortingValue).forEach(defaultSortFiledName => {
-            if(defaultSortFiledName === 'Все авторы') {
-                isPassed = true;
-            }   else if(defaultSortFiledName === 'Все жанры') {
-                isPassed = true;
-            }   else if(defaultSortFiledName === 'Показать все') {
-                isPassed = true;
+                    if(sortingValue[sortFieldName] === 'Все авторы') {
+                        isPassed = true;
+                    }
+                    if(sortingValue[sortFieldName] === 'Все жанры') {
+                        isPassed = true;
+                    }
+                    if(sortingValue[sortFieldName] === 'Показать все') {
+                        isPassed = true;
+                    }
             }
         })
         return isPassed;

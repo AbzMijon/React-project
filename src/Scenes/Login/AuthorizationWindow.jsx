@@ -4,10 +4,12 @@ import { PATH } from "../../constans/routes";
 import { AiFillHome } from "react-icons/ai";
 import { Formik, Form } from "formik";
 import FormikInput from "../../Components/FormikInputs/FormikInput";
+import { useDispatch } from "react-redux";
 import './authorizationWindow.scss';
 
 function AuthorizationWindow() {
     
+    const dispatch = useDispatch();
     const navigate = useNavigate();
     const [successAuth, setSuccessAuth] = useState(false);
     const initialFormValues = {
@@ -37,6 +39,7 @@ function AuthorizationWindow() {
         <div className="login__wrap">
             <Link to={PATH.initialPage} className='go-home--login'><AiFillHome className="home-icon" /></Link>
             <Formik initialValues={initialFormValues} validate={validateForm} onSubmit={(formValues) => {
+                dispatch({type: 'userLogIN'});
                 setSuccessAuth(true);
                 setTimeout(() => {
                     navigate('/');

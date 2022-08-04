@@ -8,6 +8,8 @@ import SkyLogic from "../../Components/SkyLogic";
 import SelectedBooks from "../../Components/SelectedBooks/SelectedBooks";
 import { PATH } from "../../constans/routes";
 import { fetchBooksList } from "../../api/booksApi";
+import { isLogedIN } from '../../store/userSelectors';
+import { useDispatch, useSelector } from 'react-redux/es/exports';
 
 //React-Icons
 import { FaLock, FaRegUserCircle, FaSearch } from 'react-icons/fa';
@@ -32,6 +34,8 @@ function Sorting() {
     const [sortingValue, setSortingValue] = useState({});  
     const [valueOfAvailableModal, setValueOfAvailableModal] = useState(false);
     const navigate = useNavigate();
+    const userLoggedIn = useSelector(isLogedIN);
+    const dispatch = useDispatch();
     
     useEffect(() => {
         fetchBooksList().then(({data}) => {
@@ -96,10 +100,7 @@ function Sorting() {
             <header className='header'>
 				<div className='container'>
 					<div className='header__wrap'>
-						<Link to={PATH.loginPage}>
-							<h2 className='header__login'><FaRegUserCircle className='mini-icon-for-ui' /> Войти</h2>
-								<FaRegUserCircle className='header__icon--mobile' />
-						</Link>
+						<h2 className='header__login' onClick={() => userLoggedIn ? dispatch({type: 'userLogOUT'}) : navigate(PATH.loginPage)}><FaRegUserCircle className='mini-icon-for-ui' />{userLoggedIn ? 'Выйти': 'Войти'}</h2>
 						<div className='header__input-wrap'>
 							<input
 							type='text'

@@ -16,7 +16,7 @@ import { FaLock, FaRegUserCircle, FaSearch } from 'react-icons/fa';
 import { AiFillHeart } from 'react-icons/ai';
 
 //Routing
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 //styles
 import './sorting.scss';

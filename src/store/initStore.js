@@ -1,4 +1,6 @@
 import { createStore } from 'redux';
+import { persistReducer, persistStore } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
 
 const rootReduser = (state =  {isLogedIN: false}, action) => {
     console.log(state);
@@ -12,4 +14,13 @@ const rootReduser = (state =  {isLogedIN: false}, action) => {
     }
 }
 
-export const store = createStore(rootReduser);
+const persistConfig = {
+    key: 'root',
+    storage,
+    version: 1,
+}
+
+const initPersistReduser = persistReducer(persistConfig, rootReduser);
+
+export const store = createStore(initPersistReduser);
+export const persistor = persistStore(store);

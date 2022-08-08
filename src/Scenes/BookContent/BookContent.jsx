@@ -4,6 +4,7 @@ import { AiFillHome } from 'react-icons/ai';
 import { fetchBooksList } from "../../api/booksApi";
 import { PATH } from "../../constans/routes";
 import './bookContent.scss';
+import Spinner from "../../Components/SpinnerLoading/Spinner";
 
 function BookContent() {
 
@@ -19,12 +20,7 @@ function BookContent() {
     }, [bookID])
 
     if(book === null) {
-        return (
-            <div className="spinner">
-                <h5 className="spinner__title">Подождите немного</h5>
-                <img className="spinner__img" src="https://i.gifer.com/VAyR.gif" alt="" />
-            </div>
-        )
+        return <Spinner />
     }
 
     return (

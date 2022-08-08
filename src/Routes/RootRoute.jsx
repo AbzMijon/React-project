@@ -7,8 +7,10 @@ import LoginPage from '../Layouts/LoginPage';
 import AuthorizationWindow from '../Scenes/Login/AuthorizationWindow';
 import BookContent from '../Scenes/BookContent/BookContent';
 import Sorting from '../Scenes/Sorting/Sorting';
-import { isLogedIN } from '../store/userSelectors';
+import { isLogedIN } from '../store/selectors/userSelectors';
 import { useSelector } from 'react-redux/es/exports';
+import UserProfile from '../Layouts/userProfile';
+import Profile from '../Scenes/Profile/Profile';
 
 //CONSTANS
 import { ROUTES } from '../constans/routes';
@@ -33,6 +35,10 @@ function RootRoute() {
 
             <Route path={ROUTES.bookPage} element={<BookContensPage />}>
                 <Route path={ROUTES.bookPage} element={<BookContent />}></Route>
+            </Route>
+
+            <Route path={ROUTES.userProfile} element={<UserProfile />}>
+                <Route path={ROUTES.userProfile} element={<Profile />}></Route>
             </Route>
             
             <Route path='*' element={<h2 className='erorr--not-found'>Ресурс не найден!</h2>}></Route>

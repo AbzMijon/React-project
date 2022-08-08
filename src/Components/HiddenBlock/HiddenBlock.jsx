@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 
+import './hiddenBlock.scss';
 
 function HiddenBlock({ dataArray, handleSelect }) {
 

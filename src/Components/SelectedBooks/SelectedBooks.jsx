@@ -3,9 +3,12 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import './SelectedBooks.scss';
 import { PATH } from '../../constans/routes';
+import { useSelector } from "react-redux";
+import { isLogedIN } from "../../store/selectors/userSelectors";
 
 function SelectedBooks({ selectedBooks, setCheckLikedBooks, setSelectedBooks }) {
 
+    const userLoggedIn = useSelector(isLogedIN);
     const navigate = useNavigate();
     return (
         <div className="modal__liked" onClick={() => setCheckLikedBooks(false)}>
@@ -27,7 +30,7 @@ function SelectedBooks({ selectedBooks, setCheckLikedBooks, setSelectedBooks }) 
                                     const newSelectedBooks = selectedBooks.filter(newBook => newBook.id !== findElem.id);
                                     setSelectedBooks(newSelectedBooks);
                                 }}>x</button>
-                                <img className="selected__img" src={selectedBook.src} alt="selected image" onClick={selectedBook.isAvailableForGuest ? () => navigate(PATH.bookPage(selectedBook.id)) : () => console.log('NOT AVAILABLE BOOK!')} />
+                                <img className="selected__img" src={selectedBook.src} alt="selected image" onClick={(selectedBook.isAvailableForGuest || userLoggedIn) ? () => navigate(PATH.bookPage(selectedBook.id)) : () => console.log('NOT AVAILABLE BOOK!')} />
                                 <h5 className="selected__name-book">{selectedBook.title}</h5>
                             </li>
                         )

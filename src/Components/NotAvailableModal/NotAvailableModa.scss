@@ -16,6 +16,7 @@
 	transform: scale(0);
 	.modal__content {
 		background-color: var(#{--componentsTheme--default});
+		width: 300px;
 		border-radius: 10px;
 		padding: 15px 20px;
 		border: 2px solid #000;
@@ -28,6 +29,7 @@
 		color: var(#{--colorTheme--default});
 		letter-spacing: 0.5px;
 		margin-top: 15px;
+		text-align: center;
 	}
 	.modal-ok {
 		padding: 5px 15px;

@@ -8,7 +8,7 @@ function NotAvailableModal({ bookSrc, valueOfAvailableModal, setValueOfAvailable
         <div className={valueOfAvailableModal ? 'modal active' : 'modal'} onClick={() => {setValueOfAvailableModal(false)}}>
             <div className="modal__content" onClick={(e) => e.stopPropagation()}>
                 <img src={bookSrc} className="modal__img" alt="bookIMG" />
-                <p className="modal__text">Эта книжка не доступна вам ;(</p>
+                <p className="modal__text">Эта книжка доступна только для авторизованных пользователей ;(</p>
                 <button className="modal-ok" type="button" onClick={() => {setValueOfAvailableModal(false)}}>Ок</button>
             </div>
         </div>

@@ -2,7 +2,8 @@ export const ROUTES = {
     initialPage: `/`,
     bookPage: `/bookContent/:bookID`,
     loginPage: `/authorization`,
-    supportPage: `support`,
+    supportPage: `/support`,
+    userProfile: `/userProfile/:userName`
 }
 
 export const PATH = {
@@ -10,4 +11,5 @@ export const PATH = {
     bookPage: (id) => `/bookContent/${id}`,
     loginPage: `/authorization`,
     supportPage: `support`,
+    userProfile: (userName) => `/userProfile/${userName}`
 }

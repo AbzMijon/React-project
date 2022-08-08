@@ -23,8 +23,8 @@
 }
 
 .login__card-wrapper {
-    width: 450px;
-    height: 350px;
+    min-width: 450px;
+    min-height: 350px;
     border-radius: 10px;
     outline: 3px dashed #000;
     background-color: #fff;
@@ -39,7 +39,7 @@
     width: 100%;
 }
 
-.login__email, .login__pass {
+.login__name, .login__email, .login__pass {
     width: 100%;
     padding: 10px 15px;
     font-size: 20px;

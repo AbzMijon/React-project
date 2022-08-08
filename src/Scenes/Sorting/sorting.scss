@@ -53,6 +53,14 @@
 		text-align: right;
 		z-index: 1;
 	}
+	.login-wrap, .logout-wrap {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	.big-user {
+		font-size: 45px;
+	}
 	.fa-heart {
 		font-size: 35px;
 		cursor: pointer;
@@ -140,28 +148,6 @@
 
 		.tools__available {
 			cursor: pointer;
-		}
-
-		.tools__hidden-list {
-			width: 100%;
-			outline: none;
-			border: none;
-			display: flex;
-			align-items: center;
-			padding: 6px 10px;
-			font-weight: 400;
-			cursor: pointer;
-			position: relative;
-			transition: 0.2s ease-out;
-			color: var(#{--colorTheme--default});
-			background-color: var(#{--componentsTheme--default});
-		}
-		.tools__hidden-item + .tools__hidden-item {
-			margin-top: 115px;
-		}
-		.tools__hidden-item:first-child {
-			color: #000;
-			font-weight: 700;
 		}
 	}
 
@@ -289,85 +275,4 @@
 .books__figure {
 	height: 100%;
 	width: 100%;
-}
-
-//Other elements
-.cloud {
-	position: relative;
-	width: 6em;
-	height: 6em;
-	margin: 2em;
-	background: #ffffff;
-	border-width: 0.25em;
-	border-style: solid;
-	border-color: #6e839e;
-	border-radius: 50% 50% 0 0;
-}
-.cloud:before,
-.cloud:after {
-	content: '';
-	position: absolute;
-	bottom: -0.25em;
-	background: inherit;
-	border-width: 0.25em;
-	border-style: solid;
-	border-color: #6e839e;
-}
-.cloud:before {
-	left: 80%;
-	width: 60%;
-	height: 60%;
-	border-left: none;
-	border-radius: 50% 50% 50% 0;
-}
-.cloud:after {
-	right: 80%;
-	width: 80%;
-	height: 80%;
-	border-right: none;
-	border-radius: 50% 50% 0;
-}
-
-.cloud-1 {
-	position: absolute;
-	top: 5px;
-	left: 24%;
-	transition: 0.2s all;
-}
-.cloud-2 {
-	position: absolute;
-	top: -50px;
-	right: 23%;
-	transition: 0.2s all;
-}
-
-.moon {
-	position: absolute;
-	top: 30px;
-	left: 18%;
-	width: 100px;
-	height: 100px;
-	margin: -20px 0 20px 0;
-	border-radius: 50%;
-	box-shadow: 15px 15px 0 0 #fec712;
-	transition: 0.2s all;
-}
-
-.spinner {
-	position: absolute;
-	top: 50%;
-	left: 35%;
-	display: flex;
-	transform: translateY(-50%);
-	align-items: center;
-	.spinner__title {
-		font-size: 45px;
-		font-weight: bold;
-		color: #000;
-		margin-right: 15px;
-	}
-	.spinner__img {
-		width: 80px;
-		height: 80px;
-	}
 }

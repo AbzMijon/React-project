@@ -8,19 +8,16 @@ import RootRoute from './Routes/RootRoute';
 import GlobalErrorBoundary from './HOC/GlobalErrorBoundary/GlobalErrorBoundary';
 import GlobalTheme from './HOC/GlobalTheme/GlobalTheme';
 import { Provider } from 'react-redux/es/exports';
-import { persistor, store } from './store/initStore';
+import { persistor } from './store/initStore';
+import { store } from './store/initStore';
 import { PersistGate } from 'redux-persist/integration/react';
+import Spinner from './Components/SpinnerLoading/Spinner';
 
 function App() {
 	return (
 		<React.Fragment>
 			<Provider store={store}>
-				<PersistGate persistor={persistor} loading={
-						<div className="spinner">
-							<h5 className="spinner__title">Подождите немного</h5>
-							<img className="spinner__img" src="https://i.gifer.com/VAyR.gif" alt="" />
-						</div>
-				}>
+				<PersistGate persistor={persistor} loading={<Spinner />}>
 					<BrowserRouter>
 						<GlobalErrorBoundary>
 							<GlobalTheme>

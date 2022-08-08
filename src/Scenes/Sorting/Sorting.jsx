@@ -3,17 +3,19 @@ import React, { useState, useEffect, useContext } from "react";
 //Components
 import { globalThemeContext } from '../../contexts/theme';
 import NotAvailableModal from '../../Components/NotAvailableModal/NotAvailableModal';
-import HiddenBlock from '../../Components/HiddenBlock';
-import SkyLogic from "../../Components/SkyLogic";
+import HiddenBlock from '../../Components/HiddenBlock/HiddenBlock';
+import BackgroundApp from '../../Components/BackgroundApp/BackgroundApp';
 import SelectedBooks from "../../Components/SelectedBooks/SelectedBooks";
 import { PATH } from "../../constans/routes";
 import { fetchBooksList } from "../../api/booksApi";
-import { isLogedIN } from '../../store/userSelectors';
+import { isLogedIN } from '../../store/selectors/userSelectors';
 import { useDispatch, useSelector } from 'react-redux/es/exports';
+import Spinner from "../../Components/SpinnerLoading/Spinner";
 
 //React-Icons
-import { FaLock, FaRegUserCircle, FaSearch } from 'react-icons/fa';
+import { FaLock,FaSearch } from 'react-icons/fa';
 import { AiFillHeart } from 'react-icons/ai';
+import { BiLogIn, BiLogOut } from 'react-icons/bi';
 
 //Routing
 import { useNavigate } from 'react-router-dom';
@@ -87,12 +89,7 @@ function Sorting() {
     }, [selectedBooks]);
 
     if(fetchBooks === null) {
-        return (
-            <div className="spinner">
-                <h5 className="spinner__title">Подождите немного</h5>
-                <img className="spinner__img" src="https://i.gifer.com/VAyR.gif" alt="" />
-            </div>
-        )
+        return <Spinner />
     }
 
     return (
@@ -100,7 +97,7 @@ function Sorting() {
             <header className='header'>
 				<div className='container'>
 					<div className='header__wrap'>
-						<h2 className='header__login' onClick={() => userLoggedIn ? dispatch({type: 'userLogOUT'}) : navigate(PATH.loginPage)}><FaRegUserCircle className='mini-icon-for-ui' />{userLoggedIn ? 'Выйти': 'Войти'}</h2>
+						<h2 className='header__login' onClick={() => userLoggedIn ? dispatch({type: 'userLogOut'}) : navigate(PATH.loginPage)}>{!userLoggedIn ? <div className="login-wrap"> <BiLogOut className='mini-icon-for-ui'/> Войти</div> : <div className="logout-wrap"> <BiLogIn className='mini-icon-for-ui' />Выйти</div>}</h2>
 						<div className='header__input-wrap'>
 							<input
 							type='text'
@@ -145,14 +142,14 @@ function Sorting() {
                             </div>
                             
                         </ul>
-                        <SkyLogic theme={theme} />
+                        <BackgroundApp theme={theme} />
                     </section>
                     <section className='books'>
                         <ul className='books__list'>
                             {filteredBooks.map(filteredBook => {
                                 return (
                                     <div className="books__wrapper" key={filteredBook.id} onClick={() => setBookSrc(filteredBook.src)}>
-                                        <li className='books__item' onClick={filteredBook.isAvailableForGuest ? () => {navigate(`${PATH.bookPage(filteredBook.id)}`)} : () => {setValueOfAvailableModal(true)}}>
+                                        <li className='books__item' onClick={(filteredBook.isAvailableForGuest || userLoggedIn)  ? () => {navigate(`${PATH.bookPage(filteredBook.id)}`)} : () => {setValueOfAvailableModal(true)}}>
                                             <figure className='books__figure'>
                                                 <img src= {filteredBook.src}  alt='' className='books__img' />
                                                 <div className='books__add' onClick={(event) => {
@@ -165,7 +162,7 @@ function Sorting() {
                                                     }
                                                     event.stopPropagation();
                                                 }}><AiFillHeart className={selectedBooks.includes(filteredBook) ? 'fa-add-heart active' : 'fa-add-heart'} /></div>
-                                                {!filteredBook.isAvailableForGuest &&
+                                                {(!filteredBook.isAvailableForGuest && !userLoggedIn) &&
                                                     <FaLock className='fa-lock' />
                                                 }
                                             </figure>

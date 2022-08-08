@@ -1,6 +1,9 @@
 .book__wrapper {
     padding-top: 38px;
     overflow: hidden;
+    background-color: #6c5f5f;
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(https://img.freepik.com/vetores-gratis/fundo-roxo-do-ceu-nublado-com-grupo-de-cumulos-e-nuvens-cirros-ilustracao-plana-dos-desenhos-animados_1284-62768.jpg?w=2000) no-repeat center;
+    background-size: cover;
 }
 
 .book__header {
@@ -14,10 +17,10 @@
 }
 
 .book__page {
-    padding: 40px 50px;
+    padding: 40px 0;
     color: #ebebeb;
     margin-top: 25px;
-    max-width: 1400px;
+    width: calc(100vw - 200px);
     position: relative;
     border-radius: 0 10px 0 10px;
     border-radius: 5px;
@@ -39,11 +42,11 @@
     font-size: 15px;
 }
 .book__text--medium {
-    line-height: 30px;
+    line-height: 35px;
     font-size: 20px;
 }
 .book__text--max {
-    line-height: 40px;
+    line-height: 43px;
     font-size: 30px;
 }
 

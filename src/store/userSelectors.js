@@ -1,1 +1,0 @@
-export const isLogedIN = (state) => state.isLogedIN;

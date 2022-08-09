@@ -8,14 +8,14 @@ import BackgroundApp from '../../Components/BackgroundApp/BackgroundApp';
 import SelectedBooks from "../../Components/SelectedBooks/SelectedBooks";
 import { PATH } from "../../constans/routes";
 import { fetchBooksList } from "../../api/booksApi";
-import { isLogedIN } from '../../store/selectors/userSelectors';
-import { useDispatch, useSelector } from 'react-redux/es/exports';
+import { isLoggedIn, loggedUserName, loggedUserPassword } from '../../store/selectors/userSelectors';
+import { useSelector } from 'react-redux/es/exports';
 import Spinner from "../../Components/SpinnerLoading/Spinner";
 
 //React-Icons
-import { FaLock,FaSearch } from 'react-icons/fa';
+import { FaLock, FaSearch, FaUserAlt } from 'react-icons/fa';
 import { AiFillHeart } from 'react-icons/ai';
-import { BiLogIn, BiLogOut } from 'react-icons/bi';
+import { BiLogIn } from 'react-icons/bi';
 
 //Routing
 import { useNavigate } from 'react-router-dom';
@@ -36,8 +36,11 @@ function Sorting() {
     const [sortingValue, setSortingValue] = useState({});  
     const [valueOfAvailableModal, setValueOfAvailableModal] = useState(false);
     const navigate = useNavigate();
-    const userLoggedIn = useSelector(isLogedIN);
-    const dispatch = useDispatch();
+    const userLoggedIn = useSelector(isLoggedIn);
+
+    const userName = useSelector(loggedUserName);
+    const userPass = useSelector(loggedUserPassword);
+    console.log(`name - ${userName}, password - ${userPass}`);
     
     useEffect(() => {
         fetchBooksList().then(({data}) => {
@@ -97,7 +100,14 @@ function Sorting() {
             <header className='header'>
 				<div className='container'>
 					<div className='header__wrap'>
-						<h2 className='header__login' onClick={() => userLoggedIn ? dispatch({type: 'userLogOut'}) : navigate(PATH.loginPage)}>{!userLoggedIn ? <div className="login-wrap"> <BiLogOut className='mini-icon-for-ui'/> Войти</div> : <div className="logout-wrap"> <BiLogIn className='mini-icon-for-ui' />Выйти</div>}</h2>
+						<h2 className='header__login' onClick={() => 
+                                navigate(userLoggedIn ? PATH.userProfile(userName) : PATH.loginPage)}>
+                                    {!userLoggedIn ? 
+                                        <div className="login-wrap"> <BiLogIn className='mini-icon-for-ui'/> Войти</div>
+                                    : 
+                                        <div className="logout-wrap"> <FaUserAlt className='mini-icon-for-ui' />{userName}</div>
+                                    }
+                        </h2>
 						<div className='header__input-wrap'>
 							<input
 							type='text'

@@ -10,6 +10,6 @@ export const PATH = {
     initialPage: `/`,
     bookPage: (id) => `/bookContent/${id}`,
     loginPage: `/authorization`,
-    supportPage: `support`,
+    supportPage: `/support`,
     userProfile: (userName) => `/userProfile/${userName}`
 }

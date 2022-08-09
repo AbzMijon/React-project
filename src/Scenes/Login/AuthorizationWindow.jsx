@@ -30,6 +30,10 @@ function AuthorizationWindow() {
             isValid = false;
             errorsObject.Имя = "Поле не должно содержать пробелы!";
         }
+        if(formValues.Имя.length > 11) {
+            isValid = false;
+            errorsObject.Имя = "Имя не должно быть длиннее 11 символов";
+        }
         if(!formValues.Почта) {
             isValid = false;
             errorsObject.Почта = "Поле не должно быть пустым!";
@@ -48,7 +52,7 @@ function AuthorizationWindow() {
         <div className="login__wrap">
             <Link to={PATH.initialPage} className='go-home--login'><AiFillHome className="home-icon" /></Link>
             <Formik initialValues={initialFormValues} validate={validateForm} onSubmit={(formValues) => {
-                dispatch({type: 'userLogIn'});
+                dispatch({type: 'userLogIn', payload: {name: formValues.Имя, password: formValues.Пароль} });
                 setSuccessAuth(true);
                 setTimeout(() => {
                     navigate('/');

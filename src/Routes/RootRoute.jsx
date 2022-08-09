@@ -7,8 +7,6 @@ import LoginPage from '../Layouts/LoginPage';
 import AuthorizationWindow from '../Scenes/Login/AuthorizationWindow';
 import BookContent from '../Scenes/BookContent/BookContent';
 import Sorting from '../Scenes/Sorting/Sorting';
-import { isLogedIN } from '../store/selectors/userSelectors';
-import { useSelector } from 'react-redux/es/exports';
 import UserProfile from '../Layouts/userProfile';
 import Profile from '../Scenes/Profile/Profile';
 
@@ -19,10 +17,6 @@ import { ROUTES } from '../constans/routes';
 import { Routes, Route } from 'react-router-dom';
 
 function RootRoute() {
-    const userLoggedIn = useSelector(isLogedIN);
-    if(userLoggedIn) {
-        console.log('omg it is ready to review to Google, you are geius!!!');
-    }
     return (
         <Routes>
             <Route path={ROUTES.initialPage} element={<MainLayout />}>

@@ -1,14 +1,14 @@
 import React from "react";
 
 import { useNavigate } from "react-router-dom";
-import './SelectedBooks.scss';
+import './selectedBooks.scss';
 import { PATH } from '../../constans/routes';
 import { useSelector } from "react-redux";
-import { isLogedIN } from "../../store/selectors/userSelectors";
+import { isLoggedIn } from "../../store/selectors/userSelectors";
 
 function SelectedBooks({ selectedBooks, setCheckLikedBooks, setSelectedBooks }) {
 
-    const userLoggedIn = useSelector(isLogedIN);
+    const userLoggedIn = useSelector(isLoggedIn);
     const navigate = useNavigate();
     return (
         <div className="modal__liked" onClick={() => setCheckLikedBooks(false)}>

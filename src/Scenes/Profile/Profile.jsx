@@ -28,6 +28,7 @@ function Profile() {
         <React.Fragment>
             <div className="profile">
                 <div className="go-home" onClick={() => navigate(PATH.initialPage)}><AiFillHome className="home-icon"/></div>
+                <h2 className="profile__title">Личный кабинет</h2>
                 <div className="profile__logout" onClick={logOut}>Выйти<BiLogOut className="logout-icon" /></div>
                 <div className="profile__wrap">
                     <FaUserAlt className="profile__icon" />

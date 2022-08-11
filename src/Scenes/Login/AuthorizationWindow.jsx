@@ -63,7 +63,7 @@ function AuthorizationWindow() {
                         <h3 className="login__title">Авторизация</h3>
                         <FormikInput name='Имя' type='text' placeholder='крутойЧел228' required className="login__name" />
                         <FormikInput name='Почта' type='email' placeholder='vasyapupkin@gmail.com' required className="login__email" />
-                        <FormikInput name='Пароль' type='password' required className="login__pass" placeholder="сложный пароль" />
+                        <FormikInput name='Пароль' type='password' required className="login__pass" placeholder="пароль" />
                         <div className="login__footer-card">
                             <button className="login__submit" type={"submit"}>Отправить</button>
                             <Link to={PATH.supportPage} className="login__forgot">Помогите мне!</Link>

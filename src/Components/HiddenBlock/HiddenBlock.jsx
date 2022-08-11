@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import './hiddenBlock.scss';
 
-function HiddenBlock({ dataArray, handleSelect }) {
+function HiddenBlock({ searchParams, dataArray, handleSelect }) {
 
     const [selectValue, setSelectValue] = useState(''); 
 
@@ -13,7 +13,7 @@ function HiddenBlock({ dataArray, handleSelect }) {
 
     return (
             <li className="tools__item">
-                <select className='tools__hidden-list' name='toolItem' defaultValue={selectValue} onChange={selectChange}>
+                <select className='tools__hidden-list' name='toolItem' defaultValue={searchParams || selectValue} onChange={selectChange}>
                     {
                         dataArray.map((elem, i) => {
                             return <option key={i} className='tools__hidden-item'>{elem}</option>

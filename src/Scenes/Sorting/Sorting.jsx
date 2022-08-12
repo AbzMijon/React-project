@@ -2,19 +2,18 @@ import React, { useState, useEffect, useContext } from "react";
 
 import { globalThemeContext } from '../../contexts/theme';
 import NotAvailableModal from '../../Components/NotAvailableModal/NotAvailableModal';
-import HiddenBlock from '../../Components/HiddenBlock/HiddenBlock';
-import BackgroundApp from '../../Components/BackgroundApp/BackgroundApp';
-import SelectedBooks from "../../Components/SelectedBooks/SelectedBooks";
 import { PATH } from "../../constans/routes";
 import { fetchBooksList } from "../../api/booksApi";
-import { isLoggedIn, loggedUserName, loggedUserPassword } from '../../store/selectors/userSelectors';
+import { isLoggedIn } from '../../store/selectors/userSelectors';
 import { useSelector } from 'react-redux/es/exports';
 import Spinner from "../../Components/SpinnerLoading/Spinner";
 
+import Header from "../../Components/Table/Header/Header";
+import Tools from "../../Components/Table/Tools/Tools";
+
 //React-Icons
-import { FaLock, FaSearch, FaUserAlt } from 'react-icons/fa';
+import { FaLock } from 'react-icons/fa';
 import { AiFillHeart } from 'react-icons/ai';
-import { BiLogIn } from 'react-icons/bi';
 
 //Routing
 import { useNavigate, useSearchParams } from 'react-router-dom';
@@ -26,10 +25,8 @@ function Sorting() {
 
     const [searchParams, setSearchParams] = useSearchParams();
     const [fetchBooks, setFetchBooks] = useState(null);
-    const {theme, setTheme} = useContext(globalThemeContext);
     const [filteredBooks, setFilteredBooks] = useState([]);
     const [selectedBooks, setSelectedBooks] = useState(JSON.parse(localStorage.getItem('selectedBooks')) || []);
-    const [checkLikedBooks, setCheckLikedBooks] = useState(false);
     const [searchString, setsearchString] = useState(searchParams.get('searchString') || '');
     const [bookSrc, setBookSrc] = useState('');
     const [allChecked, setAllChecked] = useState(searchParams.get('onlyAvailable') === 'true' ? true : false);
@@ -37,9 +34,6 @@ function Sorting() {
     const [valueOfAvailableModal, setValueOfAvailableModal] = useState(false);
     const navigate = useNavigate();
     const userLoggedIn = useSelector(isLoggedIn);
-
-    const userName = useSelector(loggedUserName);
-    const userPass = useSelector(loggedUserPassword);
     
     useEffect(() => {
         fetchBooksList().then(({data}) => {
@@ -76,12 +70,6 @@ function Sorting() {
         return isPassed;
     });
 
-    const updateData = (sortFieldName) => (childSelectValue) => {
-        const newSoringValue = {...sortingValue};
-        newSoringValue[sortFieldName] = childSelectValue;
-        setSortingValue(newSoringValue);
-    }
-
     useEffect(() => {
         if(fetchBooks !== null) {
             setFilteredBooks(filterBooks(fetchBooks, sortingValue, allChecked, searchString));
@@ -99,63 +87,10 @@ function Sorting() {
 
     return (
         <React.Fragment>
-            <header className='header'>
-				<div className='container'>
-					<div className='header__wrap'>
-						<h2 className='header__login' onClick={() => 
-                            navigate(userLoggedIn ? PATH.userProfile(userName) : PATH.loginPage)}>
-                                {!userLoggedIn ? 
-                                    <div className="login-wrap"> <BiLogIn className='mini-icon-for-ui'/> Войти</div>
-                                : 
-                                        <div className="logout-wrap"> <FaUserAlt className='mini-icon-for-ui' />{userName}</div>
-                                }
-                        </h2>
-						<div className='header__input-wrap'>
-							<input
-							type='text'
-							placeholder='Поиск..'
-							className='header__search'
-							value={searchString} 
-							onChange={e => setsearchString(e.target.value)} />
-							
-							<button className='header__submit' type='submit'>{<FaSearch className='fa-search'/>}</button>
-								{searchString &&
-									<p className='header__search-prompt'>{searchString + '?'}</p>
-								}
-							
-						</div>
-						<div className='header__liked' onClick={() => setCheckLikedBooks(true)}><AiFillHeart className='fa-heart' />
-                            {selectedBooks.length > 0 &&
-                                <div className="header__heart-counter">{selectedBooks.length}</div>
-                            }
-                        </div>
-                        {checkLikedBooks &&
-                            <SelectedBooks setValueOfAvailableModal={setValueOfAvailableModal} selectedBooks={selectedBooks} setSelectedBooks={setSelectedBooks} setCheckLikedBooks={setCheckLikedBooks} />
-                        }
-					</div>
-                    
-                </div>
-			</header>
+            <Header searchString={searchString} setsearchString={setsearchString} selectedBooks={selectedBooks} setSelectedBooks={setSelectedBooks} setValueOfAvailableModal={setValueOfAvailableModal} />
             <main className='main'>
                 <div className='container'>  
-                    <section className='tools'>
-                        <ul className='tools__list'>
-                            <HiddenBlock searchParams={searchParams.get('author')} handleSelect={updateData('author')} dataArray={['Все авторы', 'Ханс Христиан Андерсен', 'Леонид Пантеллев', 'Виктор Драгунский', 'Джозеф Джейкобс', 'Дина Непомнящая', 'Эндрю Лэнг', 'Джек Лондон']}/>
-                            <HiddenBlock searchParams={searchParams.get('genre')} handleSelect={updateData('genre')} dataArray={['Все жанры', 'Приключение', 'Обучение', 'Колыбельная песня']}/>
-                            <HiddenBlock searchParams={searchParams.get('onlyText')} handleSelect={updateData('onlyText')} dataArray={['Показать все', 'Показать только с текстом', 'Показать только со звуком']}/>
-                            <div className='tools__item'>
-                                <input type='checkbox' checked={allChecked ? true : false} className='tools__checkbox' onChange={() => setAllChecked(!allChecked)} id='tools__check' />
-                                <label htmlFor='tools__check'><p className='tools__available'>Посмотреть доступные</p></label> 
-                            </div>
-                            <div className='tools__theme' onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}>
-                                <div className={theme === 'dark' ? "tools__wrap-theme--dark wrap-theme" : "tools__wrap-theme wrap-theme"}>
-                                    <div className={theme === 'dark' ? "tools__circle-theme--dark circle" : "tools__circle-theme circle"}></div>
-                                </div>
-                            </div>
-                            
-                        </ul>
-                        <BackgroundApp theme={theme} />
-                    </section>
+                    <Tools sortingValue={sortingValue} setSortingValue={setSortingValue} allChecked={allChecked} setAllChecked={setAllChecked} />
                     <section className='books'>
                         <ul className='books__list'>
                             {filteredBooks.map(filteredBook => {

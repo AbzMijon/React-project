@@ -2,15 +2,18 @@ import axios from "axios";
 import { store } from '../store/initStore';
 
 const fakeServerInstance = axios.create({
-    baseURL: "http://localhost:800/",
+    baseURL: "http://localhost:8000/",
 })
 
 fakeServerInstance.interceptors.response.use(
-    response => response,
-    response => {() => {
-        store.dispatch({type: 'throwError'})
+    response =>  {
+        store.dispatch({type: 'noError'})
+        return response;
+    },
+    response => {
+        store.dispatch({type: 'throwError', payload: {message: response.message}})
         throw new Error(response);
-    }}
+    }
 )
 
 export default fakeServerInstance;

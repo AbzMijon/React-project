@@ -21,7 +21,7 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 import './sorting.scss';
 import ServerError from "../../Components/ServerError/ServerError";
 
-import { isServerError } from "../../store/selectors/userSelectors";
+import { isServerError } from "../../store/selectors/serverErrorSelectors";
 
 function Sorting() {
 
@@ -36,8 +36,9 @@ function Sorting() {
     const [valueOfAvailableModal, setValueOfAvailableModal] = useState(false);
     const navigate = useNavigate();
     const userLoggedIn = useSelector(isLoggedIn);
-
     const isError = useSelector(isServerError);
+    console.log(isError);
+
     
     useEffect(() => {
         fetchBooksList().then(({data}) => {
@@ -85,7 +86,7 @@ function Sorting() {
         localStorage.setItem('selectedBooks', JSON.stringify(selectedBooks));
     }, [selectedBooks]);
 
-    if(fetchBooks === null) {
+    if(fetchBooks === null && !isError) {
         return <Spinner />
     }
 

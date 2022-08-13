@@ -1,10 +1,10 @@
 import { combineReducers } from "redux"
-import { serverError } from "./serverError";
+import { serverErrorReducer } from "./serverErrorReducer";
 import { userReducer } from './userReducer';
 
 const rootReducer = combineReducers({
     user: userReducer,
-    server: serverError,
+    server: serverErrorReducer,
 });
 
 export default rootReducer;

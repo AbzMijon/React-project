@@ -5,11 +5,15 @@ import { fetchBooksList } from "../../api/booksApi";
 import { PATH } from "../../constans/routes";
 import './bookContent.scss';
 import Spinner from "../../Components/SpinnerLoading/Spinner";
+import { useSelector } from "react-redux";
+import { isServerError } from "../../store/selectors/serverErrorSelectors";
+
 function BookContent() {
 
     const [fontSizeType, setFontSizeType] = useState('medium');
     const {bookID} = useParams();
     const [book, setBook] = useState(null);
+    const isError = useSelector(isServerError);
 
     useEffect(() => {   
         fetchBooksList().then(({data}) => {
@@ -18,7 +22,7 @@ function BookContent() {
         })
     }, [bookID])
 
-    if(book === null && !serverError) {
+    if(book === null && !isError) {
         return <Spinner />
     }
 

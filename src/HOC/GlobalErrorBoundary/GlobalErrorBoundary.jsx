@@ -21,9 +21,7 @@ class GlobalErrorBoundary extends Component {
             return (
                 <div className="global-error">
                     <h2 className="global-error__title">Ой, что-то пошло не так! :(</h2>
-                    <Link to='/'>
-                        <button className="global-error__btn btn" type="button">Сообщить о проблеме</button>
-                    </Link>
+                    <a target="_blank" href="https://t.me/Abz_mijon"><button className="global-error__btn btn" type="button">Сообщить о проблеме</button></a>
                 </div>
             )
         }

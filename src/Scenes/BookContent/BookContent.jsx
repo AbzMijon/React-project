@@ -5,7 +5,6 @@ import { fetchBooksList } from "../../api/booksApi";
 import { PATH } from "../../constans/routes";
 import './bookContent.scss';
 import Spinner from "../../Components/SpinnerLoading/Spinner";
-
 function BookContent() {
 
     const [fontSizeType, setFontSizeType] = useState('medium');
@@ -16,10 +15,10 @@ function BookContent() {
         fetchBooksList().then(({data}) => {
             const findBook = data.find(bookApi => bookApi.id === bookID);
             setBook(findBook);
-        }).catch(() => {})
+        })
     }, [bookID])
 
-    if(book === null) {
+    if(book === null && !serverError) {
         return <Spinner />
     }
 

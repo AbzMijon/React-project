@@ -1,6 +1,5 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 
-import { globalThemeContext } from '../../contexts/theme';
 import NotAvailableModal from '../../Components/NotAvailableModal/NotAvailableModal';
 import { PATH } from "../../constans/routes";
 import { fetchBooksList } from "../../api/booksApi";
@@ -20,6 +19,9 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 
 //styles
 import './sorting.scss';
+import ServerError from "../../Components/ServerError/ServerError";
+
+import { isServerError } from "../../store/selectors/userSelectors";
 
 function Sorting() {
 
@@ -34,11 +36,13 @@ function Sorting() {
     const [valueOfAvailableModal, setValueOfAvailableModal] = useState(false);
     const navigate = useNavigate();
     const userLoggedIn = useSelector(isLoggedIn);
+
+    const isError = useSelector(isServerError);
     
     useEffect(() => {
         fetchBooksList().then(({data}) => {
             setFetchBooks(data);
-        })
+        });
     }, [])
 
     const filterBooks = (booksToFilter, sortingValue, handleAvailable, searchString) =>  booksToFilter.filter(book => {
@@ -87,6 +91,7 @@ function Sorting() {
 
     return (
         <React.Fragment>
+            {isError && <ServerError />}
             <Header searchString={searchString} setsearchString={setsearchString} selectedBooks={selectedBooks} setSelectedBooks={setSelectedBooks} setValueOfAvailableModal={setValueOfAvailableModal} />
             <main className='main'>
                 <div className='container'>  

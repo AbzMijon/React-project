@@ -10,6 +10,7 @@ import { BiLogIn } from 'react-icons/bi';
 import { AiFillHeart } from 'react-icons/ai';
 import { FaSearch, FaUserAlt } from 'react-icons/fa';
 import SelectedBooks from '../../SelectedBooks/SelectedBooks';
+import './header.scss';
 
 function Header({searchString, setsearchString, selectedBooks, setSelectedBooks, setValueOfAvailableModal}) {
 

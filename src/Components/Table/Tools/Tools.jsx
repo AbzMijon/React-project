@@ -4,6 +4,7 @@ import HiddenBlock from '../../HiddenBlock/HiddenBlock';
 import BackgroundApp from '../../BackgroundApp/BackgroundApp';
 import { globalThemeContext } from '../../../contexts/theme';
 import { useSearchParams } from 'react-router-dom';
+import './tools.scss';
 
 function Tools({ sortingValue, setSortingValue, allChecked, setAllChecked }) {
 	const [searchParams, setSearchParams] = useSearchParams();

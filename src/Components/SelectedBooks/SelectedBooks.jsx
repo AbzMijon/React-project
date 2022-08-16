@@ -30,7 +30,7 @@ function SelectedBooks({ selectedBooks, setCheckLikedBooks, setSelectedBooks }) 
                                     const newSelectedBooks = selectedBooks.filter(newBook => newBook.id !== findElem.id);
                                     setSelectedBooks(newSelectedBooks);
                                 }}>x</button>
-                                <img className="selected__img" src={selectedBook.src} alt="selected image" onClick={(selectedBook.isAvailableForGuest || userLoggedIn) ? () => navigate(PATH.bookPage(selectedBook.id)) : () => console.log('NOT AVAILABLE BOOK!')} />
+                                <img className="selected__img" src={selectedBook.src} alt="selected image" onClick={(selectedBook.isAvailableForGuest || userLoggedIn) ? () => navigate(PATH.bookPage(selectedBook.id)) : () => null} />
                                 <h5 className="selected__name-book">{selectedBook.title}</h5>
                             </li>
                         )

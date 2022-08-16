@@ -58,20 +58,13 @@ function Header({searchString, setsearchString, selectedBooks, setSelectedBooks,
 						{<FaSearch className="fa-search" />}
 					</button>
 					{searchString && (
-						<p className="header__search-prompt">
-							{searchString + '?'}
-						</p>
+						<p className="header__search-prompt">{searchString + '?'}</p>
 					)}
 				</div>
-				<div
-					className="header__liked"
-					onClick={() => setCheckLikedBooks(true)}
-				>
+				<div className="header__liked" onClick={() => setCheckLikedBooks(true)}>
 					<AiFillHeart className="fa-heart" />
 					{selectedBooks.length > 0 && (
-						<div className="header__heart-counter">
-							{selectedBooks.length}
-						</div>
+						<div className="header__heart-counter">{selectedBooks.length}</div>
 					)}
 				</div>
 				{checkLikedBooks && (

@@ -4,6 +4,7 @@ import { globalThemeContext } from '../../contexts/theme';
 function GlobalTheme(props) {
     
     const [theme, setTheme] = useState(JSON.parse(localStorage.getItem('globalTheme')) || 'light'); 
+    
     useEffect(() => {
         const root = document.querySelector(':root');
         const rootsArray = ['backgroundTheme', 'skyTheme', 'componentsTheme', 'searchBackgroundTheme', 'colorTheme'];

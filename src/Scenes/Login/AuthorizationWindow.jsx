@@ -45,7 +45,7 @@ function AuthorizationWindow() {
 
         isValid = false;
 
-        if (!isValid) return errorsObject
+        if(!isValid) return errorsObject
     }
 
     return (
@@ -73,7 +73,6 @@ function AuthorizationWindow() {
                 </div>
             </Formik>
         </div>
-        
     )
 }
 

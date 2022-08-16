@@ -23,33 +23,33 @@ function Tools({ sortingValue, setSortingValue, allChecked, setAllChecked }) {
 					searchParams={searchParams.get('author')}
 					handleSelect={updateData('author')}
 					dataArray={[
-						'Все авторы',
-						'Ханс Христиан Андерсен',
-						'Леонид Пантеллев',
-						'Виктор Драгунский',
-						'Джозеф Джейкобс',
-						'Дина Непомнящая',
-						'Эндрю Лэнг',
-						'Джек Лондон',
+						{name: 'Все авторы', id: 0},
+						{name :'Ханс Христиан Андерсен', id: 1},
+						{name :'Леонид Пантеллев', id: 2},
+						{name :'Виктор Драгунский', id: 3},
+						{name :'Джозеф Джейкобс', id: 4},
+						{name :'Дина Непомнящая', id: 5},
+						{name :'Эндрю Лэнг', id: 6},
+						{name :'Джек Лондон', id: 7},
 					]}
 				/>
 				<HiddenBlock
 					searchParams={searchParams.get('genre')}
 					handleSelect={updateData('genre')}
 					dataArray={[
-						'Все жанры',
-						'Приключение',
-						'Обучение',
-						'Колыбельная песня',
+						{name: 'Все жанры', id: 0},
+						{name: 'Приключение', id: 1},
+						{name: 'Обучение', id: 2},
+						{name: 'Колыбельная песня', id: 3},
 					]}
 				/>
 				<HiddenBlock
 					searchParams={searchParams.get('onlyText')}
 					handleSelect={updateData('onlyText')}
 					dataArray={[
-						'Показать все',
-						'Показать только с текстом',
-						'Показать только со звуком',
+						{name: 'Показать все', id: 0},
+						{name: 'Показать только с текстом', id: 1},
+						{name: 'Показать только со звуком', id: 2},
 					]}
 				/>
 				<div className="tools__item">

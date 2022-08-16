@@ -3,10 +3,11 @@ import { useParams, Link } from 'react-router-dom';
 import { AiFillHome } from 'react-icons/ai';
 import { fetchBooksList } from "../../api/booksApi";
 import { PATH } from "../../constans/routes";
-import './bookContent.scss';
 import Spinner from "../../Components/SpinnerLoading/Spinner";
 import { useSelector } from "react-redux";
 import { isServerError } from "../../store/selectors/serverErrorSelectors";
+import ServerError from '../../Components/ServerError/ServerError';
+import './bookContent.scss';
 
 function BookContent() {
 
@@ -19,7 +20,7 @@ function BookContent() {
         fetchBooksList().then(({data}) => {
             const findBook = data.find(bookApi => bookApi.id === bookID);
             setBook(findBook);
-        })
+        })    
     }, [bookID])
 
     if(book === null && !isError) {
@@ -28,6 +29,7 @@ function BookContent() {
 
     return (
         <React.Fragment>
+            {isError && <ServerError />}
             {book &&
                 <div className="book__wrapper">
                     <header className="book__header">

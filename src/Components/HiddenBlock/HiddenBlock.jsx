@@ -15,8 +15,8 @@ function HiddenBlock({ searchParams, dataArray, handleSelect }) {
             <li className="tools__item">
                 <select className='tools__hidden-list' name='toolItem' defaultValue={searchParams || selectValue} onChange={selectChange}>
                     {
-                        dataArray.map((elem, i) => {
-                            return <option key={i} className='tools__hidden-item'>{elem}</option>
+                        dataArray.map(elem => {
+                            return <option key={elem.id} className='tools__hidden-item'>{elem.name}</option>
                         })
                     }
                 </select>

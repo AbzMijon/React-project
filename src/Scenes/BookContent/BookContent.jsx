@@ -9,7 +9,7 @@ import { isServerError } from '../../store/selectors/serverErrorSelectors';
 import ServerError from '../../Components/ServerError/ServerError';
 import './bookContent.scss';
 import Words from '../../Components/Words/Words';
-import Pagingation from '../../Components/Pagination/Pagingation';
+import Pagination from '../../Components/Pagination/Pagination';
 
 function BookContent() {
 	const [fontSizeType, setFontSizeType] = useState('medium');
@@ -18,6 +18,7 @@ function BookContent() {
 
 	const [book, setBook] = useState(null);
 	const [currentPage, setCurrentPage] = useState(1);
+	console.log(currentPage);
 	const [wordsPerPage] = useState(300);
 
 	
@@ -64,7 +65,7 @@ function BookContent() {
 								<Words words={currentWord}/>
 							</div>
 						</div>
-						<Pagingation wordsPerPage={wordsPerPage} totalWords={book.text.split(' ').length} paginate={paginate}/>
+						<Pagination wordsPerPage={wordsPerPage} totalWords={book.text.split(' ').length} paginate={paginate} currentPage={currentPage}/>
 					</main>
 				</div>
 			)}

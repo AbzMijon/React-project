@@ -2,7 +2,7 @@ import React from "react";
 
 import './pagination.scss';
 
-function Pagingation({wordsPerPage, totalWords, paginate}) {
+function Pagination({wordsPerPage, totalWords, paginate, currentPage}) {
     const pageNumbers = [];
 
     for (let i = 1; i <= Math.ceil(totalWords / wordsPerPage); i++) {
@@ -14,7 +14,7 @@ function Pagingation({wordsPerPage, totalWords, paginate}) {
                 {
                     pageNumbers.map(number => {
                         return (
-                            <li className="pagination__item" key={number} onClick={() => paginate(number)}>
+                            <li className={currentPage && currentPage === number ? "pagination__item--active" : "pagination__item"} key={number} onClick={() => paginate(number)}>
                                 <a href="#" className="pagination__link">{number}</a>
                             </li>
                         )
@@ -25,4 +25,4 @@ function Pagingation({wordsPerPage, totalWords, paginate}) {
     )
 }
 
-export default Pagingation;
+export default Pagination;

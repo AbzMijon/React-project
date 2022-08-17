@@ -18,24 +18,20 @@
 }
 
 .book__page {
-    padding: 40px 0;
+    padding: 10px;
     color: #ebebeb;
-    margin-top: 25px;
+    border: 30px solid #fff;
     width: calc(100vw - 200px);
     position: relative;
     border-radius: 0 10px 0 10px;
     border-radius: 5px;
     font-size: 25px;
-    margin: 30px auto;
+    margin: 25px auto 0 auto;
 }
 
 .book__text--mini, .book__text--medium, .book__text--max{
     margin: 30px 0;
     transition: 0.2s all;
-    &::first-letter {
-        font-size: 40px;
-        color: #afa1a1(255, 255, 255);
-    }
 }
 
 .book__text--mini {

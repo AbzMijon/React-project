@@ -20,17 +20,29 @@ function SelectedBooks({ selectedBooks, setCheckLikedBooks, setSelectedBooks }) 
                         'Вы ничего не выбрали!'
                     }
                 </h2>
-                <button className="selected__close" onClick={() => setCheckLikedBooks(false)}>x</button>
+                <button className="selected__close"
+                    onClick={() => setCheckLikedBooks(false)}>
+                    x
+                </button>
                 <ul className="selected__list">
                     {selectedBooks.map(selectedBook => {
                         return (
                             <li className="selected__book" key={selectedBook.id}>
-                                <button className="selected__delete-book" type="button" onClick={() => {
-                                    const findElem = [...selectedBooks].find(findElem => +findElem.id === +selectedBook.id);
-                                    const newSelectedBooks = selectedBooks.filter(newBook => newBook.id !== findElem.id);
-                                    setSelectedBooks(newSelectedBooks);
+                                <button className="selected__delete-book" type="button"
+                                    onClick={() => {
+                                        const findElem = [...selectedBooks].find(findElem => +findElem.id === +selectedBook.id);
+                                        const newSelectedBooks = selectedBooks.filter(newBook => newBook.id !== findElem.id);
+                                        setSelectedBooks(newSelectedBooks);
                                 }}>x</button>
-                                <img className="selected__img" src={selectedBook.src} alt="selected image" onClick={(selectedBook.isAvailableForGuest || userLoggedIn) ? () => navigate(PATH.bookPage(selectedBook.id)) : () => null} />
+                                <img 
+                                    className="selected__img"
+                                    src={selectedBook.src} alt="selected image"
+                                    onClick={(selectedBook.isAvailableForGuest || userLoggedIn) 
+                                    ? 
+                                        () => navigate(PATH.bookPage(selectedBook.id)) 
+                                    : 
+                                        () => null} 
+                                />
                                 <h5 className="selected__name-book">{selectedBook.title}</h5>
                             </li>
                         )

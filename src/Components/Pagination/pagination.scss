@@ -1,0 +1,28 @@
+.pagination {
+    margin: -20px auto 0 auto;
+    display: flex;
+    background-color: #fff;
+    align-items: center;
+    width: fit-content;
+}
+
+.pagination__item {
+    width: 50px;
+    height: 100%;
+    color: #000;
+    border: 2px solid #000;
+    padding: 7px;
+    z-index: 2 ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    &:hover {
+        transform: scale(1.1);
+    }
+}
+
+.pagination__link {
+    color: #000;
+    font-size: 25px;
+}

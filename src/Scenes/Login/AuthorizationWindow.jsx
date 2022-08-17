@@ -66,7 +66,7 @@ function AuthorizationWindow() {
                         <FormikInput name='Пароль' type='password' required className="login__pass" placeholder="пароль" />
                         <div className="login__footer-card">
                             <button className="login__submit" type={"submit"}>Отправить</button>
-                            <Link to={PATH.supportPage} className="login__forgot">Помогите мне!</Link>
+                            <p className="login__forgot">У меня есть аккаунт!</p>
                         </div>
                     </Form>
                         {successAuth && <h4 className="success__auth-title">Вы успешно зарегистрировались!</h4>}

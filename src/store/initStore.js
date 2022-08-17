@@ -5,17 +5,18 @@ import storage from 'redux-persist/lib/storage';
 import rootReducer from './reducers/rootReducer';
 
 const persistConfig = {
-    key: 'root',
-    storage,
-    version: 1,
-    stateReconciler: hardSet,
-}
+	key: 'root',
+	storage,
+	version: 1,
+	stateReconciler: hardSet,
+};
 
 const middlewareList = [];
 const middlewareEnhancer = applyMiddleware(...middlewareList);
 
 const enhancersList = [];
-if (window.__REDUX_DEVTOOLS_EXTENSION__) enhancersList.push(window.__REDUX_DEVTOOLS_EXTENSION__());
+if (window.__REDUX_DEVTOOLS_EXTENSION__)
+	enhancersList.push(window.__REDUX_DEVTOOLS_EXTENSION__());
 const composedEnhancers = compose(middlewareEnhancer, ...enhancersList);
 
 const initPersistReduser = persistReducer(persistConfig, rootReducer);

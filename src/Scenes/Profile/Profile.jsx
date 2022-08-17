@@ -37,7 +37,6 @@ function Profile() {
                     <ul className="profile__menu">
                         <li className="profile__item" onClick={() => navigate(PATH.bookPage(randomInteger(1, 9)))}>Посоветуйте мне книгу!</li>
                         <li className="profile__item" onClick={logOut}>Я хочу выйти с аккаунта!</li>
-                        <li className="profile__item" onClick={() => navigate(PATH.supportPage)}>Мне нужна служба поддержки!</li>
                         <li className="profile__item"><a target="_blank" href="https://t.me/Abz_mijon">Хочу написать разработчику сайта</a></li>
                     </ul>
                 </div>

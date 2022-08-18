@@ -2,7 +2,7 @@ import React from "react";
 
 import './words.scss';
 
-function Words({words}) {
+function Words({ words }) {
     return (
         <React.Fragment>
             {words.join(' ')}

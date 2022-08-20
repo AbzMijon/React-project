@@ -9,7 +9,7 @@ import { useSelector } from "react-redux";
 import NotAvailableModal from "../../NotAvailableModal/NotAvailableModal";
 import './books.scss';
 
-function Books({filteredBooks, bookSrc, setBookSrc, valueOfAvailableModal, setValueOfAvailableModal, selectedBooks, setSelectedBooks}) {
+function Books({ filteredBooks, bookSrc, setBookSrc, valueOfAvailableModal, setValueOfAvailableModal, selectedBooks, setSelectedBooks }) {
 
     const navigate = useNavigate();
     const userLoggedIn = useSelector(isLoggedIn);

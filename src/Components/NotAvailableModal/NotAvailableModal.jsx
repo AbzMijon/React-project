@@ -2,11 +2,7 @@ import React from 'react';
 
 import './notAvailableModa.scss';
 
-function NotAvailableModal({
-	bookSrc,
-	valueOfAvailableModal,
-	setValueOfAvailableModal,
-}) {
+function NotAvailableModal({ bookSrc, valueOfAvailableModal, setValueOfAvailableModal }) {
 	return (
 		<div className={valueOfAvailableModal ? 'modal active' : 'modal'}
 			onClick={() => {

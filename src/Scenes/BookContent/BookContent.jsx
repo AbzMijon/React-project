@@ -19,12 +19,13 @@ function BookContent() {
 	const [book, setBook] = useState(null);
 	const [currentPage, setCurrentPage] = useState(1);
 	const [wordsPerPage] = useState(300);
-
+	const [words, setWords] = useState(null);
 	
 	useEffect(() => {
 		fetchBooksList().then(({ data }) => {
 			const findBook = data.find((bookApi) => bookApi.id === bookID);
 			setBook(findBook);
+			setWords(findBook.text.split(' '));
 		});
 	}, [bookID]);
 	
@@ -34,7 +35,7 @@ function BookContent() {
 
 	const lastWordIndex = currentPage * wordsPerPage;
 	const firstWordIndex = lastWordIndex - wordsPerPage;
-	const currentWord = book.text.split(' ').slice(firstWordIndex, lastWordIndex);
+	const currentWord = words.slice(firstWordIndex, lastWordIndex);
 
 	const paginate = pageNumber => setCurrentPage(pageNumber);
 
@@ -58,15 +59,16 @@ function BookContent() {
 						</select>
 					</header>
 					<main className="book__main">
-						<p className="book__word-amount">{book.text.split(' ').length} слов/а в тексте!</p>
+						<p className="book__word-amount">{words.length} слов/а в тексте!</p>
 						<div className="book__page">
+						<h4 className="book__active-page">{`Страница ${currentPage} / ${Math.ceil(words.length / wordsPerPage)}`}</h4>
 							<div className={'book__text--' + fontSizeType}>
-								<Words words={currentWord}/>
+								<Words currentWord={currentWord}/>
 							</div>
 						</div>
 						<Pagination
 							wordsPerPage={wordsPerPage} 
-							totalWords={book.text.split(' ').length} 
+							totalWords={words.length} 
 							paginate={paginate} currentPage={currentPage} 
 							setCurrentPage={setCurrentPage}/>
 					</main>

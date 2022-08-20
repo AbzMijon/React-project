@@ -1,5 +1,5 @@
 .book__wrapper {
-    padding-top: 38px;
+    padding: 38px 0;
     overflow: hidden;
     background-color: #6c5f5f;
     background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(https://img.freepik.com/vetores-gratis/fundo-roxo-do-ceu-nublado-com-grupo-de-cumulos-e-nuvens-cirros-ilustracao-plana-dos-desenhos-animados_1284-62768.jpg?w=2000) no-repeat center;
@@ -18,9 +18,12 @@
 }
 
 .book__page {
-    padding: 10px;
-    color: #ebebeb;
-    width: calc(100vw - 200px);
+    background: url(https://kartinkin.net/uploads/posts/2021-07/1626151116_56-kartinkin-com-p-papirus-fon-krasivo-64.png) no-repeat center;
+    background-size: cover;
+    padding: 170px 35px;
+    max-width: 820px;
+    height: 70%;
+    color: #000000;
     position: relative;
     border-radius: 0 10px 0 10px;
     border-radius: 5px;
@@ -76,4 +79,19 @@
     color: #e4e4e4;
     font-weight: bold;
     text-align: center;
+}
+
+.book__active-page {
+    margin-top: 10px;
+}
+
+@media screen and (max-width: 795px) {
+    .book__header {
+        flex-direction: column;
+        row-gap: 30px;
+        margin-bottom: 30px;
+    }
+    .book__page {
+        background: #e6c890;
+    }
 }

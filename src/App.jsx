@@ -12,19 +12,17 @@ import Spinner from './Components/SpinnerLoading/Spinner';
 
 function App() {
 	return (
-		<React.Fragment>
-			<Provider store={store}>
-				<PersistGate persistor={persistor} loading={<Spinner />}>
-					<BrowserRouter>
-						<GlobalErrorBoundary>
-							<GlobalTheme>
-								<RootRoute />
-							</GlobalTheme>
-						</GlobalErrorBoundary>
-					</BrowserRouter>
-				</PersistGate>
-			</Provider>
-		</React.Fragment>
+		<Provider store={store}>
+			<PersistGate persistor={persistor} loading={<Spinner />}>
+				<BrowserRouter>
+					<GlobalErrorBoundary>
+						<GlobalTheme>
+							<RootRoute />
+						</GlobalTheme>
+					</GlobalErrorBoundary>
+				</BrowserRouter>
+			</PersistGate>
+		</Provider>
 	);
 }
 export default App;

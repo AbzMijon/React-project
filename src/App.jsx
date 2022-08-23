@@ -18,7 +18,7 @@ function App() {
 					<GlobalErrorBoundary>
 						<GlobalTheme>
 							<RootRoute />
-						</GlobalTheme>
+						</GlobalTheme>s
 					</GlobalErrorBoundary>
 				</BrowserRouter>
 			</PersistGate>

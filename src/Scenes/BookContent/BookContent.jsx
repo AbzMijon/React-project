@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { AiFillHome } from 'react-icons/ai';
 import { fetchBooksList } from '../../api/booksApi';
-import { PATH } from '../../constans/routes';
+import { PATH } from '../../constans/routes.js';
 import Spinner from '../../Components/SpinnerLoading/Spinner';
 import { useSelector } from 'react-redux';
 import { isServerError } from '../../store/selectors/serverErrorSelectors';

@@ -1,5 +1,5 @@
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin'); //??
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
 	mode: 'development',
@@ -45,6 +45,6 @@ module.exports = {
 		],
 	},
 	resolve: {
-		extensions: ['.json', '.js', '.jsx'],
+		extensions: ['.json', '.js', '.jsx', '.ts', '.tsx'],
 	},
 };

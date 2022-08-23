@@ -2,7 +2,7 @@ import React from "react";
 
 import { isLoggedIn } from "../../../store/selectors/userSelectors";
 import { useNavigate } from "react-router-dom";
-import { PATH } from "../../../constans/routes";
+import { PATH } from "../../../constans/routes.js";
 import { FaLock } from 'react-icons/fa';
 import { AiFillHeart } from 'react-icons/ai';
 import { useSelector } from "react-redux";

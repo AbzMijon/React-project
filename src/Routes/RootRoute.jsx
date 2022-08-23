@@ -11,7 +11,7 @@ import UserProfile from '../Layouts/userProfile';
 import Profile from '../Scenes/Profile/Profile';
 
 //CONSTANS
-import { ROUTES } from '../constans/routes';
+import { ROUTES } from '../constans/routes.js';
 
 //Routing
 import { Routes, Route } from 'react-router-dom';

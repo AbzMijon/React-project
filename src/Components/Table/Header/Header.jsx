@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { isLoggedIn } from '../../../store/selectors/userSelectors';
-import { PATH } from '../../../constans/routes';
+import { PATH } from '../../../constans/routes.js';
 import { loggedUserName } from '../../../store/selectors/userSelectors';
 import { loggedUserPassword } from '../../../store/selectors/userSelectors';
 import { BiLogIn } from 'react-icons/bi';

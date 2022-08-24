@@ -7,7 +7,7 @@ export const ROUTES = {
 
 export const PATH = {
 	initialPage: `/`,
-	bookPage: (id ) => `/bookContent/${id}`,
+	bookPage: (id:number) => `/bookContent/${id}`,
 	loginPage: `/authorization`,
-	userProfile: (userName ) => `/userProfile/${userName}`,
+	userProfile: (userName:string) => `/userProfile/${userName}`,
 };

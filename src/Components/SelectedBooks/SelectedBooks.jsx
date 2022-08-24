@@ -2,7 +2,7 @@ import React from "react";
 
 import { useNavigate } from "react-router-dom";
 import './selectedBooks.scss';
-import { PATH } from '../../constans/routes.js';
+import { PATH } from '../../constans/routes.ts';
 import { useSelector } from "react-redux";
 import { isLoggedIn } from "../../store/selectors/userSelectors";
 

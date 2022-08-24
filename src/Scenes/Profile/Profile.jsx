@@ -4,7 +4,7 @@ import { FaUserAlt } from 'react-icons/fa';
 import { AiFillHome } from "react-icons/ai";
 import { BiLogOut } from 'react-icons/bi';
 
-import { PATH } from "../../constans/routes.js";
+import { PATH } from "../../constans/routes.ts";
 import { useNavigate } from 'react-router-dom';
 import { loggedUserName, loggedUserPassword } from '../../store/selectors/userSelectors';
 import { useDispatch, useSelector } from 'react-redux/es/exports';

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { PATH } from "../../constans/routes.js";
+import { PATH } from "../../constans/routes.ts";
 import { AiFillHome } from "react-icons/ai";
 import { Formik, Form } from "formik";
 import FormikInput from "../../Components/FormikInputs/FormikInput";

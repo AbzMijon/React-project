@@ -7,7 +7,7 @@ function Pagination({ wordsPerPage, totalWords, paginate, currentPage, setCurren
     for (let i = 1; i <= Math.ceil(totalWords / wordsPerPage); i++) {
         pageNumbers.push(i);
     }
-    {console.log(pageNumbers)};
+    console.log(pageNumbers);
     return (
         <React.Fragment>
             <ul className="pagination">

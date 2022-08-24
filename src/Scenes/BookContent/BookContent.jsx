@@ -2,13 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { AiFillHome } from 'react-icons/ai';
 import { fetchBooksList } from '../../api/booksApi';
-import { PATH } from '../../constans/routes.js';
+import { PATH } from '../../constans/routes.ts';
 import Spinner from '../../Components/SpinnerLoading/Spinner';
 import { useSelector } from 'react-redux';
-import { isServerError } from '../../store/selectors/serverErrorSelectors';
+import { isServerError } from '../../store/selectors/serverErrorSelectors.js';
 import ServerError from '../../Components/ServerError/ServerError';
 import Words from '../../Components/Words/Words';
-import Pagination from '../../Components/Pagination/Pagination';
+import Pagination from '../../Components/Pagination/Pagination.jsx';
 import './bookContent.scss';
 
 function BookContent() {

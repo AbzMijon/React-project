@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { serverMessageError } from '../../store/selectors/serverErrorSelectors';
+import { serverMessageError } from '../../store/selectors/serverErrorSelectors.js';
 import { useSelector } from 'react-redux';
 import serverError from '../../assets/images/serverError.png';
 import './serverError.scss';

@@ -13,7 +13,7 @@ function Pagination({ wordsPerPage, totalWords, paginate, currentPage, setCurren
                 <button className="pagination__btn pagination--prev" onClick={() => 
                     currentPage > 1 
                     ? 
-                        setCurrentPage(currentPage - 1) 
+                        setCurrentPage(currentPage - 1)
                     : 
                         currentPage}>←</button>
                 {

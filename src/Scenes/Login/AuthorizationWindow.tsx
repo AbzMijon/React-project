@@ -8,7 +8,7 @@ import { useDispatch } from "react-redux";
 import './authorizationWindow.scss';
 import axios from "axios";
 
-function AuthorizationWindow():React.FC {
+function AuthorizationWindow():JSX.Element {
     
     type LoginPageFormData = {
         name: string,

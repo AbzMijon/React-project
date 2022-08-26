@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { PATH } from "../../constans/routes.ts";
+import { PATH } from "../../constans/routes";
 import { AiFillHome } from "react-icons/ai";
 import { Formik, Form } from "formik";
 import FormikInput from "../../Components/FormikInputs/FormikInput";
@@ -8,20 +8,31 @@ import { useDispatch } from "react-redux";
 import './authorizationWindow.scss';
 import axios from "axios";
 
-function AuthorizationWindow() {
+function AuthorizationWindow():React.FC {
     
+    type LoginPageFormData = {
+        name: string,
+        email: string,
+        password: string,
+    }
+    type LoginPageErrorsData = {
+        name?: string,
+        email?: string,
+        password?: string,
+    }
+
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const [successAuth, setSuccessAuth] = useState(false);
-    const initialFormValues = {
+    const initialFormValues:LoginPageFormData = {
         name: '',
         email: '',
         password: ''
     }
 
-    const validateForm = (formValues) => {
+    const validateForm = (formValues:LoginPageFormData):LoginPageErrorsData | void => {
         let isValid = true;
-        let errorsObject = {};
+        let errorsObject: LoginPageErrorsData = {};
 
         if(!formValues.name) {
             isValid = false;
@@ -55,7 +66,7 @@ function AuthorizationWindow() {
             <Formik initialValues={initialFormValues} validate={validateForm} onSubmit={(formValues) => {
                 dispatch({type: 'userLogIn', payload: {name: formValues.name, password: formValues.password} });
                 setSuccessAuth(true);
-                axios.post('http://localhost:8000/users', {name: formValues.name, password: formValues.password});
+                axios.post('http://localhost:8000/users', {name: formValues.name, password: formValues.password})
                 setTimeout(() => {
                     navigate('/');
                 }, 1000); 

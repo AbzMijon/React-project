@@ -4,7 +4,7 @@ import React from 'react';
 import MainLayout from '../Layouts/MainLayout';
 import BookContensPage from '../Layouts/BookContensPage';
 import LoginPage from '../Layouts/LoginPage';
-import AuthorizationWindow from '../Scenes/Login/AuthorizationWindow';
+import AuthorizationWindow from '../Scenes/Login/AuthorizationWindow.tsx';
 import BookContent from '../Scenes/BookContent/BookContent';
 import Sorting from '../Scenes/Sorting/Sorting';
 import UserProfile from '../Layouts/userProfile';

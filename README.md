@@ -8,4 +8,3 @@ finally project in TeachMeSkills group
 3. Then we need write in console 'npm install -D webpack webpack-cli', -D mean that we install webpack in development strict;
 4. Write in package.json new script ("build": "webpack");
 5. Now we can write 'npm run build' in console!
-

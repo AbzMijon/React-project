@@ -6,6 +6,7 @@ import { PATH } from "../../../constans/routes.ts";
 import { FaLock } from 'react-icons/fa';
 import { AiFillHeart } from 'react-icons/ai';
 import { useSelector } from "react-redux";
+import PropTypes from 'prop-types';
 import NotAvailableModal from "../../NotAvailableModal/NotAvailableModal";
 import './books.scss';
 
@@ -60,6 +61,31 @@ function Books({ filteredBooks, bookSrc, setBookSrc, valueOfAvailableModal, setV
             </ul>
         </section>
     )
+}
+
+Books.propTypes = {
+    filteredBooks: PropTypes.arrayOf(PropTypes.object), 
+    bookSrc: PropTypes.string, 
+    setBookSrc: PropTypes.func.isRequired, 
+    valueOfAvailableModal: PropTypes.bool.isRequired, 
+    setValueOfAvailableModal: PropTypes.func.isRequired, 
+    selectedBooks: PropTypes.arrayOf(PropTypes.shape({
+        author: PropTypes.string,
+        genre: PropTypes.string,
+        id: PropTypes.oneOfType([
+            PropTypes.string,
+            PropTypes.number,
+        ]),
+        isAvailableForGuest: PropTypes.bool,
+        onlyText: PropTypes.oneOfType([
+            PropTypes.string,
+            PropTypes.bool,
+        ]),
+        src: PropTypes.string,
+        text: PropTypes.string,
+        title: PropTypes.string,
+    })), 
+    setSelectedBooks: PropTypes.func.isRequired,
 }
 
 export default Books;

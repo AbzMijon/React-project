@@ -4,9 +4,11 @@ import HiddenBlock from '../../HiddenBlock/HiddenBlock';
 import SkyLogic from '../../BackgroundApp/BackgroundApp';
 import { globalThemeContext } from '../../../contexts/theme';
 import { useSearchParams } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import './tools.scss';
 
 function Tools({ sortingValue, setSortingValue, allChecked, setAllChecked }) {
+	
 	const [searchParams, setSearchParams] = useSearchParams();
 	const { theme, setTheme } = useContext(globalThemeContext);
 
@@ -60,9 +62,7 @@ function Tools({ sortingValue, setSortingValue, allChecked, setAllChecked }) {
 						onChange={() => setAllChecked(!allChecked)}
 						id="tools__check"
 					/>
-					<label htmlFor="tools__check">
-						<p className="tools__available">Посмотреть доступные</p>
-					</label>
+					<label htmlFor="tools__check"><p className="tools__available">Посмотреть доступные</p></label>
 				</div>
 				<div className="tools__theme"
 					onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}>
@@ -83,6 +83,17 @@ function Tools({ sortingValue, setSortingValue, allChecked, setAllChecked }) {
 			<SkyLogic theme={theme} />
 		</section>
 	);
+}
+
+Tools.propTypes = {
+	sortingValue: PropTypes.shape({
+		author: PropTypes.string,
+		genre: PropTypes.string,
+		onlyText: PropTypes.string,
+	}), 
+	setSortingValue: PropTypes.func, 
+	allChecked: PropTypes.bool, 
+	setAllChecked: PropTypes.func,
 }
 
 export default Tools;

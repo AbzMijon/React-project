@@ -57,7 +57,22 @@ function SelectedBooks({ selectedBooks, setCheckLikedBooks, setSelectedBooks }) 
 }
 
 SelectedBooks.propTypes = {
-    selectedBooks: PropTypes.arrayOf(PropTypes.object), 
+    selectedBooks: PropTypes.arrayOf(PropTypes.shape({
+        author: PropTypes.string,
+        genre: PropTypes.string,
+        id: PropTypes.oneOfType([
+            PropTypes.string,
+            PropTypes.number,
+        ]),
+        isAvailableForGuest: PropTypes.bool,
+        onlyText: PropTypes.oneOfType([
+            PropTypes.string,
+            PropTypes.bool,
+        ]),
+        src: PropTypes.string,
+        text: PropTypes.string,
+        title: PropTypes.string,
+    })), 
     setCheckLikedBooks: PropTypes.func.isRequired, 
     setSelectedBooks: PropTypes.func.isRequired,
 }

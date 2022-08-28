@@ -10,10 +10,11 @@ import { BiLogIn } from 'react-icons/bi';
 import { AiFillHeart } from 'react-icons/ai';
 import { FaSearch, FaUserAlt } from 'react-icons/fa';
 import SelectedBooks from '../../SelectedBooks/SelectedBooks';
+import PropTypes from 'prop-types';
 import './header.scss';
 
 function Header({ searchString, setsearchString, selectedBooks, setSelectedBooks, setValueOfAvailableModal }) {
-
+	
     const [checkLikedBooks, setCheckLikedBooks] = useState(false);
     const navigate = useNavigate();
     const userLoggedIn = useSelector(isLoggedIn);
@@ -79,6 +80,29 @@ function Header({ searchString, setsearchString, selectedBooks, setSelectedBooks
 		</div>
 	</header>
     )
+}
+
+Header.propTypes = {
+	searchString: PropTypes.string, 
+	setsearchString: PropTypes.func, 
+	selectedBooks: PropTypes.arrayOf(PropTypes.shape({
+        author: PropTypes.string,
+        genre: PropTypes.string,
+        id: PropTypes.oneOfType([
+            PropTypes.string,
+            PropTypes.number,
+        ]),
+        isAvailableForGuest: PropTypes.bool,
+        onlyText: PropTypes.oneOfType([
+            PropTypes.string,
+            PropTypes.bool,
+        ]),
+        src: PropTypes.string,
+        text: PropTypes.string,
+        title: PropTypes.string,
+    })), 
+	setSelectedBooks: PropTypes.func, 
+	setValueOfAvailableModal: PropTypes.func,
 }
 
 export default Header;

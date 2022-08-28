@@ -5,8 +5,8 @@ import { AiFillHome } from "react-icons/ai";
 import { Formik, Form } from "formik";
 import FormikInput from "../../Components/FormikInputs/FormikInput";
 import { useDispatch } from "react-redux";
-import './authorizationWindow.scss';
 import axios from "axios";
+import './authorizationWindow.scss';
 
 function AuthorizationWindow():JSX.Element {
     
@@ -24,6 +24,7 @@ function AuthorizationWindow():JSX.Element {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const [successAuth, setSuccessAuth] = useState(false);
+    
     const initialFormValues:LoginPageFormData = {
         name: '',
         email: '',

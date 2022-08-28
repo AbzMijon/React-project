@@ -1,5 +1,6 @@
 import React from 'react';
 
+import PropTypes from 'prop-types';
 import './backgroundApp.scss';
 
 function SkyLogic({ theme }) {
@@ -15,6 +16,10 @@ function SkyLogic({ theme }) {
 			)}
 		</React.Fragment>
 	);
+}
+
+SkyLogic.propTypes = {
+	theme: PropTypes.string.isRequired,
 }
 
 export default SkyLogic;

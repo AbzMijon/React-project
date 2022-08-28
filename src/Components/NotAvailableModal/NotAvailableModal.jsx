@@ -1,8 +1,10 @@
 import React from 'react';
 
+import PropTypes from 'prop-types';
 import './notAvailableModa.scss';
 
 function NotAvailableModal({ bookSrc, valueOfAvailableModal, setValueOfAvailableModal }) {
+
 	return (
 		<div className={valueOfAvailableModal ? 'modal active' : 'modal'}
 			onClick={() => {
@@ -26,6 +28,12 @@ function NotAvailableModal({ bookSrc, valueOfAvailableModal, setValueOfAvailable
 			</div>
 		</div>
 	);
+}
+
+NotAvailableModal.propTypes = {
+	bookSrc: PropTypes.string,
+	valueOfAvailableModal: PropTypes.bool.isRequired,
+	setValueOfAvailableModal: PropTypes.func,
 }
 
 export default NotAvailableModal;

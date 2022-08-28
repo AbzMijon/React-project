@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 
+import PropTypes from 'prop-types';
 import './hiddenBlock.scss';
 
 function HiddenBlock({ searchParams, dataArray, handleSelect }) {
+	
 	const [selectValue, setSelectValue] = useState('');
 
 	const selectChange = (event) => {
@@ -28,6 +30,12 @@ function HiddenBlock({ searchParams, dataArray, handleSelect }) {
 			</select>
 		</li>
 	);
+}
+
+HiddenBlock.propTypes = {
+	searchParams: PropTypes.oneOfType([PropTypes.string, PropTypes.any]),
+	handleSelect: PropTypes.func.isRequired,
+	dataArray: PropTypes.arrayOf(PropTypes.object).isRequired,
 }
 
 export default HiddenBlock;

@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 
 import HiddenBlock from '../../HiddenBlock/HiddenBlock';
-import BackgroundApp from '../../BackgroundApp/BackgroundApp';
+import SkyLogic from '../../BackgroundApp/BackgroundApp';
 import { globalThemeContext } from '../../../contexts/theme';
 import { useSearchParams } from 'react-router-dom';
 import './tools.scss';
@@ -15,7 +15,7 @@ function Tools({ sortingValue, setSortingValue, allChecked, setAllChecked }) {
 		newSoringValue[sortFieldName] = childSelectValue;
 		setSortingValue(newSoringValue);
 	};
-
+	
 	return (
 		<section className="tools">
 			<ul className="tools__list">
@@ -80,7 +80,7 @@ function Tools({ sortingValue, setSortingValue, allChecked, setAllChecked }) {
 					</div>
 				</div>
 			</ul>
-			<BackgroundApp theme={theme} />
+			<SkyLogic theme={theme} />
 		</section>
 	);
 }

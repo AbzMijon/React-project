@@ -1,10 +1,11 @@
 import React from "react";
 
+import PropTypes from 'prop-types';
 import { useNavigate } from "react-router-dom";
-import './selectedBooks.scss';
 import { PATH } from '../../constans/routes.ts';
 import { useSelector } from "react-redux";
 import { isLoggedIn } from "../../store/selectors/userSelectors";
+import './selectedBooks.scss';
 
 function SelectedBooks({ selectedBooks, setCheckLikedBooks, setSelectedBooks }) {
 
@@ -53,6 +54,12 @@ function SelectedBooks({ selectedBooks, setCheckLikedBooks, setSelectedBooks }) 
         </div>
         
     )
+}
+
+SelectedBooks.propTypes = {
+    selectedBooks: PropTypes.arrayOf(PropTypes.object), 
+    setCheckLikedBooks: PropTypes.func.isRequired, 
+    setSelectedBooks: PropTypes.func.isRequired,
 }
 
 export default SelectedBooks;

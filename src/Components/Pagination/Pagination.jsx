@@ -1,13 +1,14 @@
 import React from "react";
 
+import PropTypes from 'prop-types';
 import './pagination.scss';
 
 function Pagination({ wordsPerPage, totalWords, paginate, currentPage, setCurrentPage }) {
+
     const pageNumbers = [];
     for (let i = 1; i <= Math.ceil(totalWords / wordsPerPage); i++) {
         pageNumbers.push(i);
     }
-    console.log(pageNumbers);
     return (
         <React.Fragment>
             <ul className="pagination">
@@ -40,6 +41,14 @@ function Pagination({ wordsPerPage, totalWords, paginate, currentPage, setCurren
             </ul>
         </React.Fragment>
     )
+}
+
+Pagination.propTypes = {
+    wordsPerPage: PropTypes.number.isRequired,
+    totalWords: PropTypes.number.isRequired,
+    paginate: PropTypes.func,
+    currentPage: PropTypes.number.isRequired,
+    setCurrentPage: PropTypes.func,
 }
 
 export default Pagination;

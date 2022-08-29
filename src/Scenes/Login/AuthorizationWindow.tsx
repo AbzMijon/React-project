@@ -20,7 +20,7 @@ function AuthorizationWindow():JSX.Element {
         email?: string,
         password?: string,
     }
-
+    
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const [successAuth, setSuccessAuth] = useState(false);
@@ -30,7 +30,7 @@ function AuthorizationWindow():JSX.Element {
         email: '',
         password: ''
     }
-
+    
     const validateForm = (formValues:LoginPageFormData):LoginPageErrorsData | void => {
         let isValid = true;
         let errorsObject: LoginPageErrorsData = {};
@@ -67,7 +67,11 @@ function AuthorizationWindow():JSX.Element {
             <Formik initialValues={initialFormValues} validate={validateForm} onSubmit={(formValues) => {
                 dispatch({type: 'userLogIn', payload: {name: formValues.name, password: formValues.password} });
                 setSuccessAuth(true);
-                axios.post('http://localhost:8000/users', {name: formValues.name, password: formValues.password})
+                axios.post('http://localhost:8000/users', {
+                    name: formValues.name, 
+                    email: formValues.email,
+                    password: formValues.password
+                })
                 setTimeout(() => {
                     navigate('/');
                 }, 1000); 

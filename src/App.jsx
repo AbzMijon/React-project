@@ -9,8 +9,10 @@ import { persistor } from './store/initStore';
 import { store } from './store/initStore';
 import { PersistGate } from 'redux-persist/integration/react';
 import Spinner from './Components/SpinnerLoading/Spinner';
+import axios from 'axios';
 
 function App() {
+	axios.get('http://localhost:8000/users').then(resp => console.log(resp.data))
 	return (
 		<Provider store={store}>
 			<PersistGate persistor={persistor} loading={<Spinner />}>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { PATH } from "../../constans/routes";
 import { AiFillHome } from "react-icons/ai";
@@ -6,6 +6,9 @@ import { Formik, Form } from "formik";
 import FormikInput from "../../Components/FormikInputs/FormikInput";
 import { useDispatch } from "react-redux";
 import axios from "axios";
+import  leaves  from "../../assets/images/leaves.png";
+import { globalThemeContext } from "../../contexts/theme";
+import BackgroundApp from "../../Components/BackgroundApp/BackgroundApp";
 import './loginPage.scss';
 
 function LoginPage():JSX.Element {
@@ -23,10 +26,9 @@ function LoginPage():JSX.Element {
     
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const [successAuth, setSuccessAuth] = useState(false);
-    const [auth, setAuth] = useState(false);
+    const { theme, setTheme } = useContext(globalThemeContext);
+    const [auth, setAuth] = useState(true);
     const [authError, setAuthError] = useState('');
-    const [serverAnswer, setServerAnswer] = useState(false);
     
     const initialFormValues:LoginPageFormData = {
         name: '',
@@ -66,6 +68,7 @@ function LoginPage():JSX.Element {
 
     return (
         <div className="login__wrap">
+            <BackgroundApp theme={theme} />
             <Link to={PATH.initialPage} className='go-home--login'><AiFillHome className="home-icon" /></Link>
             <Formik initialValues={initialFormValues} validate={validateForm} onSubmit={(formValues) => {
 
@@ -73,23 +76,19 @@ function LoginPage():JSX.Element {
                     name: formValues.name, 
                     email: formValues.email,
                     password: formValues.password
-                }).then(data => {
-                    data && 
-                    setServerAnswer(true);
-                    setAuthError('');
-                }).catch(error => error && setAuthError(error.response.data));
-                
-                if(serverAnswer && authError.length === 0) {
+                }).then(() => {
                     dispatch({type: 'userLogIn', payload: {name: formValues.name, password: formValues.password} });
-                    return navigate('/');
-                }
-                setSuccessAuth(true);
+                    navigate('/');
+                }).catch(error => error && setAuthError(error.response.data));
 
             }}>
                 <div className="login__card-wrapper">
+                    <img className="login__leaves" src={leaves} alt="" />
                     <Form className="login__card">
-                        <h3 className="login__title">Авторизация</h3>
-                        <FormikInput name='name' type='text' placeholder='крутойЧел228' required className="login__name" />
+                        <h3 className="login__title">{auth ? 'Входим в аккаунт' : 'Создаем аккаунт'}</h3>
+                        {!auth &&
+                            <FormikInput name='name' type='text' placeholder='крутойЧел228' required className="login__name" />
+                        }
                         <FormikInput name='email' type='email' placeholder='vasyapupkin@gmail.com' required className="login__email" />
                         <FormikInput name='password' type='password' required className="login__pass" placeholder="пароль" />
                         <div className="login__footer-card">
@@ -97,7 +96,7 @@ function LoginPage():JSX.Element {
                             <p className="login__forgot" onClick={() => setAuth(!auth)}>{auth ? 'У меня нет аккаунта' : 'У меня есть аккаунт!'}</p>
                         </div>
                     </Form>
-                        {successAuth && <h4 className="success__auth-title">{authError ? `${authError}` :'Вы успешно зарегистрировались!'}</h4>}
+                        {authError && <h4 className="success__auth-title">{authError}</h4>}
                 </div>
             </Formik>
         </div>

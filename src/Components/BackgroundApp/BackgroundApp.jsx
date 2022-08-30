@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './backgroundApp.scss';
 
-function SkyLogic({ theme }) {
+function BackgroundApp({ theme }) {
 	return (
 		<React.Fragment>
 			{theme === 'light' ? (
@@ -18,8 +18,8 @@ function SkyLogic({ theme }) {
 	);
 }
 
-SkyLogic.propTypes = {
-	theme: PropTypes.string.isRequired,
+BackgroundApp.propTypes = {
+	theme: PropTypes.string,
 }
 
-export default SkyLogic;
+export default BackgroundApp;

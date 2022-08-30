@@ -43,6 +43,10 @@ module.exports = {
 				],
 			},
 			{
+				test: /\.svg$/,
+				loader: 'svg-inline-loader'
+			},
+			{
 				test: /\.tsx?$/,
 				use: ['babel-loader'],
 				exclude: /node_modules/,

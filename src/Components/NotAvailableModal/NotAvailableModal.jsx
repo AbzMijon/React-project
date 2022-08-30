@@ -31,7 +31,7 @@ function NotAvailableModal({ bookSrc, valueOfAvailableModal, setValueOfAvailable
 }
 
 NotAvailableModal.propTypes = {
-	bookSrc: PropTypes.string,
+	bookSrc: PropTypes.string.isRequired,
 	valueOfAvailableModal: PropTypes.bool.isRequired,
 	setValueOfAvailableModal: PropTypes.func,
 }

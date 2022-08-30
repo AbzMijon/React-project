@@ -69,13 +69,6 @@ function LoginPage():JSX.Element {
             <Link to={PATH.initialPage} className='go-home--login'><AiFillHome className="home-icon" /></Link>
             <Formik initialValues={initialFormValues} validate={validateForm} onSubmit={(formValues) => {
 
-console.log(serverAnswer && authError.length === 0);
-console.log(serverAnswer);
-console.log(authError.length === 0);
-console.log(authError);//!!!!
-
-
-
                 axios.post(`http://localhost:8000/${auth ? 'login' : 'users'}`, {
                     name: formValues.name, 
                     email: formValues.email,
@@ -104,7 +97,7 @@ console.log(authError);//!!!!
                             <p className="login__forgot" onClick={() => setAuth(!auth)}>{auth ? 'У меня нет аккаунта' : 'У меня есть аккаунт!'}</p>
                         </div>
                     </Form>
-                        {successAuth && <h4 className="success__auth-title">Вы успешно зарегистрировались!</h4>}
+                        {successAuth && <h4 className="success__auth-title">{authError ? `${authError}` :'Вы успешно зарегистрировались!'}</h4>}
                 </div>
             </Formik>
         </div>

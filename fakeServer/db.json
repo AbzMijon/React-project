@@ -5,6 +5,48 @@
       "password": "$2a$10$XKpoEKdJckT8sKvgxY0CFujCElkPwNIhayz82ZlkWsaejqy/QZe0S",
       "name": "Pupkin",
       "id": 1
+    },
+    {
+      "email": "AbzMijon@gmail.com",
+      "password": "$2a$10$NuYoHVHkyx7xpLODsMi5tuNAQNL6q1ndgfvxoedIxaO8IGNb01pym",
+      "name": "Abz",
+      "id": 2
+    },
+    {
+      "email": "Abzzz@gmail.com",
+      "password": "$2a$10$bPgOjERSN3nBm1sDxAL1L.U6y9T6xHFYGt0xFZOmTzLU7V2bigSeu",
+      "name": "Abz",
+      "id": 3
+    },
+    {
+      "email": "egorchiktop228@gmail.com",
+      "password": "$2a$10$F5akcGm5D8IO9YCtspAe8.LMB9xFanI9DdfnO4tSd0K6cuDLjcIkm",
+      "name": "Egor",
+      "id": 4
+    },
+    {
+      "email": "dima2005@gmail.com",
+      "password": "$2a$10$9eupwcv283a9zuoDnRbA2.OA79lJBoEBtoiXIp.Vz459Vy5gOgE2S",
+      "name": "dima",
+      "id": 5
+    },
+    {
+      "email": "skye@gmail.com",
+      "password": "$2a$10$FXsm2oqkNgrodVlK1614MuhU6xgK84uxcIXJa4gUT.uGXc9wKrG3.",
+      "name": "skye",
+      "id": 6
+    },
+    {
+      "email": "qwe@gmail.com",
+      "password": "$2a$10$vqfw/dm9FR9QI2/RQ1kdyufh.Lm/efw/0hNHuYkpc8lKHg9/8o5pi",
+      "name": "qwe",
+      "id": 7
+    },
+    {
+      "email": "qqq@gmail.com",
+      "password": "$2a$10$7C2E9pW0qqavqzTCUMbXzu9.qiQurVV64Ex37767JN1wuy54Xluki",
+      "name": "qqq",
+      "id": 8
     }
   ],
   "dataBaseBooks": [

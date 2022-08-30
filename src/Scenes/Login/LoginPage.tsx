@@ -6,9 +6,9 @@ import { Formik, Form } from "formik";
 import FormikInput from "../../Components/FormikInputs/FormikInput";
 import { useDispatch } from "react-redux";
 import axios from "axios";
-import './authorizationWindow.scss';
+import './loginPage.scss';
 
-function AuthorizationWindow():JSX.Element {
+function LoginPage():JSX.Element {
     
     type LoginPageFormData = {
         name: string,
@@ -24,6 +24,9 @@ function AuthorizationWindow():JSX.Element {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const [successAuth, setSuccessAuth] = useState(false);
+    const [auth, setAuth] = useState(false);
+    const [authError, setAuthError] = useState('');
+    const [serverAnswer, setServerAnswer] = useState(false);
     
     const initialFormValues:LoginPageFormData = {
         name: '',
@@ -65,16 +68,30 @@ function AuthorizationWindow():JSX.Element {
         <div className="login__wrap">
             <Link to={PATH.initialPage} className='go-home--login'><AiFillHome className="home-icon" /></Link>
             <Formik initialValues={initialFormValues} validate={validateForm} onSubmit={(formValues) => {
-                dispatch({type: 'userLogIn', payload: {name: formValues.name, password: formValues.password} });
-                setSuccessAuth(true);
-                axios.post('http://localhost:8000/users', {
+
+console.log(serverAnswer && authError.length === 0);
+console.log(serverAnswer);
+console.log(authError.length === 0);
+console.log(authError);//!!!!
+
+
+
+                axios.post(`http://localhost:8000/${auth ? 'login' : 'users'}`, {
                     name: formValues.name, 
                     email: formValues.email,
                     password: formValues.password
-                })
-                setTimeout(() => {
-                    navigate('/');
-                }, 1000); 
+                }).then(data => {
+                    data && 
+                    setServerAnswer(true);
+                    setAuthError('');
+                }).catch(error => error && setAuthError(error.response.data));
+                
+                if(serverAnswer && authError.length === 0) {
+                    dispatch({type: 'userLogIn', payload: {name: formValues.name, password: formValues.password} });
+                    return navigate('/');
+                }
+                setSuccessAuth(true);
+
             }}>
                 <div className="login__card-wrapper">
                     <Form className="login__card">
@@ -84,7 +101,7 @@ function AuthorizationWindow():JSX.Element {
                         <FormikInput name='password' type='password' required className="login__pass" placeholder="пароль" />
                         <div className="login__footer-card">
                             <button className="login__submit" type={"submit"}>Отправить</button>
-                            <p className="login__forgot">У меня есть аккаунт!</p>
+                            <p className="login__forgot" onClick={() => setAuth(!auth)}>{auth ? 'У меня нет аккаунта' : 'У меня есть аккаунт!'}</p>
                         </div>
                     </Form>
                         {successAuth && <h4 className="success__auth-title">Вы успешно зарегистрировались!</h4>}
@@ -94,4 +111,4 @@ function AuthorizationWindow():JSX.Element {
     )
 }
 
-export default AuthorizationWindow;
+export default LoginPage;

@@ -8,6 +8,6 @@ function MainLayout () {
             <Outlet />
         </React.Fragment>
         )
-    }
+}
 
 export default MainLayout;

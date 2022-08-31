@@ -75,7 +75,7 @@ function LoginPage():JSX.Element {
                 axios.post(`http://localhost:8000/${auth ? 'login' : 'users'}`, {
                     name: formValues.name, 
                     email: formValues.email,
-                    password: formValues.password
+                    password: formValues.password,
                 }).then(() => {
                     dispatch({type: 'userLogIn', payload: {name: formValues.name, password: formValues.password} });
                     navigate('/');
@@ -86,14 +86,12 @@ function LoginPage():JSX.Element {
                     <img className="login__leaves" src={leaves} alt="" />
                     <Form className="login__card">
                         <h3 className="login__title">{auth ? 'Входим в аккаунт' : 'Создаем аккаунт'}</h3>
-                        {!auth &&
                             <FormikInput name='name' type='text' placeholder='крутойЧел228' required className="login__name" />
-                        }
                         <FormikInput name='email' type='email' placeholder='vasyapupkin@gmail.com' required className="login__email" />
                         <FormikInput name='password' type='password' required className="login__pass" placeholder="пароль" />
                         <div className="login__footer-card">
-                            <button className="login__submit" type={"submit"}>Отправить</button>
-                            <p className="login__forgot" onClick={() => setAuth(!auth)}>{auth ? 'У меня нет аккаунта' : 'У меня есть аккаунт!'}</p>
+                            <button className="login__submit" type={"submit"}>{auth ? 'Войти' : 'Создать'}</button>
+                            <p className="login__forgot" onClick={() => setAuth(!auth)}>{auth ? 'У меня нет аккаунта!' : 'У меня есть аккаунт!'}</p>
                         </div>
                     </Form>
                         {authError && <h4 className="success__auth-title">{authError}</h4>}

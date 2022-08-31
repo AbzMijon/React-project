@@ -42,7 +42,7 @@ function Header({ searchString, setsearchString, selectedBooks, setSelectedBooks
 					) : (
 						<div className="logout-wrap">
 							<FaUserAlt className="mini-icon-for-ui" />
-							{userName}
+							<p className='header__name'>{userName}</p>
 						</div>
 					)}
 				</h2>

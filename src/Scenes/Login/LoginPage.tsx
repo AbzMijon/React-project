@@ -83,7 +83,7 @@ function LoginPage():JSX.Element {
 
             }}>
                 <div className="login__card-wrapper">
-                    <img className="login__leaves" src={leaves} alt="" />
+                    <img src={leaves} alt="" className="login__leaves" />
                     <Form className="login__card">
                         <h3 className="login__title">{auth ? 'Входим в аккаунт' : 'Создаем аккаунт'}</h3>
                             <FormikInput name='name' type='text' placeholder='крутойЧел228' required className="login__name" />

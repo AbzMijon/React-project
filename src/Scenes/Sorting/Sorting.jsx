@@ -41,20 +41,12 @@ function Sorting() {
         if(searchString && !book.title.toLowerCase().includes(searchString.toLowerCase())) {
             isPassed = false;
         }
+
         Object.keys(sortingValue).forEach(sortFieldName => {
             switch(sortFieldName) {
                 default:
-                    if(book[sortFieldName] !== sortingValue[sortFieldName]) {
+                    if(sortingValue[sortFieldName] && book[sortFieldName] !== sortingValue[sortFieldName]) {
                         isPassed = false;
-                    }
-                    if(sortingValue[sortFieldName] === 'Все авторы') {
-                        isPassed = true;
-                    }
-                    if(sortingValue[sortFieldName] === 'Все жанры') {
-                        isPassed = true;
-                    }
-                    if(sortingValue[sortFieldName] === 'Показать все') {
-                        isPassed = true;
                     }
             }
         })

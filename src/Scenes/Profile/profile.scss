@@ -63,6 +63,27 @@
     letter-spacing: 0.5px;
 }
 
+.profile__change--default {
+    display: none;
+}
+.profile__change {
+    display: flex;
+    justify-content: center;
+    padding: 5px 10px;
+}
+.profile__change--login, .profile__change--pass {
+    padding: 5px 10px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    font-size: 15px;
+}
+
+.logout__text {
+    color: #c73333;
+    font-size: 12;
+}
+
 .profile__menu {
     text-align: center;
     .profile__item {

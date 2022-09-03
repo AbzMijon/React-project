@@ -1,7 +1,7 @@
 import React from 'react';
 import { useField } from 'formik';
 
-function FormikInput(props) {
+function LoginFormikInput(props) {
 	const [field, meta, helpers] = useField(props.name);
 	return (
 		<div className="field">
@@ -14,4 +14,4 @@ function FormikInput(props) {
 	);
 }
 
-export default FormikInput;
+export default LoginFormikInput;

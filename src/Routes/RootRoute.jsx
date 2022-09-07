@@ -1,13 +1,13 @@
 import React from 'react';
 
 //Components
-import MainLayout from '../Layouts/MainLayout';
-import BookContensPage from '../Layouts/BookContensPage';
+import MainLayout from '../Layouts/MainLayout/MainLayout';
+import BookPage from '../Layouts/BookPage/BookPage';
 import BookContent from '../Scenes/BookContent/BookContent';
 import Sorting from '../Scenes/Sorting/Sorting';
-import UserProfile from '../Layouts/userProfile';
+import UserProfile from '../Layouts/UserProfile/UserProfile';
 import Profile from '../Scenes/Profile/Profile';
-import Login from '../Layouts/Login';
+import Login from '../Layouts/Login/Login';
 import LoginPage from '../Scenes/Login/LoginPage.tsx';
 
 //CONSTANS
@@ -27,7 +27,7 @@ function RootRoute() {
                 <Route path={ROUTES.loginPage} element={<LoginPage />}></Route>
             </Route>
 
-            <Route path={ROUTES.bookPage} element={<BookContensPage />}>
+            <Route path={ROUTES.bookPage} element={<BookPage />}>
                 <Route path={ROUTES.bookPage} element={<BookContent />}></Route>
             </Route>
 

@@ -1,14 +1,10 @@
-import React, { useState, useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { PATH } from "../../constans/routes";
-import { AiFillHome } from "react-icons/ai";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Formik, Form } from "formik";
 import LoginFormikInput from "../../Components/FormikInputs/LoginFormikInput";
 import { useDispatch } from "react-redux";
 import axios from "axios";
 import  leaves  from "../../assets/images/leaves.png";
-import { globalThemeContext } from "../../contexts/theme";
-import BackgroundApp from "../../Components/BackgroundApp/BackgroundApp";
 import { fetchUsers } from "../../api/userApi";
 import './loginPage.scss';
 
@@ -27,7 +23,6 @@ function LoginPage():JSX.Element {
     
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const { theme, setTheme } = useContext(globalThemeContext);
     const [auth, setAuth] = useState(true);
     const [authError, setAuthError] = useState('');
     
@@ -68,11 +63,8 @@ function LoginPage():JSX.Element {
     }
 
     return (
-        <div className="login__wrap">
-            <BackgroundApp theme={theme} />
-            <Link to={PATH.initialPage} className='go-home--login'><AiFillHome className="home-icon" /></Link>
+        <React.Fragment>
             <Formik initialValues={initialFormValues} validate={validateForm} onSubmit={(formValues: { name: string; email: string; password: string; }) => {
-
                 
                 axios.post(`http://localhost:8000/${auth ? 'login' : 'users'}`, {
                     name: formValues.name, 
@@ -104,7 +96,7 @@ function LoginPage():JSX.Element {
                         {authError && <h4 className="success__auth-title">{authError}</h4>}
                 </div>
             </Formik>
-        </div>
+        </React.Fragment>
     )
 }
 

@@ -10,6 +10,7 @@ import Tools from "../../Components/Table/Tools/Tools";
 import ServerError from "../../Components/ServerError/ServerError";
 import { isServerError } from "../../store/selectors/serverErrorSelectors";
 import Books from "../../Components/Table/Books/Books";
+import { isLoggedIn } from "../../store/selectors/userSelectors";
 import './sorting.scss';
 
 
@@ -25,6 +26,7 @@ function Sorting() {
     const [sortingValue, setSortingValue] = useState({});  
     const [valueOfAvailableModal, setValueOfAvailableModal] = useState(false);
     const isError = useSelector(isServerError);
+    const isLogged = useSelector(isLoggedIn);
     
     useEffect(() => {
         fetchBooksList().then(({data}) => {
@@ -35,7 +37,7 @@ function Sorting() {
     const filterBooks = (booksToFilter, sortingValue, handleAvailable, searchString) =>  booksToFilter.filter(book => {
         let isPassed = true;
 
-        if(handleAvailable && !book.isAvailableForGuest) {
+        if(!isLogged && handleAvailable && !book.isAvailableForGuest) {
             isPassed = false;
         }
         if(searchString && !book.title.toLowerCase().includes(searchString.toLowerCase())) {

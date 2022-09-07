@@ -43,7 +43,7 @@ function BookContent() {
 		<React.Fragment>
 			{isError && <ServerError />}
 			{book && (
-				<div className="book__wrapper">
+				<React.Fragment>
 					<header className="book__header">
 						<Link to={PATH.initialPage}> <AiFillHome className="home-icon" /> </Link>
 						<h2 className="book__name"> {book.author + ` "${book.title}"`} </h2>
@@ -72,7 +72,7 @@ function BookContent() {
 							paginate={paginate} currentPage={currentPage} 
 							setCurrentPage={setCurrentPage}/>
 					</main>
-				</div>
+				</React.Fragment>
 			)}
 		</React.Fragment>
 	);

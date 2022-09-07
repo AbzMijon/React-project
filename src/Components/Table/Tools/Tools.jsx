@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 
 import HiddenBlock from '../../HiddenBlock/HiddenBlock';
-import SkyLogic from '../../BackgroundApp/BackgroundApp';
 import { globalThemeContext } from '../../../contexts/theme';
 import { useSearchParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -80,7 +79,6 @@ function Tools({ sortingValue, setSortingValue, allChecked, setAllChecked }) {
 					</div>
 				</div>
 			</ul>
-			<SkyLogic theme={theme} />
 		</section>
 	);
 }

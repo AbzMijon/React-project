@@ -121,6 +121,10 @@
 	}
 }
 
+.header__name {
+	z-index: 7;
+}
+
 @media only screen and (max-width: 550px) {
 	.header__name {
 		display: none;

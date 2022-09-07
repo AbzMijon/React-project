@@ -9,6 +9,7 @@ import axios from "axios";
 import  leaves  from "../../assets/images/leaves.png";
 import { globalThemeContext } from "../../contexts/theme";
 import BackgroundApp from "../../Components/BackgroundApp/BackgroundApp";
+import { fetchUsers } from "../../api/userApi";
 import './loginPage.scss';
 
 function LoginPage():JSX.Element {
@@ -78,7 +79,7 @@ function LoginPage():JSX.Element {
                     email: formValues.email,
                     password: formValues.password,
                 }).then(() => {
-                    axios.get(`http://localhost:8000/users`).then(response => {
+                    fetchUsers().then(response => {
                         const findUserName = response.data.find((mail: { email: string; }) => mail.email === formValues.email);
                         dispatch({type: 'userLogIn', payload: {name: auth ? findUserName.name : formValues.name, password: formValues.password}});
                         navigate('/');

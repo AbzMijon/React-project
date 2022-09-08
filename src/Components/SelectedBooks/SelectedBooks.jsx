@@ -52,7 +52,6 @@ function SelectedBooks({ selectedBooks, setCheckLikedBooks, setSelectedBooks }) 
                 </ul>
             </div>
         </div>
-        
     )
 }
 

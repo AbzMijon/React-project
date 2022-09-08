@@ -6,7 +6,31 @@ import { useSearchParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import './tools.scss';
 
-function Tools({ sortingValue, setSortingValue, allChecked, setAllChecked }) {
+export const AUTHORS_LIST = [
+	{name: 'Все авторы', id: 'all'},
+	{name :'Ханс Христиан Андерсен', id: 1},
+	{name :'Леонид Пантеллев', id: 2},
+	{name :'Виктор Драгунский', id: 3},
+	{name :'Джозеф Джейкобс', id: 4},
+	{name :'Дина Непомнящая', id: 5},
+	{name :'Эндрю Лэнг', id: 6},
+	{name :'Джек Лондон', id: 7},
+]
+
+export const GENRE_LIST = [
+	{name: 'Все жанры', id: 'all'},
+	{name: 'Приключение', id: 1},
+	{name: 'Обучение', id: 2},
+	{name: 'Колыбельная песня', id: 3},
+]
+
+export const TYPE_LIST = [
+	{name: 'Показать все', id: 'all'},
+	{name: 'Показать только с текстом', id: 1},
+	{name: 'Показать только со звуком', id: 2},
+]
+
+function Tools({ filtersList, sortingValue, setSortingValue, allChecked, setAllChecked }) {
 	
 	const [searchParams, setSearchParams] = useSearchParams();
 	const { theme, setTheme } = useContext(globalThemeContext);
@@ -20,39 +44,14 @@ function Tools({ sortingValue, setSortingValue, allChecked, setAllChecked }) {
 	return (
 		<section className="tools">
 			<ul className="tools__list">
-				<HiddenBlock
-					searchParams={searchParams.get('author')}
-					handleSelect={updateData('author')}
-					dataArray={[
-						{name: 'Все авторы', id: 0},
-						{name :'Ханс Христиан Андерсен', id: 1},
-						{name :'Леонид Пантеллев', id: 2},
-						{name :'Виктор Драгунский', id: 3},
-						{name :'Джозеф Джейкобс', id: 4},
-						{name :'Дина Непомнящая', id: 5},
-						{name :'Эндрю Лэнг', id: 6},
-						{name :'Джек Лондон', id: 7},
-					]}
-				/>
-				<HiddenBlock
-					searchParams={searchParams.get('genre')}
-					handleSelect={updateData('genre')}
-					dataArray={[
-						{name: 'Все жанры', id: 0},
-						{name: 'Приключение', id: 1},
-						{name: 'Обучение', id: 2},
-						{name: 'Колыбельная песня', id: 3},
-					]}
-				/>
-				<HiddenBlock
-					searchParams={searchParams.get('onlyText')}
-					handleSelect={updateData('onlyText')}
-					dataArray={[
-						{name: 'Показать все', id: 0},
-						{name: 'Показать только с текстом', id: 1},
-						{name: 'Показать только со звуком', id: 2},
-					]}
-				/>
+				{Object.keys(filtersList).map((listItemName, i) => (
+					<HiddenBlock
+						key={i}
+						searchParams={searchParams.get(listItemName)}
+						handleSelect={updateData(listItemName)}
+						dataArray={filtersList[listItemName].filterOptions}
+					/>
+				))}
 				<div className="tools__item">
 					<input
 						type="checkbox"
@@ -87,7 +86,7 @@ Tools.propTypes = {
 	sortingValue: PropTypes.shape({
 		author: PropTypes.string,
 		genre: PropTypes.string,
-		onlyText: PropTypes.string,
+		type: PropTypes.string,
 	}), 
 	setSortingValue: PropTypes.func, 
 	allChecked: PropTypes.bool, 

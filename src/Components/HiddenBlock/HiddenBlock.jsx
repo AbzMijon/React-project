@@ -22,7 +22,7 @@ function HiddenBlock({ searchParams, dataArray, handleSelect }) {
 			>
 				{dataArray.map((elem) => {
 					return (
-						<option key={elem.id} className="tools__hidden-item">
+						<option key={elem.id} value={elem.id} className="tools__hidden-item">
 							{elem.name}
 						</option>
 					);

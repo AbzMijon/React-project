@@ -4,12 +4,13 @@ import { FaUserAlt } from 'react-icons/fa';
 
 import { PATH } from "../../constans/routes.ts";
 import { useNavigate } from 'react-router-dom';
-import { loggedUserName, loggedUserPassword } from '../../store/selectors/userSelectors';
+import { loggedUserName } from '../../store/selectors/userSelectors';
 import { useDispatch, useSelector } from 'react-redux/es/exports';
 import { Formik, Form } from "formik";
+import { fetchUsers } from "../../api/userApi";
 import ProfileFormikInput from "../../Components/FormikInputs/ProfileFormikInput";
-import './profile.scss';
 import axios from "axios";
+import './profile.scss';
 
 function Profile() {
 
@@ -66,7 +67,7 @@ function Profile() {
                         <li className="profile__item" onClick={() => navigate(PATH.bookPage(randomInteger(1, 9)))}>Посоветуйте мне книгу!</li>
 
                     <Formik initialValues={initialNameFormValues} validate={validateForm} onSubmit={(formValues) => {
-                        axios.get('http://localhost:8000/users').then(response => {
+                        fetchUsers().then(response => {
                             const findThisUser = response.data.find(user => user.name === userName);
                             axios.patch(`http://localhost:8000/users/${findThisUser.id}`, {
                                 name: formValues.changeName,
@@ -81,12 +82,12 @@ function Profile() {
                                     <button type="submit">Сохранить</button>
                                 </div>
                                 {!handleChangeName &&
-                                    <p className="logout__text">!!!ОСТОРОЖНО, ПРИ ИЗМЕНЕНИИ ИМЕНИ ИЛИ ПОРОЛЯ ВАМ ПРИДЕТЬСЯ ПЕРЕЗАЙТИ В АККАУНТ!!!</p>
+                                    <p className="logout__text">!!!ОСТОРОЖНО, ПРИ ИЗМЕНЕНИИ ИМЕНИ ИЛИ ПАРОЛЯ ВАМ ПРИДЕТЬСЯ ПЕРЕЗАЙТИ В АККАУНТ!!!</p>
                                 }
                         </Form>
                     </Formik>
                     <Formik initialValues={initialPasswordFormValues} validate={validateForm} onSubmit={(formValues) => {
-                        axios.get('http://localhost:8000/users').then(response => {
+                        fetchUsers().then(response => {
                             const findThisUser = response.data.find(user => user.name === userName);
                             axios.patch(`http://localhost:8000/users/${findThisUser.id}`, {
                                 password: formValues.changePass,
@@ -95,13 +96,13 @@ function Profile() {
                         logOut();
                     }}>
                         <Form>
-                            <li onClick={() => setHandleChangePassword(!handleChangePassword)} className="profile__item">Сменить пороль</li>
+                            <li onClick={() => setHandleChangePassword(!handleChangePassword)} className="profile__item">Сменить пароль</li>
                                 <div className={handleChangePassword ? "profile__change" : "profile__change--default"}>
                                     <ProfileFormikInput name='changePass' type='password' placeholder='Новый пороль' required className="profile__change--pass" />
                                     <button type="submit">Сохранить</button>
                                 </div>
                                 {!handleChangePassword &&
-                                    <p className="logout__text">!!!ОСТОРОЖНО, ПРИ ИЗМЕНЕНИИ ИМЕНИ ИЛИ ПОРОЛЯ ВАМ ПРИДЕТЬСЯ ПЕРЕЗАЙТИ В АККАУНТ!!!</p>
+                                    <p className="logout__text">!!!ОСТОРОЖНО, ПРИ ИЗМЕНЕНИИ ИМЕНИ ИЛИ ПАРОЛЯ ВАМ ПРИДЕТЬСЯ ПЕРЕЗАЙТИ В АККАУНТ!!!</p>
                                 }
                         </Form>
                     </Formik>

@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 
 import { Outlet } from 'react-router-dom'
 import BackgroundApp from '../../Components/BackgroundApp/BackgroundApp';
-import { globalThemeContext } from '../../contexts/theme';
+import { globalThemeContext } from '../../Contexts/theme';
 import './mainLayout.scss';
 
 function MainLayout () {

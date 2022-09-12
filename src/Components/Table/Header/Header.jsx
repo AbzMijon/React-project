@@ -5,7 +5,6 @@ import { useSelector } from 'react-redux';
 import { isLoggedIn } from '../../../store/selectors/userSelectors';
 import { PATH } from '../../../constans/routes.ts';
 import { loggedUserName } from '../../../store/selectors/userSelectors';
-import { loggedUserPassword } from '../../../store/selectors/userSelectors';
 import { BiLogIn } from 'react-icons/bi';
 import { AiFillHeart } from 'react-icons/ai';
 import { FaSearch, FaUserAlt } from 'react-icons/fa';
@@ -19,7 +18,6 @@ function Header({ searchString, setsearchString, selectedBooks, setSelectedBooks
     const navigate = useNavigate();
     const userLoggedIn = useSelector(isLoggedIn);
     const userName = useSelector(loggedUserName);
-    const userPass = useSelector(loggedUserPassword);
 
     return (
         <header className="header">

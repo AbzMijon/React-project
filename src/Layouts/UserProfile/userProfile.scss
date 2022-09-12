@@ -8,14 +8,8 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    background: url(https://papik.pro/uploads/posts/2021-09/1631214493_15-papik-pro-p-fon-illyustratsiya-15.jpg) no-repeat center;
+    background: url(../../assets/images/profileBg.jpg) no-repeat center;
     background-size: cover;
-}
-
-.go-home {
-    position: absolute;
-    top: 20px;
-    left: 20px;
 }
 
 .profile__title {
@@ -39,4 +33,10 @@
     &:hover {
         color: #ffd30073;
     }
+}
+
+.profile--icon {
+    position: absolute;
+    top: 20px;
+    left: 20px;
 }

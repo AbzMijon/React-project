@@ -45,8 +45,14 @@
     {
       "email": "qqq@gmail.com",
       "password": "$2a$10$ZKtjhEIAQU9Tp48ZcHMVN.DBB9y0pbR8gFi4GMvZVN6Vru7swZgwu",
-      "name": "noQQQ",
+      "name": "defaultQ",
       "id": 8
+    },
+    {
+      "email": "secret@gmail.com",
+      "password": "$2a$10$rexckiCp4Y2KqEIPUX9QU.kdT5V8jfGfM0C9qUv.soUdppH1qjZuO",
+      "name": "newUser",
+      "id": 9
     }
   ],
   "dataBaseBooks": [

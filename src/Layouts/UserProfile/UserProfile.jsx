@@ -18,7 +18,7 @@ function UserProfile() {
     
     return (
         <div className="profile">
-            <Link to={PATH.initialPage} className='go-home'><AiFillHome className="home-icon" /></Link>
+            <Link to={PATH.initialPage}> <AiFillHome className="home-icon profile--icon" /> </Link>
             <h2 className="profile__title">Личный кабинет</h2>
             <div className="profile__logout" onClick={logOut}>Выйти<BiLogOut className="logout-icon" /></div>
             <Outlet />

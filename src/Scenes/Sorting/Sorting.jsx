@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 
 import { useSearchParams } from 'react-router-dom';
 
@@ -12,7 +12,6 @@ import { isServerError } from "../../store/selectors/serverErrorSelectors";
 import Books from "../../Components/Table/Books/Books";
 import { isLoggedIn } from "../../store/selectors/userSelectors";
 import './sorting.scss';
-import { useMemo } from "react";
 
 const filtersList = {
     author: {
@@ -52,7 +51,7 @@ function Sorting() {
             setFetchBooks(data);
         });
     }, [])
-
+    
     const filterBooks = (booksToFilter, sortingValue, handleAvailable, searchString) =>  booksToFilter.filter(book => {
         let isPassed = true;
 
@@ -62,9 +61,8 @@ function Sorting() {
         if(searchString && !book.title.toLowerCase().includes(searchString.toLowerCase())) {
             isPassed = false;
         }
-
         Object.keys(sortingValue).forEach(sortFieldName => {
-            const filterSelected = sortingValue[sortFieldName] && sortingValue[sortFieldName] !== 'all';
+            const filterSelected = sortingValue[sortFieldName] !== 'all';
             if(filterSelected) {
                 const readableName = filtersList[sortFieldName].filterOptions.find(author => author.name === book[sortFieldName]);
                 if((readableName && readableName.id != sortingValue[sortFieldName]) || !readableName) {

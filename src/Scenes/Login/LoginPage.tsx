@@ -54,7 +54,7 @@ function LoginPage():JSX.Element {
         }
         if(formValues.password.length < 5) {
             isValid = false;
-            errorsObject.password = "Пороль должен содержать больше 5 символов!";
+            errorsObject.password = "Пароль должен содержать больше 5 символов!";
         }
 
         isValid = false;
@@ -76,14 +76,12 @@ function LoginPage():JSX.Element {
                         dispatch({type: 'userLogIn', payload: {name: auth ? findUserName.name : formValues.name, password: formValues.password}});
                         navigate('/');
                     }) 
-
                 }).catch(error => error && setAuthError(error.response.data));
                 
-
             }}>
                 <div className="login__card-wrapper">
                     <img src={leaves} alt="" className="login__leaves" />
-                        <h3 className="login__title">{auth ? 'Входим в аккаунт' : 'Создаем аккаунт'}</h3>
+                    <h3 className="login__title">{auth ? 'Входим в аккаунт' : 'Создаем аккаунт'}</h3>
                     <Form className="login__card">
                         {!auth && <LoginFormikInput name='name' type='text' placeholder='крутойЧел228' required className="login__name" />}
                         <LoginFormikInput name='email' type='email' placeholder='vasyapupkin@gmail.com' required className="login__email" />

@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 
 import HiddenBlock from '../../HiddenBlock/HiddenBlock';
-import { globalThemeContext } from '../../../contexts/theme';
+import { globalThemeContext } from '../../../Contexts/theme';
 import { useSearchParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import './tools.scss';

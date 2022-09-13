@@ -14,6 +14,7 @@ function LoginPage():JSX.Element {
         name: string,
         email: string,
         password: string,
+        id: string | number,
     }
     type LoginPageErrorsData = {
         name?: string,
@@ -29,7 +30,8 @@ function LoginPage():JSX.Element {
     const initialFormValues:LoginPageFormData = {
         name: '',
         email: '',
-        password: ''
+        password: '',
+        id: Math.round(Math.random() * 1000),
     }
     
     const validateForm = (formValues:LoginPageFormData):LoginPageErrorsData | void => {
@@ -64,16 +66,18 @@ function LoginPage():JSX.Element {
 
     return (
         <React.Fragment>
-            <Formik initialValues={initialFormValues} validate={validateForm} onSubmit={(formValues: { name: string; email: string; password: string; }) => {
+            <Formik initialValues={initialFormValues} validate={validateForm} onSubmit={(formValues: { name: string; email: string; password: string; id: string | number;}) => {
                 
-                axios.post(`http://localhost:8000/${auth ? 'login' : 'users'}`, {
+                axios.post(`http://localhost:8000/${auth ? 'login' : 'users'}`,  {
                     name: formValues.name, 
                     email: formValues.email,
                     password: formValues.password,
+                    likedBooks: [],
+                    id: formValues.id,
                 }).then(() => {
                     fetchUsers().then(response => {
-                        const findUserName = response.data.find((mail: { email: string; }) => mail.email === formValues.email);
-                        dispatch({type: 'userLogIn', payload: {name: auth ? findUserName.name : formValues.name, password: formValues.password}});
+                        const findUser = response.data.find((mail: { email: string; }) => mail.email === formValues.email);
+                        dispatch({type: 'userLogIn', payload: {name: auth ? findUser.name : formValues.name, password: formValues.password, id: auth ? findUser.id : formValues.id}});
                         navigate('/');
                     }) 
                 }).catch(error => error && setAuthError(error.response.data));

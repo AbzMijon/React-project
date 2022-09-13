@@ -1,48 +1,6 @@
 {
   "users": [
     {
-      "email": "pupkin228@gmail.com",
-      "password": "$2a$10$XKpoEKdJckT8sKvgxY0CFujCElkPwNIhayz82ZlkWsaejqy/QZe0S",
-      "name": "Pupkin",
-      "id": 1
-    },
-    {
-      "email": "AbzMijon@gmail.com",
-      "password": "$2a$10$NuYoHVHkyx7xpLODsMi5tuNAQNL6q1ndgfvxoedIxaO8IGNb01pym",
-      "name": "Abz",
-      "id": 2
-    },
-    {
-      "email": "Abzzz@gmail.com",
-      "password": "$2a$10$bPgOjERSN3nBm1sDxAL1L.U6y9T6xHFYGt0xFZOmTzLU7V2bigSeu",
-      "name": "Abz",
-      "id": 3
-    },
-    {
-      "email": "egorchiktop228@gmail.com",
-      "password": "$2a$10$F5akcGm5D8IO9YCtspAe8.LMB9xFanI9DdfnO4tSd0K6cuDLjcIkm",
-      "name": "Egor",
-      "id": 4
-    },
-    {
-      "email": "dima2005@gmail.com",
-      "password": "$2a$10$9eupwcv283a9zuoDnRbA2.OA79lJBoEBtoiXIp.Vz459Vy5gOgE2S",
-      "name": "dima",
-      "id": 5
-    },
-    {
-      "email": "skye@gmail.com",
-      "password": "$2a$10$FXsm2oqkNgrodVlK1614MuhU6xgK84uxcIXJa4gUT.uGXc9wKrG3.",
-      "name": "skye",
-      "id": 6
-    },
-    {
-      "email": "qwe@gmail.com",
-      "password": "$2a$10$vqfw/dm9FR9QI2/RQ1kdyufh.Lm/efw/0hNHuYkpc8lKHg9/8o5pi",
-      "name": "qwe",
-      "id": 7
-    },
-    {
       "email": "qqq@gmail.com",
       "password": "$2a$10$ZKtjhEIAQU9Tp48ZcHMVN.DBB9y0pbR8gFi4GMvZVN6Vru7swZgwu",
       "name": "defaultQ",
@@ -53,6 +11,73 @@
       "password": "$2a$10$rexckiCp4Y2KqEIPUX9QU.kdT5V8jfGfM0C9qUv.soUdppH1qjZuO",
       "name": "newUser",
       "id": 9
+    },
+    {
+      "email": "valera@gmail.com",
+      "password": "$2a$10$8pg6KQqUD.RM4Dj9gMgJ.OoHu6iuodjuCLLUKlAnj0.Dh0QRgzVGi",
+      "name": "Valera",
+      "likedBooks": [],
+      "id": 10
+    },
+    {
+      "email": "vladimir@gmail.com",
+      "password": "$2a$10$dEshuTU4p7sgu71/i6jYEetzOgCab0kJ9QztEz2BTSiFKFc7E59qu",
+      "name": "Vladimir",
+      "likedBooks": [],
+      "id": 740
+    },
+    {
+      "email": "idTest@gmail.com",
+      "password": "$2a$10$xQM1f75MCTiDesiieSHqWe2b5vjLsh7yYkrcR8bme.YpdnvYbRAZm",
+      "name": "idTest",
+      "likedBooks": [],
+      "id": 765
+    },
+    {
+      "email": "vova@gmail.com",
+      "password": "$2a$10$BITexchXxWnR3jLD/w/ysuLUClRNUXzeqvL9n.yXh8nitlHhEAIf6",
+      "name": "Vova",
+      "likedBooks": [],
+      "id": 766
+    },
+    {
+      "email": "tim@gmail.com",
+      "password": "$2a$10$gVilVdS3XFYH0IVLmD7m3.Y6CUAKaSHyCv6nbtSWL3rl1lvGXaQgm",
+      "name": "tim",
+      "likedBooks": [],
+      "id": 826
+    },
+    {
+      "email": "uwu@gmail.com",
+      "password": "$2a$10$PlbDnt3Y6E.4kX6MEV6hw.ugtdCFb3t065HDS5Mi5CQfKmEy/5HZu",
+      "name": "uwu",
+      "likedBooks": [],
+      "id": 227
+    },
+    {
+      "email": "111@gmail.com",
+      "password": "$2a$10$ZnYu6TN1eDCnRJitXAPevOcBAozvYfKV7lMYzDZ5k6IA5UFz385na",
+      "name": "111",
+      "likedBooks": [],
+      "id": 224
+    },
+    {
+      "email": "2@gmail.com",
+      "password": "$2a$10$R7fiXQzrCFlkXLVMIGP/Qe.UOKSJayi6BYdDWX7.hFV.shaIuv7Bi",
+      "name": "2",
+      "likedBooks": [
+        "8",
+        "9",
+        "7"
+      ],
+      "id": 608
+    },
+    {
+      "email": "prostoEgor@gmail.com",
+      "password": "$2a$10$eJ5ZuUSMSchzv8yXMxsJTePlUOxnWEgHIT0zn6lgED26noxu23hFu",
+      "name": "простоЕгор",
+      "likedBooks": [],
+      "id": 432
     }
   ],
   "dataBaseBooks": [

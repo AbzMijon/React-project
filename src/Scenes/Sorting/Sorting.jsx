@@ -10,8 +10,9 @@ import Tools, { AUTHORS_LIST, GENRE_LIST, TYPE_LIST } from "../../Components/Tab
 import ServerError from "../../Components/ServerError/ServerError";
 import { isServerError } from "../../store/selectors/serverErrorSelectors";
 import Books from "../../Components/Table/Books/Books";
-import { isLoggedIn } from "../../store/selectors/userSelectors";
+import { IdUser, isLoggedIn } from "../../store/selectors/userSelectors";
 import './sorting.scss';
+import axios from "axios";
 
 const filtersList = {
     author: {
@@ -26,6 +27,10 @@ const filtersList = {
 }
 
 function Sorting() {
+    
+    const isError = useSelector(isServerError);
+    const isLogged = useSelector(isLoggedIn);
+    const userId = useSelector(IdUser);
 
     const [searchParams, setSearchParams] = useSearchParams();
     const [fetchBooks, setFetchBooks] = useState(null);
@@ -43,15 +48,27 @@ function Sorting() {
     }, []);
     const [sortingValue, setSortingValue] = useState(initialFilter);  
     const [valueOfAvailableModal, setValueOfAvailableModal] = useState(false);
-    const isError = useSelector(isServerError);
-    const isLogged = useSelector(isLoggedIn);
     
     useEffect(() => {
         fetchBooksList().then(({data}) => {
             setFetchBooks(data);
         });
     }, [])
-    
+
+
+    const selectedBooksId = selectedBooks.map(selectedBook => {
+        return selectedBook.id;
+    })
+
+    if(isLogged) {
+        useMemo(() => {
+        axios.patch(`http://localhost:8000/users/${userId}`, {
+            likedBooks: selectedBooksId,
+        })
+    }, [selectedBooks]);
+
+    console.log(axios.get(`http://localhost:8000/users/${userId}`).then(response => console.log(response.data.likedBooks)));/* !!! */
+    }
     const filterBooks = (booksToFilter, sortingValue, handleAvailable, searchString) =>  booksToFilter.filter(book => {
         let isPassed = true;
 

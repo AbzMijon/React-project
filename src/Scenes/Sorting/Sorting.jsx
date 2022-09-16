@@ -35,7 +35,8 @@ function Sorting() {
     const [searchParams, setSearchParams] = useSearchParams();
     const [fetchBooks, setFetchBooks] = useState(null);
     const [filteredBooks, setFilteredBooks] = useState([]);
-    const [selectedBooks, setSelectedBooks] = useState(JSON.parse(localStorage.getItem('selectedBooks')) || []);
+    const [selectedBooks, setSelectedBooks] = useState(isLogged ? [] : JSON.parse(localStorage.getItem('selectedBooks')) || []); /* Саздаем state с начальным значеним для залогиненного юзера пустой массив а для гостя просто с локалСторейджа */
+    const [successResponseServer, setSuccessResponseServer] = useState(false); /* Создали для того что бы понять когда сервер дал ответ (по умочанию false, а когда пришли данные он станет - true) */
     const [searchString, setsearchString] = useState(searchParams.get('searchString') || ''); 
     const [bookSrc, setBookSrc] = useState('');
     const [allChecked, setAllChecked] = useState(searchParams.get('onlyAvailable') === 'true' ? true : false);
@@ -53,22 +54,23 @@ function Sorting() {
         fetchBooksList().then(({data}) => {
             setFetchBooks(data);
         });
+        /* Делаем гет запрос в котором пишем логику если юзер залогиненный то в selectedBooks ложим данные и изменяем наш ответ successResponseServer на true */
+        axios.get(`http://localhost:8000/users/${userId}`).then(response => {
+            if(isLogged) {
+                setSelectedBooks(response.data.likedBooks);
+                setSuccessResponseServer(true);
+            } 
+        })
     }, [])
 
-
-    const selectedBooksId = selectedBooks.map(selectedBook => {
-        return selectedBook.id;
-    })
-
-    if(isLogged) {
-        useMemo(() => {
-        axios.patch(`http://localhost:8000/users/${userId}`, {
-            likedBooks: selectedBooksId,
-        })
+    useEffect(() => {
+        /* Далее если isLogged && successResponseServer, то при изменении selectedBooks делаем patch */
+        if(isLogged && successResponseServer) {
+            axios.patch(`http://localhost:8000/users/${userId}`, {
+                likedBooks: selectedBooks,
+            })
+        }
     }, [selectedBooks]);
-
-    console.log(axios.get(`http://localhost:8000/users/${userId}`).then(response => console.log(response.data.likedBooks)));/* !!! */
-    }
     const filterBooks = (booksToFilter, sortingValue, handleAvailable, searchString) =>  booksToFilter.filter(book => {
         let isPassed = true;
 
@@ -107,31 +109,36 @@ function Sorting() {
 
     return (
         <React.Fragment>
-            {isError && <ServerError />}
-            <Header 
-                searchString={searchString} 
-                setsearchString={setsearchString} 
-                selectedBooks={selectedBooks} 
-                setSelectedBooks={setSelectedBooks} 
-                setValueOfAvailableModal={setValueOfAvailableModal} />
-            <main className='main'>
-                <div className='container'>  
-                    <Tools
-                        filtersList={filtersList} 
-                        sortingValue={sortingValue} 
-                        setSortingValue={setSortingValue} 
-                        allChecked={allChecked} 
-                        setAllChecked={setAllChecked} />
-                    <Books 
-                        filteredBooks={filteredBooks} 
-                        bookSrc={bookSrc} 
-                        setBookSrc={setBookSrc} 
-                        valueOfAvailableModal={valueOfAvailableModal} 
-                        setValueOfAvailableModal={setValueOfAvailableModal} 
+            {/* Ну и все пришло как надо рендерим наш контент */}
+            {(successResponseServer || isLogged === false) && 
+                <React.Fragment>
+                    {isError && <ServerError />}
+                    <Header 
+                        searchString={searchString} 
+                        setsearchString={setsearchString} 
                         selectedBooks={selectedBooks} 
-                        setSelectedBooks={setSelectedBooks} />
-                </div>
-            </main>
+                        setSelectedBooks={setSelectedBooks} 
+                        setValueOfAvailableModal={setValueOfAvailableModal} />
+                    <main className='main'>
+                        <div className='container'>  
+                            <Tools
+                                filtersList={filtersList} 
+                                sortingValue={sortingValue} 
+                                setSortingValue={setSortingValue} 
+                                allChecked={allChecked} 
+                                setAllChecked={setAllChecked} />
+                            <Books 
+                                filteredBooks={filteredBooks} 
+                                bookSrc={bookSrc} 
+                                setBookSrc={setBookSrc} 
+                                valueOfAvailableModal={valueOfAvailableModal} 
+                                setValueOfAvailableModal={setValueOfAvailableModal} 
+                                selectedBooks={selectedBooks} 
+                                setSelectedBooks={setSelectedBooks} />
+                        </div>
+                    </main>
+                </React.Fragment>
+            }
         </React.Fragment>
     )
 }

@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useMemo } from "react";
 
 import { useSearchParams } from 'react-router-dom';
-
 import { fetchBooksList } from "../../api/booksApi";
 import { useSelector } from 'react-redux/es/exports';
 import Spinner from "../../Components/SpinnerLoading/Spinner";
@@ -11,8 +10,8 @@ import ServerError from "../../Components/ServerError/ServerError";
 import { isServerError } from "../../store/selectors/serverErrorSelectors";
 import Books from "../../Components/Table/Books/Books";
 import { IdUser, isLoggedIn } from "../../store/selectors/userSelectors";
-import './sorting.scss';
 import axios from "axios";
+import './sorting.scss';
 
 const filtersList = {
     author: {
@@ -69,8 +68,11 @@ function Sorting() {
             axios.patch(`http://localhost:8000/users/${userId}`, {
                 likedBooks: selectedBooks,
             })
+        }   else {
+            localStorage.setItem('selectedBooks', JSON.stringify(selectedBooks));
         }
     }, [selectedBooks]);
+
     const filterBooks = (booksToFilter, sortingValue, handleAvailable, searchString) =>  booksToFilter.filter(book => {
         let isPassed = true;
 
@@ -99,17 +101,13 @@ function Sorting() {
         }
     }, [fetchBooks, sortingValue, allChecked, searchString]);
 
-    useEffect(() => {
-        localStorage.setItem('selectedBooks', JSON.stringify(selectedBooks));
-    }, [selectedBooks]);
-
-    if(fetchBooks === null && !isError) {
+    if((fetchBooks === null && !isError) || (isLogged && !successResponseServer)) {
         return <Spinner />
     }
 
     return (
         <React.Fragment>
-            {/* Ну и все пришло как надо рендерим наш контент */}
+            {/* Ну и если все пришло как надо рендерим наш контент */}
             {(successResponseServer || isLogged === false) && 
                 <React.Fragment>
                     {isError && <ServerError />}

@@ -1,5 +1,0 @@
-1. Add Log In Functional and save data to db
-2. Pagination in book
-3. Unit test of Books-component
-4. Make good working table
-5. Add to UrlSearchParams sorting by

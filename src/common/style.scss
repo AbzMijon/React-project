@@ -1,0 +1,178 @@
+//Imports
+@import url(./reset.scss);
+
+//Variables SASS
+$backgroundTheme--dark: linear-gradient(
+		rgba(14, 14, 14, 0.2),
+		rgba(14, 14, 14, 0.2)
+	),
+	rgb(3 21 28) no-repeat center;
+$backgroundTheme--light: linear-gradient(
+		rgba(14, 14, 14, 0.2),
+		rgba(14, 14, 14, 0.2)
+	),
+	rgb(139, 200, 225) no-repeat center;
+$componentsTheme--dark: #3b3b3b;
+$componentsTheme--light: #fff;
+$searchBackgroundTheme--dark: #3b3b3b;
+$searchBackgroundTheme--light: #8bc8e1;
+$colorTheme--dark: #ffffff;
+$colorTheme--light: #373277;
+$skyTheme--dark: 'https://flomaster.club/uploads/posts/2021-11/thumbs/1636502996_85-flomaster-club-p-zvezdnoe-nebo-illyustratsiya-krasivie-risu-92.jpg';
+$skyTheme--light: 'https://funart.pro/uploads/posts/2021-04/1618576717_14-funart_pro-p-oboi-fon-nebo-vektor-16.jpg';
+
+//Variables Css
+:root {
+	//Backgrounds
+	--backgroundTheme--dark: #{$backgroundTheme--dark};
+	--backgroundTheme--light: #{$backgroundTheme--light};
+	--backgroundTheme--default: var(#{--backgroundTheme--light});
+	--skyTheme--dark: #{$skyTheme--dark};
+	--skyTheme--light: #{$skyTheme--light};
+	--skyTheme--default: var(#{--skyTheme--light});
+		//Components
+		--componentsTheme--dark: #{$componentsTheme--dark};
+		--componentsTheme--light: #{$componentsTheme--light};
+		--componentsTheme--default: var(#{--componentsTheme--light});
+			//Other Elemets
+			--searchBackgroundTheme--dark: #{$searchBackgroundTheme--dark};
+			--searchBackgroundTheme--light: #{$searchBackgroundTheme--light};
+			--searchBackgroundTheme--default: var(#{--searchBackgroundTheme--light});
+			--colorTheme--dark: #{$colorTheme--dark};
+			--colorTheme--light: #{$colorTheme--light};
+			--colorTheme--default: var(#{--colorTheme--light});
+}
+
+//Main font
+@font-face {
+	font-family: 'Rubik';
+	src: url('../assets/fonts/Rubik-Medium.eot');
+	src: local('☺'), url('../assets/fonts/Rubik-Medium.woff') format('woff'),
+		url('../assets/fonts/Rubik-Medium.ttf') format('truetype'),
+		url('../assets/fonts/Rubik-Medium.svg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+//Defolt settings
+* {
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+img {
+	max-width: 100%;
+	-o-object-fit: cover;
+	object-fit: cover;
+}
+
+a {
+	text-decoration: none;
+	color: var(#{--colorTheme--default});
+}
+
+body {
+	background: var(#{--backgroundTheme--default});
+	background-size: cover;
+	color: var(--colorTheme--default);
+	font-family: 'Rubik', sans-serif;
+	font-weight: 500;
+	font-size: 15px;
+	line-height: 20px;
+	transition: 0.2s ease-out;
+}
+
+h1,
+.title1 {
+	color: #ffffff;
+	font-weight: 700;
+	font-size: 64px;
+	line-height: 55px;
+}
+
+h2,
+.title2 {
+	color: #ffffff;
+	font-weight: 700;
+	font-size: 30px;
+	line-height: 42px;
+	z-index: 51;
+}
+
+h3,
+.title3 {
+	font-weight: 700;
+	font-size: 30px;
+	line-height: 35px;
+}
+
+h4,
+.title4 {
+	font-weight: 700;
+	font-size: 24px;
+	line-height: 28px;
+}
+
+h5,
+.title5 {
+	font-weight: 500;
+	font-size: 18px;
+	line-height: 21px;
+}
+
+h6,
+.title6 {
+	font-weight: 700;
+	font-size: 13px;
+	line-height: 15px;
+}
+
+.btn {
+	border: none;
+	outline: none;
+	background-color: #ff4343;
+	min-width: 370px;
+	min-height: 80px;
+	padding: 5px;
+	-webkit-transition: all 0.2s cubic-bezier(0, 0.99, 0.51, 0.53);
+	transition: all 0.2s cubic-bezier(0, 0.99, 0.51, 0.53);
+	cursor: pointer;
+	font-weight: 900;
+	font-size: 24px;
+	line-height: 28px;
+	text-transform: uppercase;
+	color: #ffffff;
+
+	&:hover {
+		background-color: #e71414;
+	}
+}
+
+.container {
+	max-width: 1250px;
+	padding: 0 15px;
+	margin: 0 auto;
+}
+
+.erorr--not-found {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%);
+	font-size: 60px;
+	color: #3b3b3b;
+}
+
+.home-icon {
+    color: #fff;
+    font-size: 75px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    padding: 10px;
+    cursor: pointer;
+    transition: 0.2s ease-in;
+	z-index: 99;
+    &:hover {
+        color: #544747;
+    }
+}

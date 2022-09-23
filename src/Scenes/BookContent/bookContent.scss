@@ -1,0 +1,75 @@
+.book__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.book__name {
+    margin-left: 70px;
+}
+
+.book__page {
+    background: url(https://kartinkin.net/uploads/posts/2021-07/1626151116_56-kartinkin-com-p-papirus-fon-krasivo-64.png) no-repeat center;
+    background-size: cover;
+    padding: 170px 35px;
+    max-width: 820px;
+    height: 70%;
+    color: #000000;
+    position: relative;
+    border-radius: 0 10px 0 10px;
+    border-radius: 5px;
+    font-size: 25px;
+    margin: 25px auto 0 auto;
+}
+
+.book__text--mini, .book__text--medium, .book__text--max{
+    margin: 30px 0;
+    transition: 0.2s all;
+}
+
+.book__text--mini {
+    line-height: 25px;
+    font-size: 15px;
+}
+.book__text--medium {
+    line-height: 35px;
+    font-size: 20px;
+}
+.book__text--max {
+    line-height: 43px;
+    font-size: 30px;
+}
+
+.book__text-settings {
+    padding: 15px 20px;
+    font-size: 20px;
+    border: 2px solid #544747;
+    border-radius: 5px;
+    outline: none;
+    transition: 0.2s ease-in;
+    &:hover {
+        background-color: #dadada;
+    }
+}
+
+.book__word-amount {
+    font-size: 25px;
+    color: #e4e4e4;
+    font-weight: bold;
+    text-align: center;
+}
+
+.book__active-page {
+    margin-top: 10px;
+}
+
+@media screen and (max-width: 795px) {
+    .book__header {
+        flex-direction: column;
+        row-gap: 30px;
+        margin-bottom: 30px;
+    }
+    .book__page {
+        background: #e6c890;
+    }
+}

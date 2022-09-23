@@ -1,0 +1,18 @@
+.spinner {
+	position: absolute;
+	top: 50%;
+	left: 35%;
+	display: flex;
+	transform: translateY(-50%);
+	align-items: center;
+	.spinner__title {
+		font-size: 45px;
+		font-weight: bold;
+		color: #000;
+		margin-right: 15px;
+	}
+	.spinner__img {
+		width: 80px;
+		height: 80px;
+	}
+}

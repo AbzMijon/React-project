@@ -1,0 +1,60 @@
+.cloud {
+	position: relative;
+	width: 6em;
+	height: 6em;
+	margin: 2em;
+	background: #ffffff;
+	border-width: 0.25em;
+	border-style: solid;
+	border-color: #6e839e;
+	border-radius: 50% 50% 0 0;
+}
+.cloud:before,
+.cloud:after {
+	content: '';
+	position: absolute;
+	bottom: -0.25em;
+	background: inherit;
+	border-width: 0.25em;
+	border-style: solid;
+	border-color: #6e839e;
+}
+.cloud:before {
+	left: 80%;
+	width: 60%;
+	height: 60%;
+	border-left: none;
+	border-radius: 50% 50% 50% 0;
+}
+.cloud:after {
+	right: 80%;
+	width: 80%;
+	height: 80%;
+	border-right: none;
+	border-radius: 50% 50% 0;
+}
+
+.cloud-1 {
+	position: absolute;
+	top: 5px;
+	left: 24%;
+	transition: 0.2s all;
+}
+.cloud-2 {
+	position: absolute;
+	top: -50px;
+	right: 23%;
+	transition: 0.2s all;
+}
+
+.moon {
+	position: absolute;
+	top: 30px;
+	left: 18%;
+	width: 100px;
+	height: 100px;
+	margin: -20px 0 20px 0;
+	border-radius: 50%;
+	box-shadow: 15px 15px 0 0 #fec712;
+	transition: 0.2s all;
+}

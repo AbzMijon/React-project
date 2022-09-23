@@ -1,0 +1,21 @@
+.tools__hidden-list {
+    width: 100%;
+    outline: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    padding: 6px 10px;
+    font-weight: 400;
+    cursor: pointer;
+    position: relative;
+    transition: 0.2s ease-out;
+    color: var(#{--colorTheme--default});
+    background-color: var(#{--componentsTheme--default});
+}
+.tools__hidden-item + .tools__hidden-item {
+    margin-top: 115px;
+}
+.tools__hidden-item:first-child {
+    color: #000;
+    font-weight: 700;
+}

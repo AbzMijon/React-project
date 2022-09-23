@@ -1,0 +1,90 @@
+.login__title {
+    font-size: 50px;
+    margin-bottom: 40px;
+    color: #000000;
+    letter-spacing: 0.5px;
+    text-align: center;
+}
+
+.login__card-wrapper {
+    min-width: 450px;
+    min-height: 350px;
+    border-radius: 10px;
+    border: 3px solid #000;
+    background-color: #fff;
+    padding: 25px 30px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+}
+
+.login__card {
+    width: 100%;
+    z-index: 5;
+}
+
+.login__name, .login__email, .login__pass {
+    width: 100%;
+    padding: 10px 15px;
+    font-size: 20px;
+}
+
+.field {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.field__error {
+    color: #c21717;
+}
+
+.login__title-field {
+    position: absolute;
+    top: -9px;
+    left: 7px;
+    z-index: 2;
+    color: #000;
+    background-color: #fff;
+}
+
+.success__auth-title {
+    margin: 0 10px;
+    font-size: 19px;
+    color: #d42d2d;
+    letter-spacing: 0.5px;
+}
+
+.login__footer-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.login__forgot {
+    text-decoration: underline;
+    cursor: pointer;
+    color: #5900ff;
+}
+
+.login__submit {
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 25px;
+    margin: 0 10px;
+    background-color: #ecde0f;
+    cursor: pointer;
+    font-weight: bold;
+    &:hover {
+        color: #fff;
+    }
+}
+
+.login__leaves {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    width: 100vw;
+    height: 100vh;
+}

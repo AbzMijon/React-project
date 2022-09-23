@@ -6,3 +6,4 @@ finally project in TeachMeSkills group
 2.In IDE insert ```git clone {'link of this project'}```
 3.Write in console ```npm install```
 Good luck!
+hello world!

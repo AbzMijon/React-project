@@ -8,6 +8,7 @@ import { loggedUserName } from '../../store/selectors/userSelectors';
 import { useDispatch, useSelector } from 'react-redux/es/exports';
 import { Formik, Form } from "formik";
 import { fetchUsers } from "../../api/userApi";
+import { randomInteger } from "../../helpers/randomNumber";
 import ProfileFormikInput from "../../Components/FormikInputs/ProfileFormikInput";
 import axios from "axios";
 import './profile.scss';
@@ -19,10 +20,7 @@ function Profile() {
     const userName = useSelector(loggedUserName);
     const [handleChangeName, setHandleChangeName] = useState(false);
     const [handleChangePassword, setHandleChangePassword] = useState(false);
-    const randomInteger = (min, max) => {
-        let rand = min + Math.random() * (max - min + 1);
-        return Math.round(rand);
-    }
+
     const logOut = () => {
         dispatch({type: 'userLogOut'});
         navigate(PATH.initialPage);

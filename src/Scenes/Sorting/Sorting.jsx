@@ -2,6 +2,7 @@ import React, { useState, useEffect, useMemo } from "react";
 
 import { useSearchParams } from 'react-router-dom';
 import { fetchBooksList } from "../../api/booksApi";
+import { fetchUserById } from "../../api/userApi";
 import { useSelector } from 'react-redux/es/exports';
 import Spinner from "../../Components/SpinnerLoading/Spinner";
 import Header from "../../Components/Table/Header/Header";
@@ -34,8 +35,8 @@ function Sorting() {
     const [searchParams, setSearchParams] = useSearchParams();
     const [fetchBooks, setFetchBooks] = useState(null);
     const [filteredBooks, setFilteredBooks] = useState([]);
-    const [selectedBooks, setSelectedBooks] = useState(isLogged ? [] : JSON.parse(localStorage.getItem('selectedBooks')) || []); /* Саздаем state с начальным значеним для залогиненного юзера пустой массив а для гостя просто с локалСторейджа */
-    const [successResponseServer, setSuccessResponseServer] = useState(false); /* Создали для того что бы понять когда сервер дал ответ (по умочанию false, а когда пришли данные он станет - true) */
+    const [selectedBooks, setSelectedBooks] = useState(isLogged ? [] : JSON.parse(localStorage.getItem('selectedBooks')) || []);
+    const [successResponseServer, setSuccessResponseServer] = useState(false);
     const [searchString, setsearchString] = useState(searchParams.get('searchString') || ''); 
     const [bookSrc, setBookSrc] = useState('');
     const [allChecked, setAllChecked] = useState(searchParams.get('onlyAvailable') === 'true' ? true : false);
@@ -53,8 +54,7 @@ function Sorting() {
         fetchBooksList().then(({data}) => {
             setFetchBooks(data);
         });
-        /* Делаем гет запрос в котором пишем логику если юзер залогиненный то в selectedBooks ложим данные и изменяем наш ответ successResponseServer на true */
-        axios.get(`http://localhost:8000/users/${userId}`).then(response => {
+        fetchUserById(userId).then(response => {
             if(isLogged) {
                 setSelectedBooks(response.data.likedBooks);
                 setSuccessResponseServer(true);
@@ -63,13 +63,12 @@ function Sorting() {
     }, [])
 
     useEffect(() => {
-        /* Далее если isLogged && successResponseServer, то при изменении selectedBooks делаем patch */
         if(isLogged && successResponseServer) {
             axios.patch(`http://localhost:8000/users/${userId}`, {
                 likedBooks: selectedBooks,
             })
         }   else {
-            localStorage.setItem('selectedBooks', JSON.stringify(selectedBooks));
+                localStorage.setItem('selectedBooks', JSON.stringify(selectedBooks));
         }
     }, [selectedBooks]);
 
@@ -107,7 +106,6 @@ function Sorting() {
 
     return (
         <React.Fragment>
-            {/* Ну и если все пришло как надо рендерим наш контент */}
             {(successResponseServer || isLogged === false) && 
                 <React.Fragment>
                     {isError && <ServerError />}

@@ -1,17 +1,17 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect, useMemo } from 'react';
 
 import { useSearchParams } from 'react-router-dom';
-import { fetchBooksList } from "../../api/booksApi";
-import { fetchUserById } from "../../api/userApi";
+import { fetchBooksList } from '@src/api/booksApi';
+import { fetchUserById } from '@src/api/userApi';
 import { useSelector } from 'react-redux/es/exports';
-import Spinner from "../../Components/SpinnerLoading/Spinner";
-import Header from "../../Components/Table/Header/Header";
-import Tools, { AUTHORS_LIST, GENRE_LIST, TYPE_LIST } from "../../Components/Table/Tools/Tools";
-import ServerError from "../../Components/ServerError/ServerError";
-import { isServerError } from "../../store/selectors/serverErrorSelectors";
-import Books from "../../Components/Table/Books/Books";
-import { IdUser, isLoggedIn } from "../../store/selectors/userSelectors";
-import axios from "axios";
+import Spinner from '@src/Components/SpinnerLoading/Spinner';
+import Header from '@src/Components/Table/Header/Header';
+import Tools, { AUTHORS_LIST, GENRE_LIST, TYPE_LIST } from '@src/Components/Table/Tools/Tools';
+import ServerError from '@src/Components/ServerError/ServerError';
+import { isServerError } from '@src/store/selectors/serverErrorSelectors';
+import Books from '@src/Components/Table/Books/Books';
+import { IdUser, isLoggedIn } from '@src/store/selectors/userSelectors';
+import axios from 'axios';
 import './sorting.scss';
 
 const filtersList = {

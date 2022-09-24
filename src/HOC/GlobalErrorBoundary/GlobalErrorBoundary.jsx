@@ -18,12 +18,12 @@ class GlobalErrorBoundary extends Component {
 	render() {
 		if (this.state.hasError) {
 			return (
-				<div className="global-error">
-					<h2 className="global-error__title">
+				<div className='global-error'>
+					<h2 className='global-error__title'>
 						Ой, что-то пошло не так! :(
 					</h2>
-					<a target="_blank" href="https://t.me/Abz_mijon">
-						<button className="global-error__btn btn" type="button">
+					<a target='_blank' href='https://t.me/Abz_mijon'>
+						<button className='global-error__btn btn' type='button'>
 							Сообщить о проблеме
 						</button>
 					</a>

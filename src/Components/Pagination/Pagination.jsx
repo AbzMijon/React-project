@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 import PropTypes from 'prop-types';
 import './pagination.scss';
@@ -11,8 +11,8 @@ function Pagination({ wordsPerPage, totalWords, paginate, currentPage, setCurren
     }
     return (
         <React.Fragment>
-            <ul className="pagination">
-                <button className="pagination__btn pagination--prev" onClick={() => 
+            <ul className='pagination'>
+                <button className='pagination__btn pagination--prev' onClick={() => 
                     currentPage > 1 
                     ? 
                         setCurrentPage(currentPage - 1)
@@ -23,16 +23,16 @@ function Pagination({ wordsPerPage, totalWords, paginate, currentPage, setCurren
                         return (
                             <li key={number} className={currentPage && currentPage === number
                             ? 
-                                "pagination__item--active" 
+                                'pagination__item--active' 
                             : 
-                                "pagination__item"
+                                'pagination__item'
                             } onClick={() => paginate(number)}>
-                                <a href="#" className="pagination__link">{number}</a>
+                                <a href='#' className='pagination__link'>{number}</a>
                             </li>
                         )
                     })
                 }
-                <button className="pagination__btn pagination--next" onClick={() => currentPage > pageNumbers.length - 1
+                <button className='pagination__btn pagination--next' onClick={() => currentPage > pageNumbers.length - 1
                 ? 
                     setCurrentPage(pageNumbers.length)
                 : 

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { store } from '../store/initStore';
+import { store } from '@src/store/initStore';
 
 const fakeServerInstance = axios.create({
 	baseURL: 'http://localhost:8000/',

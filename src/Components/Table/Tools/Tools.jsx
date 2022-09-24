@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 
-import HiddenBlock from '../../HiddenBlock/HiddenBlock';
-import { globalThemeContext } from '../../../Contexts/theme';
+import HiddenBlock from '@src/Components/HiddenBlock/HiddenBlock';
+import { globalThemeContext } from '@src/Contexts/theme';
 import { useSearchParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import './tools.scss';
@@ -42,8 +42,8 @@ function Tools({ filtersList, sortingValue, setSortingValue, allChecked, setAllC
 	};
 	
 	return (
-		<section className="tools">
-			<ul className="tools__list">
+		<section className='tools'>
+			<ul className='tools__list'>
 				{Object.keys(filtersList).map((listItemName, i) => (
 					<HiddenBlock
 						key={i}
@@ -52,17 +52,17 @@ function Tools({ filtersList, sortingValue, setSortingValue, allChecked, setAllC
 						dataArray={filtersList[listItemName].filterOptions}
 					/>
 				))}
-				<div className="tools__item">
+				<div className='tools__item'>
 					<input
-						type="checkbox"
+						type='checkbox'
 						checked={allChecked ? true : false}
-						className="tools__checkbox"
+						className='tools__checkbox'
 						onChange={() => setAllChecked(!allChecked)}
-						id="tools__check"
+						id='tools__check'
 					/>
-					<label htmlFor="tools__check"><p className="tools__available">Посмотреть доступные</p></label>
+					<label htmlFor='tools__check'><p className='tools__available'>Посмотреть доступные</p></label>
 				</div>
-				<div className="tools__theme"
+				<div className='tools__theme'
 					onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}>
 					<div className={
 							theme === 'dark'

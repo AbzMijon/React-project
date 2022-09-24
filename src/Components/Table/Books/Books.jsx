@@ -1,13 +1,13 @@
-import React from "react";
+import React from 'react';
 
-import { isLoggedIn } from "../../../store/selectors/userSelectors";
-import { useNavigate } from "react-router-dom";
-import { PATH } from "../../../constans/routes.ts";
+import { isLoggedIn } from '@src/store/selectors/userSelectors';
+import { useNavigate } from 'react-router-dom';
+import { PATH } from '@src/constans/routes.ts';
 import { FaLock } from 'react-icons/fa';
 import { AiFillHeart } from 'react-icons/ai';
-import { useSelector } from "react-redux";
+import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
-import NotAvailableModal from "../../NotAvailableModal/NotAvailableModal";
+import NotAvailableModal from '@src/Components/NotAvailableModal/NotAvailableModal';
 import './books.scss';
 
 function Books({ filteredBooks, bookSrc, setBookSrc, valueOfAvailableModal, setValueOfAvailableModal, selectedBooks, setSelectedBooks }) {
@@ -20,7 +20,7 @@ function Books({ filteredBooks, bookSrc, setBookSrc, valueOfAvailableModal, setV
             <ul className='books__list'>
                 {filteredBooks.map(filteredBook => {
                     return (
-                        <div className="books__wrapper" key={filteredBook.id} onClick={() => setBookSrc(filteredBook.src)}>
+                        <div className='books__wrapper' key={filteredBook.id} onClick={() => setBookSrc(filteredBook.src)}>
                             <li className='books__item' onClick={(filteredBook.isAvailableForGuest || userLoggedIn)
                                 ? 
                                     () => {navigate(`${PATH.bookPage(filteredBook.id)}`)}

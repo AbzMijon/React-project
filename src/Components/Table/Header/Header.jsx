@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { isLoggedIn } from '../../../store/selectors/userSelectors';
-import { PATH } from '../../../constans/routes.ts';
-import { loggedUserName } from '../../../store/selectors/userSelectors';
+import { isLoggedIn } from '@src/store/selectors/userSelectors';
+import { PATH } from '@src/constans/routes.ts';
+import { loggedUserName } from '@src/store/selectors/userSelectors';
 import { BiLogIn } from 'react-icons/bi';
 import { AiFillHeart } from 'react-icons/ai';
 import { FaSearch, FaUserAlt } from 'react-icons/fa';
-import SelectedBooks from '../../SelectedBooks/SelectedBooks';
+import SelectedBooks from '@src/Components/SelectedBooks/SelectedBooks';
 import PropTypes from 'prop-types';
 import './header.scss';
 
@@ -20,11 +20,11 @@ function Header({ searchString, setsearchString, selectedBooks, setSelectedBooks
     const userName = useSelector(loggedUserName);
 
     return (
-        <header className="header">
-		<div className="container">
-			<div className="header__wrap">
+        <header className='header'>
+		<div className='container'>
+			<div className='header__wrap'>
 				<h2
-					className="header__login"
+					className='header__login'
 					onClick={() =>
 						navigate(
 							userLoggedIn
@@ -34,36 +34,36 @@ function Header({ searchString, setsearchString, selectedBooks, setSelectedBooks
 					}
 				>
 					{!userLoggedIn ? (
-						<div className="login-wrap">
-							<BiLogIn className="mini-icon-for-ui" /> Войти
+						<div className='login-wrap'>
+							<BiLogIn className='mini-icon-for-ui' /> Войти
 						</div>
 					) : (
-						<div className="logout-wrap">
-							<FaUserAlt className="mini-icon-for-ui" />
+						<div className='logout-wrap'>
+							<FaUserAlt className='mini-icon-for-ui' />
 							<p className='header__name'>{userName}</p>
 						</div>
 					)}
 				</h2>
-				<div className="header__input-wrap">
+				<div className='header__input-wrap'>
 					<input
-						type="text"
-						placeholder="Поиск.."
-						className="header__search"
+						type='text'
+						placeholder='Поиск..'
+						className='header__search'
 						value={searchString}
 						onChange={(e) => setsearchString(e.target.value)}
 					/>
 
-					<button className="header__submit" type="submit">
-						{<FaSearch className="fa-search" />}
+					<button className='header__submit' type='submit'>
+						{<FaSearch className='fa-search' />}
 					</button>
 					{searchString && (
-						<p className="header__search-prompt">{searchString + '?'}</p>
+						<p className='header__search-prompt'>{searchString + '?'}</p>
 					)}
 				</div>
-				<div className="header__liked" onClick={() => setCheckLikedBooks(true)}>
-					<AiFillHeart className="fa-heart" />
+				<div className='header__liked' onClick={() => setCheckLikedBooks(true)}>
+					<AiFillHeart className='fa-heart' />
 					{selectedBooks.length > 0 && (
-						<div className="header__heart-counter">{selectedBooks.length}</div>
+						<div className='header__heart-counter'>{selectedBooks.length}</div>
 					)}
 				</div>
 				{checkLikedBooks && (

@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 
 import { Outlet } from 'react-router-dom'
-import BackgroundApp from '../../Components/BackgroundApp/BackgroundApp';
-import { globalThemeContext } from '../../Contexts/theme';
+import BackgroundApp from '@src/Components/BackgroundApp/BackgroundApp';
+import { globalThemeContext } from '@src/Contexts/theme';
 import './mainLayout.scss';
 
 function MainLayout () {

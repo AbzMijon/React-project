@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { globalThemeContext } from '../../Contexts/theme';
+import { globalThemeContext } from '@src/Contexts/theme';
 
 function GlobalTheme(props) {
 	const [theme, setTheme] = useState(

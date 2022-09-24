@@ -13,16 +13,16 @@ function HiddenBlock({ searchParams, dataArray, handleSelect }) {
 	};
 
 	return (
-		<li className="tools__item">
+		<li className='tools__item'>
 			<select
-				className="tools__hidden-list"
-				name="toolItem"
+				className='tools__hidden-list'
+				name='toolItem'
 				defaultValue={searchParams || selectValue}
 				onChange={selectChange}
 			>
 				{dataArray.map((elem) => {
 					return (
-						<option key={elem.id} value={elem.id} className="tools__hidden-item">
+						<option key={elem.id} value={elem.id} className='tools__hidden-item'>
 							{elem.name}
 						</option>
 					);

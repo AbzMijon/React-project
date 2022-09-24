@@ -11,14 +11,14 @@ function NotAvailableModal({ bookSrc, valueOfAvailableModal, setValueOfAvailable
 				setValueOfAvailableModal(false);
 			}}
 		>
-			<div className="modal__content"
+			<div className='modal__content'
 				onClick={(e) => e.stopPropagation()}
 			>
-				<img src={bookSrc} className="modal__img" alt="bookIMG" />
-				<p className="modal__text">Эта книжка доступна только для авторизованных пользователей;(</p>
+				<img src={bookSrc} className='modal__img' alt='bookIMG' />
+				<p className='modal__text'>Эта книжка доступна только для авторизованных пользователей;(</p>
 				<button
-					className="modal-ok"
-					type="button"
+					className='modal-ok'
+					type='button'
 					onClick={() => {
 						setValueOfAvailableModal(false);
 					}}

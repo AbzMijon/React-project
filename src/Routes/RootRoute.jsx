@@ -1,23 +1,23 @@
 import React, { Suspense } from 'react';
 
 //Components
-import MainLayout from '../Layouts/MainLayout/MainLayout';
-import BookPage from '../Layouts/BookPage/BookPage';
-import UserProfile from '../Layouts/UserProfile/UserProfile';
-import Login from '../Layouts/Login/Login';
-import Spinner from '../Components/SpinnerLoading/Spinner';
+import MainLayout from '@src/Layouts/MainLayout/MainLayout';
+import BookPage from '@src/Layouts/BookPage/BookPage';
+import UserProfile from '@src/Layouts/UserProfile/UserProfile';
+import Login from '@src/Layouts/Login/Login';
+import Spinner from '@src/Components/SpinnerLoading/Spinner';
 
 //CONSTANS
-import { ROUTES } from '../constans/routes.ts';
+import { ROUTES } from '@src/constans/routes.ts';
 
 //Routing
 import { Routes, Route } from 'react-router-dom';
 
 //React lazy
-const Sorting = React.lazy(() => import('../Scenes/Sorting/Sorting'));
-const LoginPage = React.lazy(() => import('../Scenes/Login/LoginPage.tsx'));
-const BookContent = React.lazy(() => import('../Scenes/BookContent/BookContent'));
-const Profile = React.lazy(() => import('../Scenes/Profile/Profile'));
+const Sorting = React.lazy(() => import('@src/Scenes/Sorting/Sorting'));
+const LoginPage = React.lazy(() => import('@src/Scenes/Login/LoginPage.tsx'));
+const BookContent = React.lazy(() => import('@src/Scenes/BookContent/BookContent'));
+const Profile = React.lazy(() => import('@src/Scenes/Profile/Profile'));
 
 function RootRoute() {
     return (

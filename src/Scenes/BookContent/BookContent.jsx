@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { AiFillHome } from 'react-icons/ai';
-import { fetchBooksList } from '../../api/booksApi';
-import { PATH } from '../../constans/routes.ts';
-import Spinner from '../../Components/SpinnerLoading/Spinner';
+import { fetchBooksList } from '@src/api/booksApi';
+import { PATH } from '@src/constans/routes.ts';
+import Spinner from '@src/Components/SpinnerLoading/Spinner';
 import { useSelector } from 'react-redux';
-import { isServerError } from '../../store/selectors/serverErrorSelectors.js';
-import ServerError from '../../Components/ServerError/ServerError';
-import Words from '../../Components/Words/Words';
-import Pagination from '../../Components/Pagination/Pagination.jsx';
+import { isServerError } from '@src/store/selectors/serverErrorSelectors.js';
+import ServerError from '@src/Components/ServerError/ServerError';
+import Words from '@src/Components/Words/Words';
+import Pagination from '@src/Components/Pagination/Pagination.jsx';
 import './bookContent.scss';
 
 function BookContent() {
@@ -44,24 +44,24 @@ function BookContent() {
 			{isError && <ServerError />}
 			{book && (
 				<React.Fragment>
-					<header className="book__header">
-						<Link to={PATH.initialPage}> <AiFillHome className="home-icon" /> </Link>
-						<h2 className="book__name"> {book.author + ` "${book.title}"`} </h2>
+					<header className='book__header'>
+						<Link to={PATH.initialPage}> <AiFillHome className='home-icon' /> </Link>
+						<h2 className='book__name'> {book.author + ` '${book.title}'`} </h2>
 						<select
-							className="book__text-settings"
+							className='book__text-settings'
 							defaultValue={'default_value'}
 							onChange={(e) => setFontSizeType(e.target.value)}
 						>
-							<option value="default_value" disabled>Размер шрифта</option>
-							<option value="mini">mini</option>
-							<option value="medium">medium (default)</option>
-							<option value="max">max</option>
+							<option value='default_value' disabled>Размер шрифта</option>
+							<option value='mini'>mini</option>
+							<option value='medium'>medium (default)</option>
+							<option value='max'>max</option>
 						</select>
 					</header>
-					<main className="book__main">
-						<p className="book__word-amount">{words.length} слов/а в тексте!</p>
-						<div className="book__page">
-						<h4 className="book__active-page">{`Страница ${currentPage} / ${Math.ceil(words.length / wordsPerPage)}`}</h4>
+					<main className='book__main'>
+						<p className='book__word-amount'>{words.length} слов/а в тексте!</p>
+						<div className='book__page'>
+						<h4 className='book__active-page'>{`Страница ${currentPage} / ${Math.ceil(words.length / wordsPerPage)}`}</h4>
 							<div className={'book__text--' + fontSizeType}>
 								<Words currentWord={currentWord}/>
 							</div>

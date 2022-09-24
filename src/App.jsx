@@ -1,13 +1,14 @@
 import React from 'react';
 
 import { BrowserRouter } from 'react-router-dom';
-import RootRoute from './Routes/RootRoute';
-import GlobalErrorBoundary from './HOC/GlobalErrorBoundary/GlobalErrorBoundary';
-import GlobalTheme from './HOC/GlobalTheme/GlobalTheme';
 import { Provider } from 'react-redux/es/exports';
-import { persistor, store } from './store/initStore';
 import { PersistGate } from 'redux-persist/integration/react';
-import Spinner from './Components/SpinnerLoading/Spinner';
+
+import RootRoute from '@src/Routes/RootRoute';
+import GlobalErrorBoundary from '@src/HOC/GlobalErrorBoundary/GlobalErrorBoundary';
+import GlobalTheme from '@src/HOC/GlobalTheme/GlobalTheme';
+import { persistor, store } from '@src/store/initStore';
+import Spinner from '@src/Components/SpinnerLoading/Spinner';
 
 function App() {
 	return (

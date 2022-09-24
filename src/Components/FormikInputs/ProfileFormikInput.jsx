@@ -7,7 +7,7 @@ function ProfileFormikInput(props) {
 		<div>
 			<input {...props} {...field} />
 			{meta.touched && meta.error && (
-				<p className="field__error">{meta.error}</p>
+				<p className='field__error'>{meta.error}</p>
 			)}
 		</div>
 	);

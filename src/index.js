@@ -4,6 +4,6 @@ import App from './App';
 import './common/style.scss';
 
 const root = ReactDom.createRoot(
-    document.getElementById("root")
+    document.getElementById('root')
 );
 root.render(<App/>);

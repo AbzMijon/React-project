@@ -2,7 +2,7 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import { persistReducer, persistStore } from 'redux-persist';
 import hardSet from 'redux-persist/es/stateReconciler/hardSet';
 import storage from 'redux-persist/lib/storage';
-import rootReducer from './reducers/rootReducer';
+import rootReducer from '@src/store/reducers/rootReducer';
 
 const persistConfig = {
 	key: 'root',

@@ -35,7 +35,7 @@ function Sorting() {
     const [searchParams, setSearchParams] = useSearchParams();
     const [fetchBooks, setFetchBooks] = useState(null);
     const [filteredBooks, setFilteredBooks] = useState([]);
-    const [selectedBooks, setSelectedBooks] = useState(isLogged ? [] : JSON.parse(localStorage.getItem('selectedBooks')) || []);
+    const [selectedBooks, setSelectedBooks] = useState(isLogged ? [] : JSON.parse(localStorage.getItem('selectedBooks')) || []);  
     const [successResponseServer, setSuccessResponseServer] = useState(false);
     const [searchString, setsearchString] = useState(searchParams.get('searchString') || ''); 
     const [bookSrc, setBookSrc] = useState('');

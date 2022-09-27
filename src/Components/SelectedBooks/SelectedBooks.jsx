@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { PATH } from '@src/constans/routes.ts';
 import { useSelector } from 'react-redux';
 import { isLoggedIn } from '@src/store/selectors/userSelectors';
-import './selectedBooks.scss';
+import './selectedStyledBooks.scss'
 
 function SelectedBooks({ selectedBooks, setCheckLikedBooks, setSelectedBooks }) {
 
